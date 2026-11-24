@@ -3,415 +3,370 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Максим Титов — IT Project Manager / Delivery Manager. Опыт, метрики и кейсы.">
-<meta property="og:title" content="Максим Титов — IT Project Manager">
-<meta property="og:description" content="Delivery двух банковских продуктов на ~2 млн клиентов. Конверсия воронки 58% → 72%, возвраты 30% → 9%, кейсы по требованиям и проектированию.">
-<title>Максим Титов, Project Manager</title>
+<meta name="color-scheme" content="light">
+<title>Максим Титов, менеджер проектов</title>
+<meta name="description" content="Максим Титов, менеджер проектов. Пять лет в IT и семь лет собственного бизнеса в событиях. Кейсы банка, агентства, CRM и событий с цифрами.">
+<meta property="og:title" content="Максим Титов, менеджер проектов">
+<meta property="og:description" content="Пять лет в IT и семь лет собственного бизнеса в событиях. Папки с проектами и цифрами.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Tektur:wght@500;700&display=swap">
 <style>
-/* Layout: single editorial column with a wide hero; cases styled as PM artefacts (requirement IDs, status chips, decision notes) */
 :root{
---bg:#f3f3ef; --paper:#ffffff; --ink:#15171a; --muted:#5d636b; --line:#dfe0da;
---accent:#2747d6; --accent-soft:#e7ebfb; --ok:#1d7a4c; --warn:#a35a00; --block:#b3261e;
---f-display:"Unbounded","Arial Black",system-ui,sans-serif;
---f-body:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;
---f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --paper:#ECEFF3;
+  --sheet:#FFFFFF;
+  --ink:#172033;
+  --muted:#5A6478;
+  --rule:#CDD4DE;
+  --cobalt:#2F4BD8;
+  --bank:#F2C94C;
+  --agency:#3A57E8;
+  --crm:#2FA884;
+  --events:#E8674A;
+  --mall:#8A63D2;
+  --ai:#4A5A78;
+  --f-display:"Tektur","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r-folder:10px;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
---bg:#111316; --paper:#181b20; --ink:#ecedee; --muted:#9aa1ab; --line:#2a2f36;
---accent:#8ea2ff; --accent-soft:#1f2640; --ok:#5fd29a; --warn:#f0b35a; --block:#ff8a80; color-scheme:dark}}
-:root[data-theme="dark"]{
---bg:#111316; --paper:#181b20; --ink:#ecedee; --muted:#9aa1ab; --line:#2a2f36;
---accent:#8ea2ff; --accent-soft:#1f2640; --ok:#5fd29a; --warn:#f0b35a; --block:#ff8a80; color-scheme:dark}
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6}
-.wrap{max-width:920px;margin:0 auto;padding-inline:20px;padding-block:0 80px}
-a{color:var(--accent)}
-.label{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+a{color:var(--cobalt);text-underline-offset:3px}
+a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* header */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0}
+.top .me{font-family:var(--f-display);font-weight:700;font-size:18px;letter-spacing:.01em}
+.top nav{display:flex;gap:18px;flex-wrap:wrap;font-size:15px}
+.top nav a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+.top nav a:hover{border-color:var(--ink)}
+
 /* hero */
-.hero{padding-block:56px 40px;display:grid;gap:22px;border-bottom:1px solid var(--line)}
-.hero h1{font-family:var(--f-display);font-weight:600;font-size:clamp(34px,7vw,64px);line-height:1.02;letter-spacing:-.02em;margin:0;text-wrap:balance}
-.hero h1 span{color:var(--accent)}
-.hero .lead{font-size:clamp(18px,2.4vw,21px);max-width:40ch;margin:0;color:var(--ink)}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-family:var(--f-mono);font-size:12px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 11px;color:var(--muted)}
-.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.btn{font-weight:600;text-decoration:none;border-radius:10px;padding:11px 16px;border:1px solid var(--ink);color:var(--ink);background:transparent}
-.btn.primary{background:var(--ink);color:var(--bg)}
-.btn:hover,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-/* numbers */
-.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-block:40px}
-.num{background:var(--paper);padding:20px 18px;min-width:0}
-.num b{display:block;font-family:var(--f-display);font-weight:500;font-size:clamp(22px,2.6vw,28px);white-space:nowrap;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1}
-.num b i{font-style:normal;color:var(--muted);font-size:20px;margin-inline:4px}
-.num span{display:block;font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
-section{padding-block:36px 8px;scroll-margin-top:16px}
-h2{font-family:var(--f-display);font-weight:500;font-size:clamp(22px,3.4vw,30px);letter-spacing:-.01em;margin:6px 0 18px;text-wrap:balance}
-h3{font-size:19px;margin:0 0 6px}
-p{margin:0 0 12px;max-width:66ch}
-/* about */
-.about{display:grid;grid-template-columns:1.4fr 1fr;gap:28px}
-.about .side{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;font-size:15px;min-width:0}
-.about .side dl{margin:0;display:grid;gap:10px}
-.about .side dt{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.about .side dd{margin:0}
-/* timeline */
-.tl{display:grid;gap:0;border-left:2px solid var(--line);margin-left:6px}
-.job{position:relative;padding:0 0 26px 24px}
-.job::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
-.job .when{font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:.04em}
-.job h3{margin:2px 0 4px}
-.job p{color:var(--ink)}
-.job ul{margin:0 0 6px;padding-left:18px} .job li{margin-bottom:4px}
-/* cases */
-.case{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px 24px 14px;margin-bottom:22px}
-.case .top{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline;justify-content:space-between;margin-bottom:8px}
-.case .kind{font-family:var(--f-mono);font-size:12px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
-.case h3{font-family:var(--f-display);font-weight:500;font-size:22px;letter-spacing:-.01em}
-.facts{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 16px}
-.facts span{font-family:var(--f-mono);font-size:12px;background:var(--accent-soft);color:var(--accent);border-radius:6px;padding:4px 8px}
-.decisions{display:grid;gap:12px;margin:8px 0 14px}
-.dec{border-left:3px solid var(--accent);padding:4px 0 4px 14px}
-.dec .id{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
-.dec .ch{font-weight:600;margin:2px 0}
-.dec p{margin:0;font-size:16px}
-.was{text-decoration:line-through;color:var(--muted)}
-.flow{overflow-x:auto;margin:6px 0 14px;padding-bottom:4px}
-.flow-in{display:flex;align-items:center;gap:8px;min-width:560px}
-.st{font-family:var(--f-mono);font-size:12.5px;border-radius:8px;padding:8px 11px;border:1px solid var(--line);background:var(--bg);white-space:nowrap}
-.st.done{border-color:var(--ok);color:var(--ok)}
-.st.block{border-color:var(--block);color:var(--block)}
-.arrow{color:var(--muted);font-family:var(--f-mono)}
-.flow-note{font-size:14px;color:var(--muted)}
-.mods{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:8px 0 16px}
-.mod{border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0}
-.mod b{display:block;font-size:15px}
-.mod span{font-size:14px;color:var(--muted)}
-.star{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:6px 0 14px}
-.star div{min-width:0}
-.star .label{display:block;margin-bottom:4px}
-.spec{margin:6px 0 14px;border-top:1px solid var(--line);padding-top:10px}
-.spec > summary{cursor:pointer;font-weight:600;color:var(--accent);list-style:none;display:flex;align-items:center;gap:8px;padding:6px 0}
-.spec summary::-webkit-details-marker,.stories summary::-webkit-details-marker{display:none}
-.spec > summary::before,.stories summary::before{content:"+";flex:none;font-family:var(--f-mono);width:20px;height:20px;border:1px solid var(--accent);border-radius:6px;display:grid;place-items:center;font-size:13px}
-.spec[open] > summary::before,.stories details[open] > summary::before{content:"−"}
-.spec summary:focus-visible,.stories summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
-.spec .body{padding-top:8px;display:grid;gap:14px}
-.spec h4{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
-.spec ol,.spec ul{margin:0;padding-left:20px;font-size:15.5px} .spec li{margin-bottom:4px}
-.req{list-style:none;padding:0!important;display:grid;gap:6px}
-.req li{display:grid;grid-template-columns:64px 1fr;gap:10px;font-size:15.5px;margin:0}
-.req code{font-family:var(--f-mono);font-size:12.5px;color:var(--accent);padding-top:2px}
-.tbl{overflow-x:auto}
-.tbl table{border-collapse:collapse;width:100%;min-width:480px;font-size:15px}
-.tbl th,.tbl td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-.tbl th{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:500}
-.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
-.role{border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0}
-.role b{display:block;margin-bottom:4px}
-.role ul{font-size:14.5px}
-.stories details{border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin-bottom:8px}
-.stories summary{cursor:pointer;font-weight:600;font-size:15.5px;list-style:none;display:flex;align-items:center;gap:8px;color:var(--accent)}
-.stories ul{margin-top:8px}
-.contact{margin-top:40px;background:var(--ink);color:var(--bg);border-radius:20px;padding:30px 26px;display:grid;gap:14px}
-.contact h2{color:var(--bg);margin:0}
-.contact p{color:var(--bg);opacity:.85;margin:0}
-.contact .btn{border-color:var(--bg);color:var(--bg)}
-.contact .btn.primary{background:var(--bg);color:var(--ink)}
-.copy{font-family:var(--f-mono);font-size:14px;opacity:.85}
-footer{color:var(--muted);font-size:13px;margin-top:28px}
-@media (max-width:720px){.about{grid-template-columns:1fr}.case{padding:20px 16px 10px}}
-@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}.case,.num{transition:transform .2s ease}.case:hover{transform:translateY(-2px)}}
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center;padding:40px 0 72px}
+.hero h1{font-family:var(--f-display);font-weight:700;font-size:clamp(34px,5vw,60px);line-height:1.04;letter-spacing:-.01em;margin:0 0 24px;max-width:13ch}
+.hero p{margin:0 0 14px;max-width:56ch;color:#2A3348}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-block;font-weight:600;font-size:16px;padding:13px 20px;border-radius:999px;text-decoration:none;border:2px solid var(--ink)}
+.btn.solid{background:var(--ink);color:#fff}
+.btn.solid:hover{background:var(--cobalt);border-color:var(--cobalt)}
+.btn.line{color:var(--ink)}
+.btn.line:hover{background:var(--sheet)}
+
+/* the stack of folders in the hero: the one memorable thing */
+.stack{position:relative;height:520px}
+.stack a{position:absolute;left:0;right:0;height:250px;border-radius:0 var(--r-folder) var(--r-folder) var(--r-folder);background:var(--c);color:var(--ink);text-decoration:none;box-shadow:0 1px 0 rgba(23,32,51,.25), 0 14px 30px -18px rgba(23,32,51,.55);padding:8px 20px;transform-origin:50% 100%;animation:deal .7s cubic-bezier(.2,.8,.2,1) both;transition:transform .25s ease}
+.stack a::before{content:"";position:absolute;left:0;top:-26px;width:46%;height:28px;background:var(--c);border-radius:var(--r-folder) var(--r-folder) 0 0;clip-path:polygon(0 0,86% 0,100% 100%,0 100%)}
+.stack a span{position:absolute;top:-21px;left:16px;font-family:var(--f-display);font-weight:500;font-size:14px}
+.stack a b{display:block;font-family:var(--f-display);font-size:20px;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-top:2px}
+.stack a small{display:none}
+.stack a:last-child{padding-top:14px}
+.stack a:last-child small{display:block;margin-top:6px;font-size:15px;opacity:.85}
+.stack a:nth-child(1){top:0;--c:var(--events);animation-delay:.05s}
+.stack a:nth-child(2){top:66px;--c:var(--bank);animation-delay:.15s;margin-left:14px}
+.stack a:nth-child(3){top:132px;--c:var(--agency);color:#fff;animation-delay:.25s;margin-left:28px}
+.stack a:nth-child(4){top:198px;--c:var(--crm);color:#fff;animation-delay:.35s;margin-left:42px}
+.stack a:nth-child(5){top:264px;--c:var(--mall);color:#fff;animation-delay:.45s;margin-left:56px}
+.stack a:nth-child(3) span,.stack a:nth-child(4) span,.stack a:nth-child(5) span{color:#fff}
+.stack a:hover{transform:translateY(-14px)}
+@keyframes deal{from{opacity:0;transform:translateY(60px) rotate(-3deg)}to{opacity:1;transform:none}}
+
+/* sections */
+section{padding:56px 0}
+h2{font-family:var(--f-display);font-weight:700;font-size:clamp(26px,3.2vw,38px);line-height:1.1;margin:0 0 10px}
+.lead{color:var(--muted);max-width:62ch;margin:0 0 32px}
+
+/* case folders */
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 28px;padding-top:26px}
+.case{position:relative;--c:var(--ai)}
+.case summary{list-style:none;cursor:pointer;position:relative;background:var(--sheet);border-radius:0 var(--r-folder) var(--r-folder) var(--r-folder);border-top:6px solid var(--c);padding:22px 22px 20px;box-shadow:0 1px 0 var(--rule)}
+.case summary::-webkit-details-marker{display:none}
+.case summary::before{content:attr(data-tab);position:absolute;left:0;top:-30px;height:30px;padding:5px 30px 0 14px;background:var(--c);color:var(--tab-ink,var(--ink));font-family:var(--f-display);font-weight:500;font-size:14px;border-radius:var(--r-folder) var(--r-folder) 0 0;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 100%,0 100%)}
+.case h3{font-family:var(--f-display);font-weight:700;font-size:22px;line-height:1.2;margin:0 0 10px;max-width:26ch}
+.case .num{font-family:var(--f-display);font-weight:700;font-size:40px;line-height:1;margin:6px 0 4px}
+.case .num small{font-size:16px;font-weight:500;margin-left:6px}
+.case .unit{color:var(--muted);font-size:15px;margin:0}
+.case .open{display:inline-block;margin-top:14px;font-size:15px;font-weight:600;color:var(--cobalt)}
+.case[open] .open{color:var(--muted)}
+.case .open::after{content:"Открыть папку"}
+.case[open] .open::after{content:"Закрыть"}
+.case .body{background:var(--sheet);border-radius:0 0 var(--r-folder) var(--r-folder);margin-top:-6px;padding:6px 22px 22px;border-left:6px solid var(--c)}
+.case[open] .body{animation:unfold .35s ease both}
+@keyframes unfold{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.body h4{font-size:15px;font-weight:600;margin:18px 0 4px;color:var(--muted)}
+.body p,.body li{margin:0 0 8px;max-width:64ch}
+.body ul{padding-left:20px;margin:0}
+.bank{--c:var(--bank)}
+.agency{--c:var(--agency);--tab-ink:#fff}
+.crm{--c:var(--crm);--tab-ink:#fff}
+.events{--c:var(--events)}
+.mall{--c:var(--mall);--tab-ink:#fff}
+.ai{--c:var(--ai);--tab-ink:#fff}
+
+/* path: a real sequence, so it is numbered by years */
+.path{list-style:none;margin:0;padding:0;border-left:2px solid var(--ink)}
+.path li{position:relative;padding:0 0 26px 28px}
+.path li::before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:3px solid var(--ink)}
+.path .yr{font-family:var(--f-display);font-weight:700;font-size:20px}
+.path .what{font-weight:600}
+.path p{margin:2px 0 0;color:#2A3348;max-width:64ch}
+
+/* habits */
+.habits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 40px}
+.habits h3{font-family:var(--f-display);font-weight:700;font-size:19px;margin:0 0 6px}
+.habits p{margin:0;color:#2A3348}
+
+/* contact */
+.contact{background:var(--ink);color:#fff;border-radius:22px;padding:44px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center;margin:40px 0 64px}
+.contact h2{color:#fff}
+.contact p{color:#C9D0DD;margin:0}
+.contact .links{display:flex;flex-direction:column;gap:12px}
+.contact a{color:#fff;font-size:20px;font-weight:600;text-decoration:none;border-bottom:2px solid rgba(255,255,255,.3);align-self:flex-start}
+.contact a:hover{border-color:#fff}
+footer{color:var(--muted);font-size:14px;padding:0 0 40px}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:36px;padding-top:20px}
+  .stack{height:440px}
+  .stack a{height:200px}
+  .stack a:nth-child(n){margin-left:0}
+  .stack a:nth-child(2){top:58px}.stack a:nth-child(3){top:116px}.stack a:nth-child(4){top:174px}.stack a:nth-child(5){top:232px}
+  .stack a b{font-size:17px}
+  .top nav{display:none}
+  .cases,.habits,.contact{grid-template-columns:1fr}
+  .contact{padding:30px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header class="hero">
-<div class="label">IT Project Manager · Delivery Manager</div>
-<h1>Максим Титов.<br>Поднимаю риски по срокам <span>заранее</span>, пока они не сорвали релиз.</h1>
-<p class="lead">Пять лет в IT. Начинал QA на highload-платформе, затем перешёл в управление проектами. Сейчас веду delivery двух банковских продуктов на ~2 млн клиентов.</p>
-<div class="chips">
-<span class="chip">Scrum · Kanban</span><span class="chip">Jira · Confluence</span><span class="chip">REST · SQL</span><span class="chip">Grafana · Kibana</span><span class="chip">Claude · ChatGPT</span><span class="chip">Удалённо</span>
-</div>
-<div class="cta">
-<a class="btn primary" href="https://t.me/titov1235" target="_blank" rel="noopener">Написать в Telegram</a>
-<a class="btn" href="#cases">Кейсы</a>
-</div>
-</header>
-<div class="nums" role="list">
-<div class="num" role="listitem"><b>30%<i>→</i>9%</b><span>возвраты задач на доработку за 4 месяца</span></div>
-<div class="num" role="listitem"><b>42<i>→</i>35</b><span>дней на выход фичи от постановки до прода</span></div>
-<div class="num" role="listitem"><b>58%<i>→</i>72%</b><span>конверсия воронки выпуска корпоративных карт</span></div>
-<div class="num" role="listitem"><b>~2 млн</b><span>клиентов на продуктах</span></div>
-</div>
-<section id="about">
-<div class="label">Обо мне</div>
-<h2>Из QA осталась привычка проверять, а не верить на слово</h2>
-<div class="about">
-<div>
-<p>В Райффайзенбанке веду delivery двух продуктов в программе перехода на новые core-системы: модуль кредитов в новом бэкенде и корпоративные карты, где веду путь юрлица от заявки до выпуска карты. Команда 15 человек в двух стримах плюс восемь смежных команд, поэтому управляю через цель, договорённости и прозрачность.</p>
-<p>Читаю REST-контракты, смотрю метрики в Grafana и Kibana, данные проверяю SQL-запросами сам. Моя сильная сторона в том, что риск я поднимаю раньше, чем он превратится в сорванный срок.</p>
-<p>Параллельно много лет продюсировал мероприятия: фестивали до 3000 гостей, в цепочке до 250 человек. Там научился держать жёсткие даты, когда перенести событие нельзя.</p>
-</div>
-<aside class="side">
-<dl>
-<div><dt>Ищу</dt><dd>Продуктовую, AI или digital-команду, где решения принимаются за неделю, а результат видно у пользователя</dd></div>
-<div><dt>Домены</dt><dd>Финтех и платежи, e-commerce, B2B-сервисы, AI-продукты</dd></div>
-<div><dt>Образование</dt><dd>АлтГУ, бакалавр, «Фундаментальная информатика и информационные технологии», 2019–2024</dd></div>
-<div><dt>Курсы</dt><dd>Backend-разработка, АлтГУ, 252 ч (2024) · Основы Prompt engineering, АлтГУ, 16 ч (2024) · Project Management based on PMBOK 7, PM Expert (2021)</dd></div>
-<div><dt>Формат</dt><dd>Удалённо, работаю по московскому времени</dd></div>
-</dl>
-</aside>
-</div>
-</section>
-<section id="product">
-<div class="label">Как я смотрю на работу</div>
-<h2>Сначала разбираюсь, какую проблему мы закрываем</h2>
-<p>Сроки, порядок и чёткие постановки для меня база. Но всё чаще первым вопросом к фиче у меня становится другой: какую ценность она несёт и для кого. Хорошая задача та, после которой пользователю проще, а бизнес видит это в цифрах.</p>
-<div class="mods">
-<div class="mod"><b>Ценность раньше объёма</b><span>Убираю из релиза то, что не работает на цель, даже если это «тоже хорошо бы»</span></div>
-<div class="mod"><b>Воронка, а не список задач</b><span>С бизнес-заказчиком разбираю, где отваливаются клиенты, и превращаю это в бэклог</span></div>
-<div class="mod"><b>Решение с обоснованием</b><span>Каждое спорное требование фиксирую с причиной, как в кейсах ниже</span></div>
-</div>
-</section>
-<section id="ai">
-<div class="label">ИИ в работе</div>
-<h2>Рутину отдаю нейросетям, решения и факты оставляю за собой</h2>
-<p>Claude и ChatGPT у меня рабочие инструменты на каждый день, а не игрушка. Так я освобождаю время на то, что нейросеть не сделает: договориться, заметить риск и принять решение.</p>
-<div class="mods">
-<div class="mod"><b>Свои ассистенты</b><span>Под каждое направление проект в Claude с инструкциями, базой материалов и скиллами под повторяющиеся задачи</span></div>
-<div class="mod"><b>Черновик за минуты</b><span>Протоколы встреч, постановки, статусы и разбор переписки. Цифры и факты в итоговом тексте проверяю сам</span></div>
-<div class="mod"><b>Автоматизация</b><span>С помощью ИИ пишу небольшие скрипты под рутину, работаю в терминале и держу свой сервер</span></div>
-</div>
-</section>
-<section id="exp">
-<div class="label">Опыт</div>
-<h2>Путь</h2>
-<div class="tl">
-<div class="job"><div class="when">июнь 2024 — сейчас</div><h3>Райффайзенбанк · IT Project Manager</h3>
-<ul>
-<li>Новый банковский бэкенд: модуль кредитов и главной книги, интеграция с НСПК. Релизы по контурам DEV, TEST, PREPROD и PROD, пилот на сотрудниках, раскатка по долям базы.</li>
-<li>Новый карточный процессинг, продукт корпоративных карт, путь юрлица от заявки до выпуска. Авторизация, клиринг, пополнение, СБП; МИР, UnionPay, миграция Visa/Mastercard.</li>
-<li>Корпоративные карты: 45 000 бизнес-клиентов, 110 000 карт, 1,5–2 млн транзакций и 3 500–4 000 заявок на выпуск в месяц.</li>
-<li>Scrum, двухнедельные спринты, RICE и MoSCoW. Релизы и контракты синхронизирую с восемью смежными командами: ядро банка, каналы, антифрод, безопасность, внешние системы.</li>
-<li>Конверсия воронки выпуска с 58% до 72%. Say/Do с 55–60% до 85–90%, Change Failure Rate с 15% до 4% при 25–30 релизах в месяц.</li>
-</ul></div>
-<div class="job"><div class="when">сентябрь 2023 — май 2024</div><h3>BURO'28, digital-агентство · Project Manager</h3>
-<p>Четыре проекта, корпоративные сайты и B2B-порталы для заказчиков из ритейла и услуг, бюджет от 1,5 до 4,5 млн ₽ на проект. Fixed Price с поэтапной сдачей, всё сверх ТЗ уходило в Change Requests. Команда 6 человек плюс подрядчики, полный цикл: требования, план, подрядчики, бюджет, сдача и ПСИ. Цикл выпуска 4 → 3 недели, доработок после релиза на треть меньше. Сайт на 40+ страниц сдали в срок и в бюджет, заказчик продлил поддержку.</p></div>
-<div class="job"><div class="when">сентябрь 2021 — август 2023</div><h3>amoCRM · QA Engineer</h3>
-<p>Highload B2B-платформа: системное, интеграционное и регрессионное тестирование, API и REST-контракты, интеграции с телефонией и почтой. Регресс 18 → 11 часов, критических багов на проде за квартал стало 2 вместо 7.</p></div>
-</div>
-</section>
-<section id="cases">
-<div class="label">Кейсы</div>
-<h2>Как я думаю, на четырёх примерах</h2>
-<p class="flow-note">Суть сразу, а ход рассуждений и исходные артефакты открываются кнопками внутри каждого кейса.</p>
-<article class="case">
-<div class="top"><span class="kind">Delivery · реальный проект</span><span class="label">Райффайзенбанк</span></div>
-<h3>Воронка выпуска корпоративных карт: с 58% до 72%</h3>
-<div class="facts"><span>3 500–4 000 заявок в месяц</span><span>45 000 бизнес-клиентов</span><span>новый карточный процессинг</span></div>
-<div class="star">
-<div><span class="label">Ситуация</span>Юрлицо проходит путь от заявки через проверки и выпуск до доставки карты. До активированной карты доходили только 58% заявок.</div>
-<div><span class="label">Что сделал</span>Вместе с бизнес-заказчиком разобрал воронку по этапам. Нормальные юрлица отваливались на скоринге и комплаенс-проверках: таймауты смежных сервисов, возвраты при ручной проверке документов. Перевёл это в приоритеты бэклога, переделали валидацию на входе и статусы заявок.</div>
-<div><span class="label">Результат</span>Сквозная конверсия от заявки до активированной карты выросла с 58% до 72%.</div>
-</div>
-</article>
-<article class="case">
-<div class="top"><span class="kind">Delivery · управление риском</span><span class="label">Райффайзенбанк</span></div>
-<h3>Риск, который никто не проверял</h3>
-<div class="facts"><span>~2 млн клиентов</span><span>закрытие банковского дня</span><span>новый core-бэкенд</span></div>
-<div class="star">
-<div><span class="label">Ситуация</span>Модуль кредитной задолженности готовили к выводу на всю базу. В это время сменился техлид, и нагрузку на пересчёт задолженности в закрытие банковского дня никто не проверял.</div>
-<div><span class="label">Что сделал</span>Поднял риск и добился нагрузочного теста на деперсонализированных слепках прода. Договорился со смежными командами о стенде и окне.</div>
-<div><span class="label">Результат</span>Узкое место закрыли до релиза, срок вывода не сдвинулся.</div>
-</div>
-</article>
-<article class="case">
-<div class="top"><span class="kind">Кейс 1 · работа с требованиями</span><span class="label">спецификация v2.0</span></div>
-<h3>Регистрация пользователя: каждое требование работает на конверсию</h3>
-<p>Регистрация выглядит как самое простое место в продукте, поэтому её часто отдают в работу без спеки и теряют на ней людей, за которых уже заплатили маркетингом. Незавершённая регистрация означает оплаченного клиента, который до продукта не дошёл.</p>
-<div class="facts"><span>цель — конверсия</span><span>10 FR · 3 NFR</span><span>6 критериев приёмки</span><span>2 своих ошибки найдены до разработки</span></div>
-<div class="decisions">
-<div class="dec"><div class="id">FR-8 · срок жизни ссылки</div><div class="ch"><span class="was">1 минута</span> → 24 часа</div><p>Письмо идёт десятки секунд, может уйти в спам, человек может быть не у устройства. Короткий срок работал против цели. Защиту от спама вынес в отдельное требование FR-7: не больше одного письма в минуту.</p></div>
-<div class="dec"><div class="id">NFR-3 · защита от ботов</div><div class="ch"><span class="was">1 регистрация с IP</span> → мягкий порог и капча</div><p>Жёсткий лимит отрезал бы офисы, вузы и мобильных операторов за NAT. До 10 регистраций в час с IP, дальше капча, плюс обязательное подтверждение почты.</p></div>
-<div class="dec"><div class="id">Шаг 9 · автовход</div><div class="ch">Вход сразу после подтверждения почты</div><p>Без него человек попадает на форму логина и вводит те же данные второй раз. Это типичная точка отвала.</p></div>
-<div class="dec"><div class="id">Scope · что не вошло</div><div class="ch">Вход через Google и Apple, 2FA — вне релиза</div><p>Соцвходы могут поднять конверсию сильнее всего остального, но это отдельная интеграция: положить её в тот же релиз значит сдвинуть весь релиз. 2FA усложняет вход, а мы пришли упрощать.</p></div>
-</div>
-<h4 class="label" style="margin:6px 0 8px">Как поймём, что сработало</h4>
-<div class="mods">
-<div class="mod"><b>Доля завершённых регистраций</b><span>из начавших заполнять форму дошли до active. Главная метрика</span></div>
-<div class="mod"><b>Подтверждение за 24 часа</b><span>доля из pending, перешедших в active до истечения ссылки</span></div>
-<div class="mod"><b>Отвал по шагам</b><span>форма → письмо → переход по ссылке → автовход</span></div>
-<div class="mod"><b>Повторные отправки</b><span>если их много, проблема в доставке, а не в пользователе</span></div>
-</div>
-<details class="spec">
-<summary>Ход рассуждений полностью</summary>
-<div class="body">
-<p>Фичу я взял намеренно простую. На ней виден метод: как из фразы «надо упростить» получается документ, по которому разработчик пишет код, а тестировщик проверяет результат. На сложной фиче метод тонет в предметной области.</p>
-<div><h4>Задача</h4><p>Упростить первичную регистрацию, чтобы поднять конверсию и снизить долю незавершённых регистраций. «Упростить» — это не требование, а намерение. Прежде чем что-то писать, нужно решить, где проходит граница задачи.</p></div>
-<div><h4>Первое решение: что не входит в scope</h4><p>Половина работы PM на этом этапе — не добавить, а отрезать. Включил: регистрацию по email и паролю, подтверждение по email, обработку повторной регистрации существующего адреса, автовход после подтверждения, создание базового профиля. Вынес за скобки: вход через Google и Apple ID, 2FA, редактирование профиля.</p></div>
-<div><h4>Что нашлось до разработки</h4><p>Всё это дешевле поймать сейчас, чем на тестировании: уже существующий email и короткий пароль — 400 без создания пользователя; протухшая ссылка — кнопка «отправить повторно»; повторные нажатия — не чаще одного письма в минуту; успех — 201, автологин, профиль создан. Нефункциональные: ответ API не дольше 500 мс для 95% запросов, пароли только в хэшированном виде.</p></div>
-<div><h4>Открытые вопросы — и что я с ними сделал</h4><p>Два требования я пометил вопросительным знаком ещё в черновике, потому что сам в них не был уверен, и довёл до решения, а не спрятал.</p>
-<p><b>«Ссылка живёт 1 минуту».</b> За минуту не успеет почти никто — мы своими руками сделали бы ту самую незавершённую регистрацию, с которой боремся. Решение: 24 часа на срок жизни ссылки, повторная отправка не чаще раза в минуту. Изначально я смешал две разные проблемы в одном требовании.</p>
-<p><b>«Не больше одной регистрации с одного IP».</b> За одним IP сидят офис, вуз, мобильный оператор, весь NAT провайдера. Решение: мягкий порог за окно времени — 10 регистраций в час — и капча вместо блокировки. Слоем ниже основную часть мусора отсекает подтверждение email.</p></div>
-<div><h4>Метрики</h4><p>Чтобы считать конверсию по шагам, нужны события аналитики на каждый шаг. Их стоит заложить в ту же задачу, а не догонять после релиза. Сравнение — базовая линия до релиза и две недели после.</p></div>
-<div><h4>Вывод</h4><p>Спека заняла страницу. До неё ушёл день на решения: что не делаем, где граница, какие требования противоречат самой цели. Разработчику уходит однозначный документ, тестировщику — готовые критерии приёмки. Задача с открытыми вопросами возвращается на доработку, задача с закрытыми — нет.</p></div>
-</div>
-</details>
-<details class="spec">
-<summary>Исходные артефакты: требования, критерии приёмки, данные</summary>
-<div class="body">
-<div><h4>Цель</h4><p>Упростить первичную регистрацию новых пользователей, чтобы повысить конверсию и снизить долю незавершённых регистраций.</p></div>
-<div class="grid-two" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
-<div><h4>Входит</h4><ul><li>Регистрация по email и паролю</li><li>Подтверждение по email</li><li>Обработка уже существующего email</li><li>Автовход после подтверждения</li><li>Создание базового профиля</li></ul></div>
-<div><h4>Не входит</h4><ul><li>Вход через Google</li><li>Вход через Apple ID</li><li>Двухфакторная аутентификация</li><li>Редактирование профиля</li></ul></div>
-</div>
-<div><h4>Основной сценарий</h4><ol><li>Пользователь вводит email и пароль</li><li>Система проверяет формат email</li><li>Проверяет email на уникальность</li><li>Проверяет длину пароля — минимум 8 символов</li><li>Создаёт пользователя со статусом pending</li><li>Отправляет письмо подтверждения</li><li>Пользователь переходит по ссылке</li><li>Система присваивает статус active</li><li>Автоматически авторизует пользователя</li><li>Создаёт базовый профиль</li></ol></div>
-<div><h4>Граничные случаи</h4><div class="tbl"><table><thead><tr><th>Ситуация</th><th>Поведение системы</th></tr></thead><tbody>
-<tr><td>Email уже зарегистрирован</td><td>Ошибка 400, пользователь не создаётся</td></tr>
-<tr><td>Пароль короче 8 символов</td><td>Ошибка 400, пользователь не создаётся</td></tr>
-<tr><td>Некорректный формат email</td><td>Ошибка 400, пользователь не создаётся</td></tr>
-<tr><td>Срок действия ссылки истёк</td><td>Кнопка повторной отправки письма</td></tr>
-<tr><td>Повторные нажатия «отправить»</td><td>Не более одного письма в минуту</td></tr>
-</tbody></table></div></div>
-<div><h4>Функциональные требования</h4><ul class="req">
-<li><code>FR-1</code>Система принимает email и пароль в запросе регистрации</li>
-<li><code>FR-2</code>Система валидирует формат email</li>
-<li><code>FR-3</code>Система валидирует длину пароля — не менее 8 символов</li>
-<li><code>FR-4</code>При существующем email возвращает 400 и не создаёт пользователя</li>
-<li><code>FR-5</code>Создаёт пользователя со статусом pending</li>
-<li><code>FR-6</code>Отправляет письмо подтверждения на указанный адрес</li>
-<li><code>FR-7</code>Ограничивает повторную отправку — не чаще раза в минуту</li>
-<li><code>FR-8</code>Ссылка подтверждения действует 24 часа с момента отправки</li>
-<li><code>FR-9</code>После подтверждения авторизует пользователя автоматически</li>
-<li><code>FR-10</code>После подтверждения создаёт базовый профиль</li>
-</ul></div>
-<div><h4>Нефункциональные требования</h4><ul class="req">
-<li><code>NFR-1</code>Время ответа API — не более 500 мс для 95% запросов</li>
-<li><code>NFR-2</code>Пароли хранятся только в хэшированном виде</li>
-<li><code>NFR-3</code>Не более 10 регистраций в час с одного IP, при превышении — капча</li>
-</ul></div>
-<div><h4>Критерии приёмки</h4><div class="tbl"><table><thead><tr><th>Условие</th><th>Ожидаемый результат</th></tr></thead><tbody>
-<tr><td>Email уже существует</td><td>HTTP 400, пользователь не создан</td></tr>
-<tr><td>Пароль короче 8 символов</td><td>HTTP 400, пользователь не создан</td></tr>
-<tr><td>Успешная регистрация</td><td>HTTP 201, пользователь со статусом pending</td></tr>
-<tr><td>Переход по действующей ссылке</td><td>Статус active, пользователь авторизован</td></tr>
-<tr><td>Ссылка старше 24 часов</td><td>Сообщение об истечении срока и кнопка повторной отправки</td></tr>
-<tr><td>Профиль после подтверждения</td><td>Базовый профиль создан в базе</td></tr>
-</tbody></table></div></div>
-<div><h4>Данные</h4><div class="tbl"><table><thead><tr><th>Поле</th><th>Тип</th><th>Описание</th></tr></thead><tbody>
-<tr><td>email</td><td>string</td><td>Уникальный, проверяется на формат</td></tr>
-<tr><td>password</td><td>string</td><td>Только хэш, минимум 8 символов</td></tr>
-<tr><td>status</td><td>enum</td><td>pending / active</td></tr>
-</tbody></table></div></div>
-</div>
-</details>
-</article>
-<article class="case">
-<div class="top"><span class="kind">Кейс 2 · проектирование системы</span><span class="label">спецификация v2.0</span></div>
-<h3>Система управления мероприятиями: под процесс, который знаю изнутри</h3>
-<p>Дата мероприятия это единственный срок, который я за годы работы ни разу не двигал. Площадка снята, гости приглашены, артисты в контракте, за срыв прописан штраф. К конкретному часу всё должно быть готово, у десятков подрядчиков сразу.</p>
-<div class="facts"><span>37 историй → 4 модуля</span><span>5 ролей</span><span>статусная модель</span><span>матрица уведомлений</span></div>
-<div class="mods">
-<div class="mod"><b>Event Management</b><span>создание и архив мероприятий</span></div>
-<div class="mod"><b>Task Management</b><span>задачи, дедлайны, канбан, история</span></div>
-<div class="mod"><b>People Management</b><span>роли, состав, ресурсная загрузка</span></div>
-<div class="mod"><b>Notification Center</b><span>триггеры и адресаты</span></div>
-</div>
-<p class="flow-note">Первый черновик дал 37 историй сплошным списком, с одним дублем. Нарезка на модули позволяет оценивать и релизить независимо: первые два дают работающий минимум, остальные наращиваются следом.</p>
-<div class="flow" aria-label="Статусная модель задачи">
-<div class="flow-in">
-<span class="st">To Do</span><span class="arrow">→</span><span class="st">In Progress</span><span class="arrow">→</span><span class="st">Review</span><span class="arrow">→</span><span class="st done">Done</span><span class="arrow">·</span><span class="st block">Blocked — из любого статуса</span>
-</div>
-</div>
-<div class="decisions">
-<div class="dec"><div class="id">Роли · кто закрывает задачу</div><div class="ch">Исполнитель не ставит Done сам</div><p>«Сделаю» и «сделано» остаются словами исполнителя, а подтверждает тот, кто отвечает за результат. На мероприятии ложное «готово» оборачивается сорванным событием.</p></div>
-<div class="dec"><div class="id">Права · сигнал «не успеваю»</div><div class="ch">Поднять руку это служебное действие, а не признание при всех</div><p>Менеджер узнаёт о риске заранее, а не в день дедлайна, когда сделать уже ничего нельзя.</p></div>
-<div class="dec"><div class="id">Статусы · Blocked</div><div class="ch">Блокер это отдельный статус, а не «в работе»</div><p>Иначе заблокированная задача висит в In Progress, и проблема всплывает поздно.</p></div>
-<div class="dec"><div class="id">Уведомления · адресаты</div><div class="ch">По зоне ответственности, а не по должности</div><p>Без такой таблицы получится либо тишина, либо спам, и люди сами отключат уведомления.</p></div>
-</div>
-<details class="spec">
-<summary>Ход рассуждений полностью</summary>
-<div class="body">
-<p>Одно мероприятие — это параллельно звук и свет, монтаж сцены, декор, типографии с реквизитом, райдеры артистов, площадка, охрана, бар и кухня. Десятки подрядчиков, и отвечать приходится за каждого, включая тех, кто не отвечает за себя сам. Несколько лет я работал в этой логике и проектировал систему под процесс, который знаю изнутри, а не по описанию.</p>
-<div><h4>Задача</h4><p>Спроектировать сервис, в котором команда готовит мероприятие: заводит проект, набирает участников, раздаёт задачи, отслеживает загрузку людей и статус подготовки. Первый черновик — 37 историй без приоритетов и группировки, с одним дублем. Оценить такой бэклог нельзя, разложить по релизам тоже. Отсюда — четыре модуля.</p></div>
-<div><h4>Почему исполнитель не закрывает задачу сам</h4><p>Решение выросло из практики. Декораторы говорят: сделаем. Спрашиваешь — объём большой, может, подключить ещё людей? Отвечают, что справятся. В день монтажа на площадку приезжает женщина с сыном-подростком, и оба в шоке от масштаба. То же бывает с прокатом света и звука, с площадками, чьё руководство обещает то, чего выдать не может. Всё это идёт по договорам со штрафами за срыв.</p></div>
-<div><h4>Право поднять руку</h4><p>В творческой сфере умолчание — обычное дело: человек тянет до последнего, потому что признаться тяжело. Написать в общий чат — сказать вслух при всех, порог высокий. Нажать кнопку «не успеваю» — служебное действие, ничего личного.</p></div>
-<div><h4>Матрица уведомлений</h4><p>Адресата определял по зоне ответственности. Исполнителю не нужны события по чужим задачам. Стейкхолдеру не нужна возня внутри спринта — ему важен сдвиг сроков проекта.</p></div>
-<div><h4>Что бы изменил сейчас</h4>
-<p><b>Ресурсная загрузка не определена как метрика.</b> В историях есть «видеть загрузку команды» и «видеть перегруженных», но не сказано, в чём она измеряется. Заметил уже после того, как отдал черновик. Считать стал бы по числу активных задач с дедлайном в ближайшую неделю: на подготовке мероприятия важно не общий объём, а сколько горит прямо сейчас. Часы не подходят — значительная часть людей внешние подрядчики, их часов не видно.</p>
-<p><b>Нет сценария конфликта дедлайнов.</b> Дедлайн задачи выходит за дедлайн мероприятия — система запрещает, предупреждает или молча позволяет? Не описано.</p></div>
-<div><h4>Итог</h4><p>Из списка историй собрались четыре модуля, матрица прав и матрица уведомлений. По такому набору команду уже можно спрашивать об оценке.</p></div>
-</div>
-</details>
-<details class="spec">
-<summary>Исходные артефакты: 37 историй, роли, статусы, данные</summary>
-<div class="body">
-<div class="stories"><h4>Пользовательские истории · 37, по модулям</h4>
-<details><summary>Event Management · 5 историй</summary><ul><li>Как менеджер проекта, я хочу создавать мероприятие с названием, аватаркой, датой, временем начала, местом проведения и пригласительной ссылкой, чтобы организовать рабочее пространство для подготовки</li><li>Как менеджер проекта, я хочу редактировать параметры мероприятия, чтобы поддерживать актуальность информации</li><li>Как менеджер проекта, я хочу видеть список созданных мной мероприятий, чтобы быстро переключаться между ними</li><li>Как менеджер проекта, я хочу завершать или архивировать мероприятие после окончания, чтобы отделять его от тех, что в процессе</li><li>Как менеджер проекта, я хочу иметь доступ к созданию, архивированию и модерации мероприятий для удобной организации работы</li></ul></details>
-<details><summary>People Management · 8 историй</summary><ul><li>Как менеджер проекта, я хочу добавлять участников из телефонной книги либо принимать заявки по пригласительной ссылке, чтобы быстро собрать команду</li><li>Как менеджер проекта, я хочу редактировать состав участников мероприятия, чтобы поддерживать актуальный состав команды</li><li>Как менеджер проекта, я хочу назначать участнику роль при добавлении, чтобы разграничивать доступ</li><li>Как менеджер проекта, я хочу изменять роли участников, чтобы наделять их теми или иными полномочиями</li><li>Как менеджер проекта, при создании и модерации мероприятия я хочу управлять составом участников и их ролевой моделью, чтобы гибко настраивать команду под мероприятие</li><li>Как стафф-менеджер или менеджер проекта, я хочу видеть нагрузку проектной команды по участникам, чтобы перераспределять нагрузку</li><li>Как менеджер проекта, я хочу видеть перегруженных или мало загруженных участников, чтобы принимать решения по перераспределению задач</li><li>Как пользователь, я хочу видеть свою роль, чтобы понимать свои полномочия</li></ul></details>
-<details><summary>Task Management · 14 историй</summary><ul><li>Как менеджер проекта, я хочу создавать, редактировать или удалять задачи в рамках мероприятия, чтобы управлять подготовкой и выполнением работ</li><li>Как менеджер проекта, я хочу назначать участников на задачи для распределения зон ответственности; участник может быть привязан к нескольким задачам</li><li>Как менеджер проекта, я хочу устанавливать или изменять дедлайн задач, чтобы контролировать сроки</li><li>Как исполнитель, я хочу изменять статус задачи по мере выполнения, чтобы команда видела актуальный прогресс</li><li>Как менеджер проекта, стафф-менеджер или стейкхолдер, я хочу видеть прогресс задач по статусной модели, чтобы контролировать процесс</li><li>Как менеджер проекта, я хочу устанавливать приоритет задачи, чтобы понимать её важность</li><li>Как менеджер проекта, я хочу добавлять описание к задаче, чтобы исполнитель лучше понимал требования</li><li>Как менеджер проекта, я хочу прикреплять к задаче комментарии или заметки, чтобы не упускать уточнения</li><li>Как менеджер проекта или стафф-менеджер, я хочу редактировать поля внутри задачи для качественной постановки</li><li>Как исполнитель, я хочу видеть полный список назначенных мне задач, чтобы планировать работу</li><li>Как исполнитель, я хочу помечать задачу как требующую помощи, чтобы вышестоящие видели риск срыва сроков</li><li>Как менеджер проекта, я хочу фильтровать задачи по исполнителю, статусу и дедлайну</li><li>Как менеджер проекта, я хочу видеть историю изменений задач</li><li>Как участник проекта, я хочу работать с задачами в канбан-доске, чтобы визуально управлять процессом подготовки</li></ul></details>
-<details><summary>Notification Center · 7 историй</summary><ul><li>Как участник проекта, я хочу получать уведомления об изменениях в задачах, дедлайнах и составе команды, чтобы своевременно реагировать</li><li>Как исполнитель, я хочу получать уведомления о назначении меня на задачу, чтобы оперативно видеть новую ответственность</li><li>Как исполнитель, я хочу получать уведомление об изменении дедлайна моей задачи, чтобы скорректировать план работы</li><li>Как стафф-менеджер, я хочу получать уведомления об изменении задач у моей команды, чтобы скорректировать нагрузку и сроки</li><li>Как менеджер проекта, я хочу получать уведомления об изменении состава участников, чтобы оперативно реагировать</li><li>Как стейкхолдер, я хочу получать уведомления о важных изменениях по проекту верхнего уровня, чтобы отслеживать общий процесс</li><li>Как пользователь, я хочу управлять типами уведомлений, чтобы получать только необходимые оповещения</li></ul></details>
-<details><summary>Общесистемные · 3 истории</summary><ul><li>Как пользователь системы, я хочу иметь права доступа в соответствии со своей ролью, чтобы видеть и изменять только разрешённое</li><li>Как менеджер проекта, я хочу видеть ресурсную загрузку команды в дашборде, чтобы распределять нагрузку</li><li>Как пользователь, я хочу менять язык сервиса между русским, английским, испанским и немецким, чтобы мне было комфортно работать</li></ul></details>
-</div>
-<div><h4>Ролевая модель</h4><div class="roles">
-<div class="role"><b>Менеджер проекта</b><ul><li>Создание, редактирование, архив мероприятия</li><li>Участники и роли</li><li>Задачи, ответственные, дедлайны</li><li>Перевод в Done</li><li>Дашборды, канбан, загрузка, история</li></ul></div>
-<div class="role"><b>Стафф-менеджер</b><ul><li>Всё в пределах своей команды, кроме удаления мероприятия</li><li>Состав и загрузка подчинённых</li><li>Смена исполнителей и дедлайнов</li><li>Перевод в Done, история</li></ul></div>
-<div class="role"><b>Старший исполнитель</b><ul><li>Свои задачи и задачи младших</li><li>Статус своих — кроме Done</li><li>Статус задач младших — включая Done</li><li>Канбан, уведомления, сигнал о риске</li></ul></div>
-<div class="role"><b>Исполнитель</b><ul><li>Свои задачи</li><li>Статус своих — кроме Done</li><li>Канбан, уведомления, сигнал о риске</li></ul></div>
-<div class="role"><b>Стейкхолдер</b><ul><li>Просмотр канбан-доски</li><li>Уведомления верхнего уровня</li></ul></div>
-</div></div>
-<div><h4>Правила переходов статусов</h4><ul>
-<li>Задача создаётся менеджером проекта в To Do</li>
-<li>В In Progress — при начале работы, в Review — по завершении</li>
-<li>В Blocked — из любого статуса при препятствии</li>
-<li>В Done — по итогам проверки: менеджер, стафф-менеджер или старший исполнитель</li>
-<li>Все изменения логируются и служат событиями для уведомлений</li></ul></div>
-<div><h4>Матрица уведомлений</h4><div class="tbl"><table><thead><tr><th>Триггер</th><th>Кому</th></tr></thead><tbody>
-<tr><td>Изменение состава участников</td><td>Менеджер проекта, стафф-менеджер</td></tr>
-<tr><td>Изменение статуса задачи</td><td>Менеджер и стафф-менеджер — все; стейкхолдер — все; старший исполнитель — свои и младших; исполнитель — свои</td></tr>
-<tr><td>Изменение объёма задач</td><td>Менеджер проекта, стафф-менеджер</td></tr>
-<tr><td>Изменение дедлайна задачи</td><td>Менеджер проекта, стафф-менеджер</td></tr>
-<tr><td>Смена исполнителя</td><td>Исполнитель, стафф-менеджер</td></tr>
-<tr><td>Изменение дедлайна проекта</td><td>Менеджер проекта, стафф-менеджер, стейкхолдер</td></tr>
-</tbody></table></div></div>
-<div><h4>Системные требования</h4><ul>
-<li>Пригласительная ссылка уникальна для каждого пользователя</li>
-<li>Ссылка гаснет после первого использования или через 3 дня без активности</li>
-<li>Логирование статусов и полная история изменений задач</li>
-<li>Доступ по ролевой модели, интерфейс на 4 языках</li></ul></div>
-<div><h4>Модель данных</h4><div class="tbl"><table><thead><tr><th>Сущность</th><th>Поля</th></tr></thead><tbody>
-<tr><td>Мероприятие</td><td>ID (int), название (до 120 символов), описание (до 500), аватар, пригласительная ссылка (уникальная, одноразовая), участники</td></tr>
-<tr><td>Действия над задачей</td><td>создать, изменить, удалить, назначить исполнителя, изменить дедлайн, изменить статус, добавить комментарий, посмотреть историю</td></tr>
-<tr><td>Задача</td><td>статус (To Do / In Progress / Blocked / Review / Done), приоритет (Low / Medium / High), исполнители, дедлайн, даты создания и изменения, описание, комментарии, история изменений</td></tr>
-</tbody></table></div></div>
-<div><h4>Открытые вопросы</h4><ul>
-<li>Метрика ресурсной загрузки: количество задач, часы или доля от нормы. До решения требование не уходит в разработку.</li>
-<li>Конфликт дедлайнов: что делать, если дедлайн задачи позже дедлайна мероприятия — запрет, предупреждение или без ограничений.</li></ul></div>
-</div>
-</details>
-</article>
-</section>
-<section id="tools">
-<div class="label">Инструменты и методологии</div>
-<h2>Чем работаю</h2>
-<div class="mods">
-<div class="mod"><b>Управление</b><span>Roadmap и release management, риски и зависимости, stakeholder management, SDLC-артефакты</span></div>
-<div class="mod"><b>Методологии</b><span>Scrum, Kanban, Waterfall, RICE и MoSCoW, метрики delivery (Lead Time, Say/Do, CFR)</span></div>
-<div class="mod"><b>Инструменты</b><span>Jira (JQL, фильтры и дашборды), Confluence, Miro, Postman, Swagger, DBeaver</span></div>
-<div class="mod"><b>Техническое</b><span>SQL, REST API, CI/CD и фича-флаги, Grafana, Kibana. Курс backend-разработки, 252 часа</span></div>
-</div>
-</section>
-<section class="contact" id="contact">
-<h2>Давайте обсудим вашу задачу</h2>
-<p>Отвечаю в Telegram в течение дня.</p>
-<p class="copy">titov1235@icloud.com · +7 962 816-46-46</p>
-<div class="cta">
-<a class="btn primary" href="https://t.me/titov1235" target="_blank" rel="noopener">Telegram @titov1235</a>
-</div>
-</section>
-<footer>Максим Титов · IT Project Manager · 2026</footer>
+  <header class="top">
+    <div class="me">Максим Титов</div>
+    <nav aria-label="Разделы">
+      <a href="#cases">Проекты</a>
+      <a href="#path">Путь</a>
+      <a href="#habits">Как работаю</a>
+      <a href="#contact">Связаться</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <h1>Менеджер проектов. Пять лет в IT и семь лет собственного бизнеса.</h1>
+        <p>Вёл стрим корпоративных карт в Райффайзенбанке, клиентские сайты в digital-агентстве и сайты автомолла со стороны заказчика. Начинал тестировщиком в amoCRM.</p>
+        <p>Параллельно вёл своё дело в событиях, от концертов до фестивалей на 3 000 гостей. Там на мне были смета, команда, подрядчики и дата, которую нельзя сдвинуть. В IT я делаю ту же работу, только с разработчиками.</p>
+        <div class="cta">
+          <a class="btn solid" href="https://t.me/titov1235">Написать в Telegram</a>
+          <a class="btn line" href="#cases">Открыть проекты</a>
+        </div>
+      </div>
+      <div class="stack" aria-label="Папки с проектами">
+        <a href="#c-events"><span>Собственный бизнес</span><b>154 ₽ за билет вместо 890 ₽</b><small>атрибуция каналов промокодами</small></a>
+        <a href="#c-funnel"><span>Райффайзенбанк</span><b>72 заявки из 100 вместо 58</b><small>воронка корпоративных карт</small></a>
+        <a href="#c-buro"><span>BURO'28</span><b>650 тыс. ₽ вторым этапом</b><small>запрос сверх ТЗ без срыва срока</small></a>
+        <a href="#c-amo"><span>amoCRM</span><b>Регресс 11 часов вместо 18</b><small>тестирование CRM изнутри</small></a>
+        <a href="#c-mall"><span>Техно-Маркет</span><b>Два сайта и медиаплан</b><small>Сайт автомолла запущен, сайт парка с онлайн-бронью в черновике, медиаплан принят. Всё со стороны заказчика, июль–ноябрь 2026.</small></a>
+      </div>
+    </div>
+
+    <section id="cases" aria-labelledby="cases-h">
+      <h2 id="cases-h">Папки с проектами</h2>
+      <p class="lead">В каждой папке задача, что я сделал, цифра и как она считалась. Открывайте любую, порядок не важен.</p>
+      <div class="cases">
+
+        <details class="case bank" id="c-funnel">
+          <summary data-tab="Райффайзенбанк">
+            <h3>Воронка корпоративных карт</h3>
+            <div class="num">72 из 100 <small>было 58</small></div>
+            <p class="unit">заявок доходят до выпуска карты</p>
+            <span class="open"></span>
+          </summary>
+          <div class="body">
+            <h4>Задача</h4>
+            <p>Программа перехода банка на новые системы, база около 2 млн клиентов. Мой стрим вёл путь компании от заявки до выпуска корпоративной карты, около 4 000 заявок в месяц. Теряли нормальные компании на ошибках ввода, таймаутах проверок и непонятном статусе «на проверке».</p>
+            <h4>Что сделал</h4>
+            <ul>
+              <li>С аналитиком и продактом разобрали воронку по статусам заявок и нашли, где теряем.</li>
+              <li>Бизнес хотел убрать половину полей, безопасность была против. Посадил обе стороны за одну схему пути клиента и разложили анкету на два шага. На первом только ИНН, данные подтягиваются из ЕГРЮЛ.</li>
+              <li>Приоритеты по RICE. Валидация полей получила наибольший счёт и пошла первой, распознавание сканов паспорта отложили. Регуляторные задачи шли поверх формулы.</li>
+              <li>Выкатывали по долям базы, сначала на сотрудников, с откатом флагом.</li>
+            </ul>
+            <h4>Как считали</h4>
+            <p>Активированные карты к поданным заявкам. До старта два полных месяца, после месяц работы на всей базе. Больше половины прироста дал первый шаг с ИНН и валидацией.</p>
+          </div>
+        </details>
+
+        <details class="case bank" id="c-dor">
+          <summary data-tab="Райффайзенбанк">
+            <h3>Возвраты задач из тестирования</h3>
+            <div class="num">9% <small>было 30%</small></div>
+            <p class="unit">задач возвращались на доработку, за четыре месяца</p>
+            <span class="open"></span>
+          </summary>
+          <div class="body">
+            <h4>Задача</h4>
+            <p>Каждая третья задача возвращалась из теста. Аналитик, разработчик и тестировщик понимали её по-разному, в комментариях Jira шли споры «в ТЗ ни слова».</p>
+            <h4>Что не сработало</h4>
+            <p>Сначала написал регламент на 15 пунктов и оценку в часах. Через две недели техлид сказал, что команда заполняет анкеты вместо кода. Регламент выкинул.</p>
+            <h4>Что сработало</h4>
+            <p>Четыре пункта в карточке Jira (зачем, макет, поля по API, как проверяем) и десять минут голосом втроём перед взятием задачи. Прижилось примерно через три спринта. Считал по переходу статуса Testing в In Progress через JQL.</p>
+          </div>
+        </details>
+
+        <details class="case agency" id="c-buro">
+          <summary data-tab="BURO'28">
+            <h3>Синхронизация с 1С вторым этапом</h3>
+            <div class="num">650 тыс. ₽</div>
+            <p class="unit">дополнительный этап, базовый портал сдан в срок</p>
+            <span class="open"></span>
+          </summary>
+          <div class="body">
+            <h4>Контекст</h4>
+            <p>Digital-агентство, четыре B2B-проекта от 1,5 до 4,5 млн рублей по фиксированной цене. Полный цикл на мне, от брифа и сметы до сдачи.</p>
+            <h4>Что случилось</h4>
+            <p>Портал для автокомпании и её дилеров. На брифе не выяснили, что нужна синхронизация с 1С в реальном времени, она всплыла в середине разработки и меняла архитектуру.</p>
+            <h4>Что сделал</h4>
+            <p>Пришёл к заказчику с вариантами и ценой каждого. Базу сдали по договору в срок, синхронизацию оценили с командой и вынесли вторым этапом. С тех пор интеграции закрываю вопросом на брифе, а код не пишем без подписанного макета. Правок после показа стало 10–11 вместо 15–18.</p>
+          </div>
+        </details>
+
+        <details class="case events" id="c-events">
+          <summary data-tab="Собственный бизнес">
+            <h3>Атрибуция каналов промокодами</h3>
+            <div class="num">154 ₽ <small>против 890 ₽</small></div>
+            <p class="unit">стоимость билета в таргете и у блогеров по фиксу</p>
+            <span class="open"></span>
+          </summary>
+          <div class="body">
+            <h4>Задача</h4>
+            <p>Концерт на 1 500 человек, рекламный бюджет 180 тысяч. Понять, какой канал продаёт, а какой нет.</p>
+            <h4>Что сделал</h4>
+            <ul>
+              <li>Каждому каналу, промоутеру и блогеру свой промокод и UTM-метка, продажи сводил по Яндекс Метрике и билетной системе.</li>
+              <li>Таргет ВКонтакте дал 520 билетов за 80 тысяч, посевы в пабликах 280 за 60 тысяч, блогеры по фиксу 45 за 40 тысяч.</li>
+              <li>Блогеров перевёл на процент с продаж по промокоду, бюджет перелил в ретаргет.</li>
+            </ul>
+            <h4>Масштаб</h4>
+            <p>Больше 100 событий за семь лет, крупные до 3 000 гостей и кассы до 5 млн рублей. Предоплаты артистам вносил из своих средств, поэтому смету и окупаемость считал до анонса.</p>
+          </div>
+        </details>
+
+        <details class="case events" id="c-cancel">
+          <summary data-tab="Собственный бизнес">
+            <h3>Хедлайнер не прилетел в день концерта</h3>
+            <div class="num">меньше 12%</div>
+            <p class="unit">гостей сдали билеты</p>
+            <span class="open"></span>
+          </summary>
+          <div class="body">
+            <h4>Что случилось</h4>
+            <p>Площадка, райдер, техника, реклама и персонал уже оплачены, потрачено 600–700 тысяч. Артист отказался прилетать.</p>
+            <h4>Что сделал</h4>
+            <p>В тот же день нашёл замену, чтобы зал не остался пустым. Отмену превратил в инфоповод и сразу анонсировал новую дату с этим артистом и вторым хедлайнером, билеты действовали на неё. Второй концерт вышел в плюс.</p>
+            <h4>Что из этого в IT</h4>
+            <p>Сначала остановить потери, потом честно сообщить людям, потом компенсация, которая удерживает лучше возврата.</p>
+          </div>
+        </details>
+
+        <details class="case mall" id="c-mall">
+          <summary data-tab="Техно-Маркет">
+            <h3>Сайты и реклама со стороны заказчика</h3>
+            <div class="num">1,5–2 млн ₽</div>
+            <p class="unit">рекламного бюджета, два сайта с подрядчиком</p>
+            <span class="open"></span>
+          </summary>
+          <div class="body">
+            <h4>Контекст</h4>
+            <p>Автомолл на 150+ арендаторов и парк отдыха Лапа, июль–ноябрь 2026. Работал напрямую с собственником.</p>
+            <h4>Что сделал</h4>
+            <ul>
+              <li>Пришёл, когда подрядчик делал сайт без требований. Написал ТЗ и путь пользователя, расставил приоритеты и довёл до запуска с интерактивной картой арендаторов.</li>
+              <li>Собрал требования к сайту парка с онлайн-бронью и довёл до черновика, запустил уход от старого подрядчика с сохранением домена.</li>
+              <li>Медиаплан с разбором каналов приняли. Радио на трёх станциях, на радио 450 выходов за 79 тысяч вместо 330 за 89.</li>
+              <li>Собрал схему учёта стоимости обращения по каналам и регламенты приёмки работ подрядчиков.</li>
+            </ul>
+            <h4>Как закончил</h4>
+            <p>В ноябре направление передали новому управляющему. Сдал дела документом с картой задач, решениями на согласовании и контактами.</p>
+          </div>
+        </details>
+
+        <details class="case crm" id="c-amo">
+          <summary data-tab="amoCRM">
+            <h3>Регрессионное тестирование CRM</h3>
+            <div class="num">11 ч <small>было 18</small></div>
+            <p class="unit">на регресс, критичных ошибок за квартал 2 вместо 7</p>
+            <span class="open"></span>
+          </summary>
+          <div class="body">
+            <h4>Контекст</h4>
+            <p>CRM для отделов продаж, больше 200 тысяч клиентов. Проверял сделки, воронки, интеграции с телефонией и почтой, искал дубли и потерянные обращения.</p>
+            <h4>Что сделал</h4>
+            <p>Пересобрал регрессионный прогон по рискам, с приоритетом по частоте использования функций. Подключался на этапе требований и писал негативные сценарии до разработки. Собрал базу знаний, ввод нового тестировщика занял две недели вместо пяти.</p>
+          </div>
+        </details>
+
+        <details class="case ai" id="c-ai">
+          <summary data-tab="Нейросети в работе">
+            <h3>Рутина проектной работы на ИИ</h3>
+            <div class="num">час <small>вместо трёх дней</small></div>
+            <p class="unit">на костяк ТЗ из разрозненных файлов</p>
+            <span class="open"></span>
+          </summary>
+          <div class="body">
+            <h4>Где применяю</h4>
+            <ul>
+              <li>Расшифровки созвонов превращаю в протокол, решения и user story.</li>
+              <li>Черновики ТЗ и требований, проверка на противоречия.</li>
+              <li>Небольшие боты и приложения под конкретную задачу, сбор данных с сайтов агентом.</li>
+            </ul>
+            <h4>Как проверяю</h4>
+            <p>ИИ пишет черновик, цифры и факты вычитываю руками. Однажды он выдумал поля в API, поймал по Swagger.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <section id="path" aria-labelledby="path-h">
+      <h2 id="path-h">Путь</h2>
+      <p class="lead">Своё дело шло параллельно учёбе и работе в IT, по вечерам и выходным.</p>
+      <ol class="path">
+        <li><div class="yr">2019</div><div class="what">Собственное дело, концерты и фестивали</div><p>Начинал промоутером, вырос до организатора и партнёра. Ядро соорганизаторов и сеть промоутеров, в день крупного события 200–300 человек в координации.</p></li>
+        <li><div class="yr">2021</div><div class="what">amoCRM, тестировщик</div><p>Первая работа в IT, во время учёбы в АлтГУ на фундаментальной информатике.</p></li>
+        <li><div class="yr">2023</div><div class="what">BURO'28, project manager</div><p>Корпоративные сайты и B2B-порталы по фиксированной цене, команда шесть человек и подрядчики.</p></li>
+        <li><div class="yr">2024</div><div class="what">Райффайзенбанк, IT project manager</div><p>Корпоративные карты и перенос кредитов на новые системы, восемь смежных команд без подчинения. До октября 2026.</p></li>
+        <li><div class="yr">2026</div><div class="what">Техно-Маркет, digital-проекты</div><p>Сайты, онлайн-бронь и реклама автомолла и парка, июль–ноябрь.</p></li>
+      </ol>
+    </section>
+
+    <section id="habits" aria-labelledby="habits-h">
+      <h2 id="habits-h">Как работаю</h2>
+      <p class="lead">Четыре привычки, каждая появилась после конкретного провала.</p>
+      <div class="habits">
+        <div><h3>Доступы в первую неделю</h3><p>Однажды перед запуском выяснилось, что домен клиента записан на почту уволенного маркетолога. Сайт ночью переносили на новый сервер. Теперь доступы забираю и проверяю руками в начале проекта.</p></div>
+        <div><h3>Договорённость голосом и ссылкой</h3><p>Смежная команда обещала в чате к 15-му, а у них была авария. Теперь договариваюсь голосом, прошу ссылку на их задачу и смотрю рабочий кусок на стенде до того, как обещать дату.</p></div>
+        <div><h3>К заказчику с вариантами</h3><p>Не успеваем к сдаче, значит за 15 минут с командой режем объём и в тот же день идём к заказчику с двумя вариантами и ценой каждого. Злятся не на проблему, а на то, что её скрывали.</p></div>
+        <div><h3>Статус на один экран</h3><p>Что выкатили, где застряли и какая помощь нужна. Руководитель за полминуты понимает, всё ли под контролем.</p></div>
+      </div>
+    </section>
+
+    <div class="contact" id="contact">
+      <div>
+        <h2>Ищу проект, где видно клиента и результат</h2>
+        <p>Менеджер внедрения, project в агентстве, junior+ или middle PM в продукте. Удалённо или в Барнауле.</p>
+      </div>
+      <div class="links">
+        <a href="https://t.me/titov1235">Telegram @titov1235</a>
+        <a href="mailto:titov1235@icloud.com">titov1235@icloud.com</a>
+      </div>
+    </div>
+  </main>
+  <footer>Максим Титов, 2026</footer>
 </div>
 </body>
 </html>
