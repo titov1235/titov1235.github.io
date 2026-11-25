@@ -289,8 +289,8 @@ footer{color:var(--muted);font-size:14px;padding:0 0 40px}
 /* v5: dot funnel */
 .dots{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:5px;max-width:560px}
 .dots i{aspect-ratio:1;border-radius:50%;background:#C9CED6;transition:background-color .35s,transform .35s}
-.dots i.ok{background:var(--done);transform:scale(1.08)}
-.dots i.lost{background:#E9B3AD;transform:scale(.8)}
+.dots i.ok{background:var(--done)}
+.dots i.lost{background:transparent;box-shadow:inset 0 0 0 2px #E7B0AA}
 .funnel{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:center}
 .fbig{font:700 clamp(44px,5vw,64px)/1 var(--display);letter-spacing:-.03em;color:var(--done);min-width:3ch;text-align:right}
 .fbig small{display:block;font:500 13px/1.3 var(--ui);color:var(--muted);letter-spacing:0;margin-top:6px}
@@ -356,7 +356,7 @@ footer{color:var(--muted);font-size:14px;padding:0 0 40px}
 .mw-f{display:flex;align-items:center;gap:6px;border:1px solid #D8DCE3;border-radius:6px;padding:4px 7px;margin-bottom:6px}
 .mw-f span{color:var(--faint)}.mw-f em{font-style:normal;flex:1}.mw-f .ok{color:var(--done);font-style:normal;font-weight:700}
 .mw-b{background:var(--ink);color:#fff;border-radius:6px;padding:4px 8px;display:inline-block;font-weight:600;margin-bottom:8px}
-.mw-d{display:grid;grid-template-columns:repeat(10,1fr);gap:3px}.mw-d i{aspect-ratio:1;border-radius:50%;background:var(--done)}.mw-d i.x{background:#E9B3AD}
+.mw-d{display:grid;grid-template-columns:repeat(10,1fr);gap:3px}.mw-d i{aspect-ratio:1;border-radius:50%;background:var(--done)}.mw-d i.x{background:transparent;box-shadow:inset 0 0 0 1.5px #E7B0AA}
 .cv-tm{padding:0;background:#0E1116}.cv-tm img{width:100%;height:100%;object-fit:cover;object-position:60% 40%}
 .play{position:absolute;left:12px;bottom:12px;background:rgba(14,17,22,.82);color:#fff;font-size:12px;font-weight:600;padding:5px 9px;border-radius:999px}
 .cv-buro,.cv-head{background:linear-gradient(160deg,#F1F2EE,#E6E9E2);align-content:center;gap:8px;padding:18px 20px}
@@ -422,6 +422,18 @@ footer{color:var(--muted);font-size:14px;padding:0 0 40px}
 .strip div{padding:20px 18px 20px 0}
 @media (max-width:980px){.hero::before{inset:auto 0 0 0;height:60%}.strip{margin-top:0}.hero-kpi strong{font-size:16px}}
 @media (max-width:560px){.hero-kpi{grid-template-columns:1fr}.hero-kpi div+div{border-left:0;border-top:1px solid var(--line)}.pane::before{left:18px;right:18px}}
+
+/* v8: clean 100-segment bar */
+.hero-win .dots{display:grid;grid-template-columns:repeat(100,minmax(0,1fr));gap:3px;height:76px;max-width:none;position:relative;margin-top:26px}
+.hero-win .dots i{aspect-ratio:auto;height:100%;border-radius:3px;background:#DCE0E6;transform:none!important;transition:background-color .3s}
+.hero-win .dots i.ok{background:var(--done)}
+.hero-win .dots i.gain{background:#5FC795}
+.hero-win .dots i.lost{background:#EDC9C4}
+.hero-win .dots b{position:absolute;top:-24px;font:600 12px/1 var(--ui);color:var(--muted);transform:translateX(-50%);white-space:nowrap;transition:opacity .3s}
+.hero-win .dots b::after{content:"";position:absolute;left:50%;top:16px;width:2px;height:84px;background:var(--ink);opacity:.5}
+.hero-win .dots b.off{opacity:0}
+.hero-funnel{align-items:end}
+@media (max-width:560px){.hero-win .dots{gap:1px;height:60px}.hero-win .dots i{border-radius:1px}.hero-win .dots b::after{height:68px}}
 </style>
 </head>
 <body>
@@ -465,7 +477,7 @@ footer{color:var(--muted);font-size:14px;padding:0 0 40px}
         <div class="dots" id="dots" role="img" aria-label="Из 100 заявок до выпуска доходят 72, было 58"></div>
         <div class="fbig"><span id="fnum">72</span><small>из 100 доходят<br>до выпуска карты</small></div>
       </div>
-      <div class="legend" style="padding:0 18px"><span><i style="background:var(--done)"></i>карта выпущена</span><span><i style="background:#E9B3AD"></i>отвалились на проверках и вводе</span></div>
+      <div class="legend" style="padding:0 18px"><span><i style="background:var(--done)"></i>карта выпущена</span><span><i style="background:transparent;box-shadow:inset 0 0 0 2px #E7B0AA"></i>отвалились на проверках и вводе</span></div>
       <div class="hero-kpi">
         <div><strong>30% → 9%</strong><span>возвратов из теста</span></div>
         <div><strong>55 → 90%</strong><span>Say/Do команды</span></div>
@@ -1211,17 +1223,18 @@ footer{color:var(--muted);font-size:14px;padding:0 0 40px}
   $$('[data-count]').forEach(el => io2.observe(el));
 
   const dots = $('#dots');
-  dots.innerHTML = Array.from({length:100}, () => '<i></i>').join('');
+  dots.innerHTML = Array.from({length:100}, () => '<i></i>').join('') + '<b class="off" style="left:58%">было 58</b>';
   const dl = $$('i', dots);
   let dotTimer = [];
   function setDots(n, animate=true){
     dotTimer.forEach(clearTimeout); dotTimer = [];
     $('#fnum').textContent = n;
     $$('.seg button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.f === n)));
+    const mk = dots.querySelector('b'); if (mk) mk.classList.toggle('off', n !== 72);
     dl.forEach((d, i) => {
-      const cls = i < n ? 'ok' : 'lost';
+      const cls = i < Math.min(n,58) ? 'ok' : (i < n ? 'gain' : 'lost');
       if (!animate || reduce){ d.className = cls; return; }
-      dotTimer.push(setTimeout(() => d.className = cls, i * 12));
+      dotTimer.push(setTimeout(() => d.className = cls, i * 9));
     });
   }
   let played = false;
