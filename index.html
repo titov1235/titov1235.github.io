@@ -5,368 +5,1254 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <title>Максим Титов, менеджер проектов</title>
-<meta name="description" content="Максим Титов, менеджер проектов. Пять лет в IT и семь лет собственного бизнеса в событиях. Кейсы банка, агентства, CRM и событий с цифрами.">
+<meta name="description" content="Максим Титов, менеджер проектов. Пять лет в IT и семь лет собственного дела в организации мероприятий. Спецификации, user story, прототипы и проекты с цифрами.">
 <meta property="og:title" content="Максим Титов, менеджер проектов">
-<meta property="og:description" content="Пять лет в IT и семь лет собственного бизнеса в событиях. Папки с проектами и цифрами.">
+<meta property="og:description" content="Спецификации, user story, прототипы и проекты банка, агентства и CRM с цифрами.">
+<meta property="og:image" content="https://titov1235.github.io/img/tm_map.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Tektur:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Unbounded:wght@500;700&display=swap">
 <style>
 :root{
-  --paper:#ECEFF3;
-  --sheet:#FFFFFF;
-  --ink:#172033;
-  --muted:#5A6478;
-  --rule:#CDD4DE;
-  --cobalt:#2F4BD8;
-  --bank:#F2C94C;
-  --agency:#3A57E8;
-  --crm:#2FA884;
-  --events:#E8674A;
-  --mall:#8A63D2;
-  --ai:#4A5A78;
-  --f-display:"Tektur","Arial Narrow",system-ui,sans-serif;
-  --f-body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --r-folder:10px;
+  --canvas:#ECEEF1; --surface:#FFFFFF; --sunk:#F5F6F8; --ink:#18202C; --muted:#5B6473; --faint:#8A93A3; --line:#D8DCE3;
+  --todo:#8A93A3; --prog:#2F6FEB; --review:#7A5AF8; --done:#1F9D63; --blocked:#D9483B;
+  --prog-t:#E6EEFD; --review-t:#EFEAFE; --done-t:#E3F4EC; --blocked-t:#FBE7E5; --todo-t:#EEF0F3;
+  --r-win:16px; --r-tk:9px;
+  --display:"Unbounded",system-ui,sans-serif; --ui:"Onest",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
-a{color:var(--cobalt);text-underline-offset:3px}
-a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:6px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+html,body{overflow-x:clip}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--canvas);color:var(--ink);font:400 16px/1.55 var(--ui);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--prog);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1320px;margin:0 auto;padding:0 24px}
+h1,h2,h3{margin:0;font-weight:700}
+p{margin:0 0 10px}
 
-/* header */
-.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0}
-.top .me{font-family:var(--f-display);font-weight:700;font-size:18px;letter-spacing:.01em}
-.top nav{display:flex;gap:18px;flex-wrap:wrap;font-size:15px}
-.top nav a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
-.top nav a:hover{border-color:var(--ink)}
+/* top bar */
+.top{position:sticky;top:0;z-index:30;background:rgba(236,238,241,.86);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+.top.scrolled{border-bottom-color:var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:60px}
+.brand{font:700 15px/1 var(--display);text-decoration:none;letter-spacing:-.01em}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:500;font-size:15px}
+.nav a:hover{background:var(--surface);color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:10px;border:1px solid var(--ink);background:var(--ink);color:#fff;text-decoration:none;font-weight:600;font-size:15px;line-height:1}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--ink)}
+.top .btn{padding:9px 14px}
 
 /* hero */
-.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center;padding:40px 0 72px}
-.hero h1{font-family:var(--f-display);font-weight:700;font-size:clamp(34px,5vw,60px);line-height:1.04;letter-spacing:-.01em;margin:0 0 24px;max-width:13ch}
-.hero p{margin:0 0 14px;max-width:56ch;color:#2A3348}
-.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-.btn{display:inline-block;font-weight:600;font-size:16px;padding:13px 20px;border-radius:999px;text-decoration:none;border:2px solid var(--ink)}
-.btn.solid{background:var(--ink);color:#fff}
-.btn.solid:hover{background:var(--cobalt);border-color:var(--cobalt)}
-.btn.line{color:var(--ink)}
-.btn.line:hover{background:var(--sheet)}
+.hero{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:40px;align-items:start;padding:56px 0 72px}
+.hero h1{font:700 clamp(27px,2.4vw,34px)/1.14 var(--display);letter-spacing:-.025em;margin-bottom:22px}
+.hero .lead{font-size:17px;color:var(--ink);max-width:40ch}
+.hero .sub{color:var(--muted);max-width:42ch}
+.hero .cta{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 30px}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:15px;border-top:1px solid var(--line);padding-top:18px;max-width:420px}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0}
 
-/* the stack of folders in the hero: the one memorable thing */
-.stack{position:relative;height:520px}
-.stack a{position:absolute;left:0;right:0;height:250px;border-radius:0 var(--r-folder) var(--r-folder) var(--r-folder);background:var(--c);color:var(--ink);text-decoration:none;box-shadow:0 1px 0 rgba(23,32,51,.25), 0 14px 30px -18px rgba(23,32,51,.55);padding:8px 20px;transform-origin:50% 100%;animation:deal .7s cubic-bezier(.2,.8,.2,1) both;transition:transform .25s ease}
-.stack a::before{content:"";position:absolute;left:0;top:-26px;width:46%;height:28px;background:var(--c);border-radius:var(--r-folder) var(--r-folder) 0 0;clip-path:polygon(0 0,86% 0,100% 100%,0 100%)}
-.stack a span{position:absolute;top:-21px;left:16px;font-family:var(--f-display);font-weight:500;font-size:14px}
-.stack a b{display:block;font-family:var(--f-display);font-size:20px;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-top:2px}
-.stack a small{display:none}
-.stack a:last-child{padding-top:14px}
-.stack a:last-child small{display:block;margin-top:6px;font-size:15px;opacity:.85}
-.stack a:nth-child(1){top:0;--c:var(--events);animation-delay:.05s}
-.stack a:nth-child(2){top:66px;--c:var(--bank);animation-delay:.15s;margin-left:14px}
-.stack a:nth-child(3){top:132px;--c:var(--agency);color:#fff;animation-delay:.25s;margin-left:28px}
-.stack a:nth-child(4){top:198px;--c:var(--crm);color:#fff;animation-delay:.35s;margin-left:42px}
-.stack a:nth-child(5){top:264px;--c:var(--mall);color:#fff;animation-delay:.45s;margin-left:56px}
-.stack a:nth-child(3) span,.stack a:nth-child(4) span,.stack a:nth-child(5) span{color:#fff}
-.stack a:hover{transform:translateY(-14px)}
-@keyframes deal{from{opacity:0;transform:translateY(60px) rotate(-3deg)}to{opacity:1;transform:none}}
+/* app window */
+.win{background:var(--surface);border-radius:var(--r-win);box-shadow:0 1px 0 rgba(24,32,44,.06),0 24px 48px -24px rgba(24,32,44,.28);overflow:hidden;border:1px solid #E1E4EA}
+.win-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--sunk);flex-wrap:wrap}
+.win-title{font-weight:600;font-size:15px}
+.win-title small{display:block;color:var(--muted);font-weight:400;font-size:13px}
+.roles{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+.roles button{border:1px solid var(--line);background:var(--surface);padding:6px 10px;border-radius:8px;font-size:13px;font-weight:500;color:var(--muted)}
+.roles button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.board{display:grid;grid-template-columns:repeat(5,minmax(128px,1fr));gap:8px;padding:12px;overflow-x:auto;min-height:290px}
+.col{background:var(--sunk);border-radius:12px;padding:8px;display:flex;flex-direction:column;gap:8px;min-height:120px;transition:background .15s, box-shadow .15s}
+.col.over{box-shadow:inset 0 0 0 2px var(--prog)}
+.col.over.deny{box-shadow:inset 0 0 0 2px var(--blocked)}
+.col.blk{background:var(--blocked-t)}
+.col h4{margin:2px 4px 2px;font:600 13px/1.2 var(--ui);display:flex;align-items:center;gap:7px}
+.col h4 i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.col h4 span{margin-left:auto;color:var(--faint);font-weight:500}
+.tk{background:var(--surface);border:1px solid #E3E6EC;border-radius:var(--r-tk);padding:9px 10px;font-size:13.5px;line-height:1.35;text-align:left;width:100%;position:relative;box-shadow:0 1px 1px rgba(24,32,44,.04)}
+.tk[draggable="true"]{cursor:grab}
+.tk .id{display:block;color:var(--faint);font-size:12px;margin-bottom:3px}
+.tk .who{display:flex;align-items:center;gap:6px;margin-top:7px;font-size:12px;color:var(--muted)}
+.tk .who b{width:18px;height:18px;border-radius:50%;display:inline-grid;place-items:center;font-size:10px;color:#fff;font-weight:600}
+.tk .risk{display:none;color:var(--blocked);font-weight:600;font-size:12px;margin-top:6px}
+.tk.risky .risk{display:block}
+.tk.mine{border-color:#BBD0FA}
+.tk.sel{box-shadow:0 0 0 2px var(--prog)}
+.acts{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.acts button{font-size:12px;padding:4px 7px;border-radius:6px;border:1px solid var(--line);background:var(--sunk)}
+.acts button:hover{border-color:var(--ink)}
+.acts button[aria-disabled="true"]{color:var(--faint);text-decoration:line-through;text-decoration-color:rgba(138,147,163,.6)}
+.win-foot{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:10px 16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;background:var(--ink);color:#fff;padding:12px 16px;border-radius:12px;font-size:14px;max-width:min(520px,calc(100vw - 32px));z-index:60;transition:opacity .2s,transform .2s;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.toast b{color:#FFB4AB}
+.toast.ok b{color:#9BE3BF}
 
 /* sections */
-section{padding:56px 0}
-h2{font-family:var(--f-display);font-weight:700;font-size:clamp(26px,3.2vw,38px);line-height:1.1;margin:0 0 10px}
-.lead{color:var(--muted);max-width:62ch;margin:0 0 32px}
+section.block{padding:72px 0;border-top:1px solid var(--line)}
+.sec-h{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px;flex-wrap:wrap}
+.sec-h h2{font:700 clamp(24px,2.6vw,32px)/1.15 var(--display);letter-spacing:-.02em}
+.sec-h p{color:var(--muted);max-width:52ch;margin:0}
 
-/* case folders */
-.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 28px;padding-top:26px}
-.case{position:relative;--c:var(--ai)}
-.case summary{list-style:none;cursor:pointer;position:relative;background:var(--sheet);border-radius:0 var(--r-folder) var(--r-folder) var(--r-folder);border-top:6px solid var(--c);padding:22px 22px 20px;box-shadow:0 1px 0 var(--rule)}
-.case summary::-webkit-details-marker{display:none}
-.case summary::before{content:attr(data-tab);position:absolute;left:0;top:-30px;height:30px;padding:5px 30px 0 14px;background:var(--c);color:var(--tab-ink,var(--ink));font-family:var(--f-display);font-weight:500;font-size:14px;border-radius:var(--r-folder) var(--r-folder) 0 0;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 100%,0 100%)}
-.case h3{font-family:var(--f-display);font-weight:700;font-size:22px;line-height:1.2;margin:0 0 10px;max-width:26ch}
-.case .num{font-family:var(--f-display);font-weight:700;font-size:40px;line-height:1;margin:6px 0 4px}
-.case .num small{font-size:16px;font-weight:500;margin-left:6px}
-.case .unit{color:var(--muted);font-size:15px;margin:0}
-.case .open{display:inline-block;margin-top:14px;font-size:15px;font-weight:600;color:var(--cobalt)}
-.case[open] .open{color:var(--muted)}
-.case .open::after{content:"Открыть папку"}
-.case[open] .open::after{content:"Закрыть"}
-.case .body{background:var(--sheet);border-radius:0 0 var(--r-folder) var(--r-folder);margin-top:-6px;padding:6px 22px 22px;border-left:6px solid var(--c)}
-.case[open] .body{animation:unfold .35s ease both}
-@keyframes unfold{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
-.body h4{font-size:15px;font-weight:600;margin:18px 0 4px;color:var(--muted)}
-.body p,.body li{margin:0 0 8px;max-width:64ch}
-.body ul{padding-left:20px;margin:0}
-.bank{--c:var(--bank)}
-.agency{--c:var(--agency);--tab-ink:#fff}
-.crm{--c:var(--crm);--tab-ink:#fff}
-.events{--c:var(--events)}
-.mall{--c:var(--mall);--tab-ink:#fff}
-.ai{--c:var(--ai);--tab-ink:#fff}
+/* workspace */
+.ws{display:grid;grid-template-columns:290px minmax(0,1fr);background:var(--surface);border-radius:var(--r-win);border:1px solid #E1E4EA;box-shadow:0 24px 48px -32px rgba(24,32,44,.25);overflow:hidden;min-height:720px}
+.side{border-right:1px solid var(--line);background:var(--sunk);padding:10px;display:flex;flex-direction:column;gap:2px}
+.side .grp{font-size:12.5px;color:var(--faint);padding:12px 10px 4px;font-weight:500}
+.side button{display:block;width:100%;text-align:left;border:0;background:transparent;padding:10px 12px;border-radius:10px;line-height:1.3}
+.side button b{display:block;font-weight:600;font-size:14.5px}
+.side button span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.side button:hover{background:#E9ECF0}
+.side button[aria-selected="true"]{background:var(--surface);box-shadow:0 1px 2px rgba(24,32,44,.08),inset 3px 0 0 var(--done)}
+.panes{position:relative;min-width:0}
+.pane{padding:32px 36px 40px;animation:paneIn .28s ease}
+.pane[hidden]{display:none}
+@keyframes paneIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.crumbs{color:var(--muted);font-size:14px;margin-bottom:8px}
+.pane h3{font:700 clamp(21px,2vw,26px)/1.22 var(--display);letter-spacing:-.015em;max-width:30ch;margin-bottom:18px}
+.kpis{display:flex;flex-wrap:wrap;gap:10px 28px;margin:0 0 26px}
+.kpi{font-size:14px;color:var(--muted);line-height:1.3}
+.kpi strong{display:block;font:700 22px/1.15 var(--display);color:var(--ink);letter-spacing:-.01em}
+.kpi .dn,.kpi .up{color:var(--done)}
+.art{border:1px solid var(--line);border-radius:14px;background:var(--sunk);padding:18px;margin:0 0 26px}
+.art-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.art-h b{font-size:15px}
+.art-h span{font-size:13px;color:var(--muted)}
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.cols2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.txt h5{font:600 14px/1.3 var(--ui);color:var(--muted);margin:0 0 6px}
+.txt p,.txt li{font-size:15px}
+.txt ul{margin:0;padding-left:18px}
+.txt li{margin-bottom:6px}
 
-/* path: a real sequence, so it is numbered by years */
-.path{list-style:none;margin:0;padding:0;border-left:2px solid var(--ink)}
-.path li{position:relative;padding:0 0 26px 28px}
-.path li::before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:3px solid var(--ink)}
-.path .yr{font-family:var(--f-display);font-weight:700;font-size:20px}
-.path .what{font-weight:600}
-.path p{margin:2px 0 0;color:#2A3348;max-width:64ch}
+/* bars */
+.bars{display:grid;gap:14px}
+.bar-row{display:grid;grid-template-columns:minmax(130px,220px) 1fr;gap:14px;align-items:center}
+.bar-row .lbl{font-size:14px;line-height:1.3}
+.bar-row .lbl small{display:block;color:var(--muted);font-size:12.5px}
+.bar-pair{display:grid;gap:4px}
+.bar{height:22px;border-radius:6px;display:flex;align-items:center;padding:0 8px;font-size:12.5px;font-weight:600;white-space:nowrap;min-width:max-content;transform-origin:left;color:var(--ink)}
+.bar.was{background:#DCE0E6;color:var(--muted)}
+.bar.now{background:var(--done);color:#fff}
+.bar.neutral{background:var(--prog);color:#fff}
+.bar.bad{background:#E9B3AD;color:#6B231C}
 
-/* habits */
-.habits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 40px}
-.habits h3{font-family:var(--f-display);font-weight:700;font-size:19px;margin:0 0 6px}
-.habits p{margin:0;color:#2A3348}
+/* flow chips */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.flow span{background:var(--surface);border:1px solid var(--line);padding:6px 10px;border-radius:8px;font-size:13.5px}
+.flow i{color:var(--faint);font-style:normal}
+.flow span.hot{border-color:var(--blocked);color:var(--blocked);font-weight:600}
+.flow span.ok{border-color:var(--done);color:var(--done);font-weight:600}
 
-/* contact */
-.contact{background:var(--ink);color:#fff;border-radius:22px;padding:44px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center;margin:40px 0 64px}
-.contact h2{color:#fff}
-.contact p{color:#C9D0DD;margin:0}
-.contact .links{display:flex;flex-direction:column;gap:12px}
-.contact a{color:#fff;font-size:20px;font-weight:600;text-decoration:none;border-bottom:2px solid rgba(255,255,255,.3);align-self:flex-start}
-.contact a:hover{border-color:#fff}
+/* mini form */
+.mform{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+.screen{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.screen .stp{font-size:12.5px;color:var(--muted);margin-bottom:8px}
+.fld{display:grid;gap:4px;margin-bottom:10px}
+.fld label{font-size:12.5px;color:var(--muted)}
+.fld input{font:inherit;font-size:15px;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:#fff;width:100%}
+.fld input[readonly]{background:var(--sunk)}
+.fld input.filled{animation:fillIn .5s ease}
+@keyframes fillIn{from{background:var(--done-t)}to{background:var(--sunk)}}
+.mbtn{border:0;background:var(--ink);color:#fff;padding:10px 14px;border-radius:8px;font-weight:600;font-size:14px}
+.mbtn.alt{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.mbtn:disabled{opacity:.45;cursor:not-allowed}
+.resp{font-size:13.5px;margin-top:10px;padding:8px 10px;border-radius:8px;display:none}
+.resp.on{display:block}
+.resp.e{background:var(--blocked-t);color:#8E2A20}
+.resp.s{background:var(--done-t);color:#0F5E3A}
+.resp.i{background:var(--prog-t);color:#1B4BAE}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:4px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:24px 1fr;gap:8px;font-size:13.5px;padding:5px 6px;border-radius:7px;color:var(--muted);transition:background .2s,color .2s}
+.steps li::before{content:counter(s);width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11.5px;font-weight:600;background:#E2E5EA;color:var(--muted)}
+.steps li.done{color:var(--ink)}
+.steps li.done::before{background:var(--done);color:#fff}
+.steps li.err{background:var(--blocked-t);color:#8E2A20}
+.steps li.err::before{background:var(--blocked);color:#fff}
+
+/* tabs inside pane */
+.ptabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:14px}
+.ptabs button,.chips button{border:1px solid var(--line);background:var(--surface);padding:7px 12px;border-radius:8px;font-size:13.5px;font-weight:500}
+.ptabs button[aria-selected="true"],.chips button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.chips button span{opacity:.6;margin-left:4px}
+.stories{list-style:none;padding:0;margin:0;display:grid;gap:6px;max-height:420px;overflow:auto;padding-right:4px}
+.stories li{background:var(--surface);border:1px solid #E3E6EC;border-radius:9px;padding:10px 12px;font-size:14px;line-height:1.45}
+.stories li small{display:block;color:var(--faint);font-size:12px;margin-bottom:3px}
+table.mx{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--surface);border-radius:10px;overflow:hidden}
+table.mx th,table.mx td{padding:8px 10px;border-bottom:1px solid #E8EBEF;text-align:left;vertical-align:top}
+table.mx thead th{background:#E9ECF0;font-weight:600;font-size:12.5px;color:var(--muted)}
+table.mx td.y{color:var(--done);font-weight:700}
+table.mx td.n{color:#C3C8D0}
+table.mx td.p{color:var(--prog);font-size:12.5px}
+.scroll-x{overflow-x:auto}
+.statusflow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.st{padding:7px 12px;border-radius:8px;font-weight:600;font-size:13.5px}
+.st.todo{background:var(--todo-t);color:#4B5361}.st.prog{background:var(--prog-t);color:#1B4BAE}.st.rev{background:var(--review-t);color:#4E33C4}.st.done{background:var(--done-t);color:#0F5E3A}.st.blk{background:var(--blocked-t);color:#8E2A20}
+.dec{display:grid;gap:12px}
+.dec div{background:var(--surface);border-left:3px solid var(--prog);padding:12px 14px;border-radius:0 10px 10px 0;font-size:14.5px}
+.dec div.q{border-left-color:var(--review)}
+.dec b{display:block;margin-bottom:4px}
+
+/* browser frame */
+.bframe{border-radius:12px;overflow:hidden;border:1px solid #2A2F38;background:#0E1116}
+.bframe .bbar{display:flex;align-items:center;gap:6px;padding:8px 10px;background:#1C2028}
+.bframe .bbar i{width:9px;height:9px;border-radius:50%;background:#3A404B}
+.bframe .bbar a{margin-left:10px;font-size:12.5px;color:#AEB6C4;text-decoration:none;background:#11151B;padding:4px 10px;border-radius:6px;flex:1;max-width:320px}
+.bframe img{display:block;width:100%;height:auto}
+.shots{display:grid;grid-template-columns:minmax(0,1fr) 140px;gap:14px;align-items:start}
+.phone{border-radius:22px;overflow:hidden;border:6px solid #1C2028;background:#000}
+.phone img{display:block;width:100%}
+.split{display:flex;height:30px;border-radius:8px;overflow:hidden;font-size:12.5px;font-weight:600}
+.split div{display:flex;align-items:center;padding:0 10px;color:#fff}
+.scheme{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;align-items:stretch}
+.scheme .c{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13.5px}
+.scheme .c b{display:block;font-size:12.5px;color:var(--muted);font-weight:500;margin-bottom:6px}
+.scheme .c div{padding:3px 0;border-bottom:1px dashed #E3E6EC}
+.scheme .c div:last-child{border-bottom:0}
+
+/* transform demo */
+.xf{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr) 28px minmax(0,1fr);gap:8px;align-items:stretch}
+.xf .c{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;font-size:14px}
+.xf .c b{display:block;font-size:12.5px;color:var(--muted);font-weight:500;margin-bottom:6px}
+.xf .ar{display:grid;place-items:center;color:var(--faint)}
+
+/* habits & path */
+.habits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 56px}
+.habits h3{font:600 18px/1.3 var(--ui);margin-bottom:8px}
+.habits p{color:var(--muted);font-size:15.5px}
+.path{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;position:relative}
+.path li{border-top:2px solid var(--ink);padding-top:14px;font-size:14.5px}
+.path li b{display:block;font:700 20px/1.1 var(--display);margin-bottom:8px}
+.path li strong{display:block;font-weight:600;margin-bottom:4px}
+.path li span{color:var(--muted)}
+.contact{background:var(--ink);color:#fff;border-radius:var(--r-win);padding:48px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px;align-items:end;margin:0 0 56px}
+.contact h2{font:700 clamp(24px,2.8vw,34px)/1.15 var(--display);letter-spacing:-.02em;margin-bottom:12px}
+.contact p{color:#B8C0CC;max-width:46ch}
+.contact .links{display:grid;gap:10px}
+.contact a.big{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border:1px solid #39424F;border-radius:12px;text-decoration:none;font-weight:600;font-size:17px}
+.contact a.big:hover{background:#222C3A}
+.contact a.big small{color:#8F99A8;font-weight:400;font-size:14px}
 footer{color:var(--muted);font-size:14px;padding:0 0 40px}
 
-@media (max-width:860px){
-  .hero{grid-template-columns:1fr;gap:36px;padding-top:20px}
-  .stack{height:440px}
-  .stack a{height:200px}
-  .stack a:nth-child(n){margin-left:0}
-  .stack a:nth-child(2){top:58px}.stack a:nth-child(3){top:116px}.stack a:nth-child(4){top:174px}.stack a:nth-child(5){top:232px}
-  .stack a b{font-size:17px}
-  .top nav{display:none}
-  .cases,.habits,.contact{grid-template-columns:1fr}
-  .contact{padding:30px}
+/* mobile */
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;gap:32px;padding-top:36px}
+  .ws{grid-template-columns:1fr}
+  .side{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);gap:6px;scroll-snap-type:x mandatory}
+  .side .grp{display:none}
+  .side button{flex:0 0 auto;width:auto;max-width:220px;scroll-snap-align:start;background:var(--surface);border:1px solid var(--line)}
+  .side button[aria-selected="true"]{box-shadow:inset 0 -3px 0 var(--done);border-color:var(--ink)}
+  .pane{padding:24px 18px 32px}
+  .cols3,.cols2,.mform,.habits{grid-template-columns:1fr}
+  .path{grid-template-columns:1fr 1fr}
+  .shots{grid-template-columns:1fr}
+  .phone{max-width:200px}
+  .scheme{grid-template-columns:1fr 1fr}
+  .xf{grid-template-columns:1fr}
+  .xf .ar{transform:rotate(90deg);height:20px}
+  .contact{grid-template-columns:1fr;padding:32px 22px}
+  .nav{display:none}
+  .top .btn{margin-left:auto}
 }
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .board{grid-template-columns:repeat(5,minmax(170px,1fr))}
+  .roles{margin-left:0}
+  .bar-row{grid-template-columns:1fr}
+  .path{grid-template-columns:1fr}
+  .scheme{grid-template-columns:1fr}
+}
+.deal .tk{opacity:0;transform:translateY(10px)}
+.deal.go .tk{opacity:1;transform:none;transition:opacity .4s ease,transform .45s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0) * 70ms)}
 @media (prefers-reduced-motion:reduce){
-  *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .deal .tk{opacity:1;transform:none}
 }
+
+/* v5: tactile controls */
+.btn,.mbtn,.roles button,.ptabs button,.chips button,.side button,.acts button,.tk,.contact a.big,.seg button{transition:transform .14s cubic-bezier(.3,.7,.4,1),box-shadow .18s,background-color .18s,border-color .18s,color .18s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px -6px rgba(24,32,44,.45)}
+.btn:active,.mbtn:active,.roles button:active,.ptabs button:active,.chips button:active,.acts button:active,.seg button:active{transform:translateY(1px) scale(.97);box-shadow:none}
+.side button:active{transform:scale(.985)}
+.tk:hover{transform:translateY(-2px);box-shadow:0 8px 18px -10px rgba(24,32,44,.35)}
+.tk:active{transform:scale(.98)}
+.contact a.big:hover{transform:translateX(4px)}
+.tk.hint::after{content:"";position:absolute;inset:-4px;border-radius:12px;border:2px solid var(--prog);animation:ping 1.6s ease-out infinite;pointer-events:none}
+@keyframes ping{0%{opacity:.9;transform:scale(.98)}100%{opacity:0;transform:scale(1.06)}}
+/* v5: bars grow, numbers count */
+.bars .bar{transform:scaleX(0);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.in .bars .bar,.bars.in .bar{transform:scaleX(1)}
+.in .bars .bar-row:nth-child(2) .bar{transition-delay:.12s}.in .bars .bar-row:nth-child(3) .bar{transition-delay:.24s}.in .bars .bar-row:nth-child(4) .bar{transition-delay:.36s}
+.bar.now{transition-delay:.35s!important}
+/* v5: dot funnel */
+.dots{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:5px;max-width:560px}
+.dots i{aspect-ratio:1;border-radius:50%;background:#C9CED6;transition:background-color .35s,transform .35s}
+.dots i.ok{background:var(--done)}
+.dots i.lost{background:transparent;box-shadow:inset 0 0 0 2px #E7B0AA}
+.funnel{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:center}
+.fbig{font:700 clamp(44px,5vw,64px)/1 var(--display);letter-spacing:-.03em;color:var(--done);min-width:3ch;text-align:right}
+.fbig small{display:block;font:500 13px/1.3 var(--ui);color:var(--muted);letter-spacing:0;margin-top:6px}
+.seg{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;padding:7px 14px;border-radius:8px;font-weight:600;font-size:13.5px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:12px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+/* v5: animated timeline */
+.tl{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;padding-top:26px}
+.tl::before{content:"";position:absolute;left:0;right:0;top:9px;height:3px;background:#DCE0E6;border-radius:2px}
+.tl .prog{position:absolute;left:0;top:9px;height:3px;width:0;background:var(--ink);border-radius:2px;transition:width 2.6s cubic-bezier(.4,.1,.2,1)}
+.in .tl .prog{width:100%}
+.tl .st2{position:relative;font-size:13.5px;line-height:1.3;opacity:.35;transform:translateY(6px);transition:opacity .4s,transform .4s}
+.tl .st2::before{content:"";position:absolute;top:-23px;left:0;width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid #C3C8D0;transition:border-color .3s,background-color .3s}
+.in .tl .st2{opacity:1;transform:none}
+.in .tl .st2::before{border-color:var(--ink)}
+.in .tl .st2.hot::before{border-color:var(--blocked);background:var(--blocked)}
+.in .tl .st2.ok::before{border-color:var(--done);background:var(--done)}
+.tl .st2.hot b{color:var(--blocked)}.tl .st2.ok b{color:var(--done)}
+.tl .st2 b{display:block;font-weight:600;font-size:14px;margin-bottom:2px}
+.tl .st2 span{color:var(--muted)}
+.in .tl .st2.hot{animation:shake .5s 1.9s}
+@keyframes shake{20%,60%{transform:translateX(-3px)}40%,80%{transform:translateX(3px)}}
+.branch{margin-top:18px;display:flex;gap:10px;align-items:stretch;flex-wrap:wrap}
+.branch div{flex:1 1 200px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px;opacity:0;transform:translateY(8px);transition:opacity .45s,transform .45s}
+.in .branch div{opacity:1;transform:none}
+.in .branch div:nth-child(1){transition-delay:2.3s}.in .branch div:nth-child(2){transition-delay:2.6s}
+.branch b{display:block;font:700 20px/1.2 var(--display);margin-bottom:4px}
+.branch .g b{color:var(--done)}
+/* v5: video frames */
+.vids{display:grid;grid-template-columns:minmax(0,1fr) 168px;gap:16px;align-items:end}
+.bframe video{display:block;width:100%;height:auto;background:#0E1116}
+.phone video{display:block;width:100%;aspect-ratio:9/19.5;object-fit:cover;background:#000}
+.phone{border-radius:26px;border:7px solid #1C2028;box-shadow:0 18px 40px -18px rgba(0,0,0,.5)}
+.vcap{font-size:13px;color:var(--muted);margin-top:10px}
+/* v5: quick strip */
+.strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 0 8px}
+.strip div{padding:22px 20px 22px 0}
+.strip div+div{padding-left:20px;border-left:1px solid var(--line)}
+.strip strong{display:block;font:700 clamp(26px,2.6vw,34px)/1.05 var(--display);letter-spacing:-.02em}
+.strip span{display:block;color:var(--muted);font-size:14px;margin-top:6px}
+@media (max-width:980px){.strip{grid-template-columns:1fr 1fr}.strip div:nth-child(3){border-left:0;padding-left:0}.strip div{border-top:1px solid var(--line)}.strip div:nth-child(-n+2){border-top:0}.vids{grid-template-columns:minmax(0,1fr) 130px}.tl{grid-template-columns:1fr;padding-top:0;padding-left:28px;gap:14px}.tl::before{left:9px;right:auto;top:0;bottom:0;width:3px;height:auto}.tl .prog{left:9px;top:0;width:3px!important;height:0;transition:height 2.6s cubic-bezier(.4,.1,.2,1)}.in .tl .prog{height:100%}.tl .st2::before{top:2px;left:-25px}.funnel{grid-template-columns:1fr}.fbig{text-align:left}}
+@media (max-width:560px){.vids{grid-template-columns:1fr}.phone{max-width:180px}.dots{gap:4px}}
+@media (prefers-reduced-motion:reduce){.bars .bar{transform:none}.tl .st2,.branch div{opacity:1;transform:none}.tk.hint::after{display:none}}
+
+/* v6: case cards */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:22px}
+.card{display:flex;flex-direction:column;text-align:left;padding:0;border:1px solid #E1E4EA;background:var(--surface);border-radius:16px;overflow:hidden;box-shadow:0 1px 0 rgba(24,32,44,.04);transition:transform .2s cubic-bezier(.3,.7,.4,1),box-shadow .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 30px -18px rgba(24,32,44,.4)}
+.card:active{transform:translateY(0) scale(.985)}
+.card[aria-selected="true"]{border-color:var(--ink);box-shadow:0 0 0 2px var(--ink),0 16px 30px -18px rgba(24,32,44,.4)}
+.card .cd{padding:14px 16px 16px;display:grid;gap:3px}
+.card .cd small{font-size:12.5px;color:var(--faint)}
+.card .cd b{font-weight:600;font-size:16px;line-height:1.3}
+.card .cd span{font-size:14px;color:var(--done);font-weight:600}
+.cv{position:relative;aspect-ratio:16/9;overflow:hidden;display:grid;place-items:center;padding:14px}
+.card:hover .cv>*{transform:scale(1.03)}
+.cv>*{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.cv-bank{background:linear-gradient(160deg,#DCE7FD,#EEF3FE)}
+.mw{background:#fff;border-radius:10px;padding:10px 12px;width:78%;box-shadow:0 10px 22px -14px rgba(27,75,174,.5);font-size:11px}
+.mw-h{font-weight:600;margin-bottom:7px;font-size:11.5px}
+.mw-f{display:flex;align-items:center;gap:6px;border:1px solid #D8DCE3;border-radius:6px;padding:4px 7px;margin-bottom:6px}
+.mw-f span{color:var(--faint)}.mw-f em{font-style:normal;flex:1}.mw-f .ok{color:var(--done);font-style:normal;font-weight:700}
+.mw-b{background:var(--ink);color:#fff;border-radius:6px;padding:4px 8px;display:inline-block;font-weight:600;margin-bottom:8px}
+.mw-d{display:grid;grid-template-columns:repeat(10,1fr);gap:3px}.mw-d i{aspect-ratio:1;border-radius:50%;background:var(--done)}.mw-d i.x{background:transparent;box-shadow:inset 0 0 0 1.5px #E7B0AA}
+.cv-tm{padding:0;background:#0E1116}.cv-tm img{width:100%;height:100%;object-fit:cover;object-position:60% 40%}
+.play{position:absolute;left:12px;bottom:12px;background:rgba(14,17,22,.82);color:#fff;font-size:12px;font-weight:600;padding:5px 9px;border-radius:999px}
+.cv-buro,.cv-head{background:linear-gradient(160deg,#F1F2EE,#E6E9E2);align-content:center;gap:8px;padding:18px 20px}
+.cv-head{background:linear-gradient(160deg,#1E2635,#141A25);color:#fff}
+.mt{position:relative;display:flex;justify-content:space-between;width:100%}
+.mt::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:currentColor;opacity:.35}
+.mt i{position:relative;width:14px;height:14px;border-radius:50%;background:var(--surface);border:2px solid var(--ink)}
+.cv-head .mt i{border-color:#fff;background:#141A25}
+.mt i.r{background:var(--blocked);border-color:var(--blocked)}.mt i.g{background:var(--done);border-color:var(--done)}
+.mt-l{display:flex;justify-content:space-between;width:100%;font-size:11.5px;color:var(--muted)}
+.cv-head .mt-l{color:#B8C0CC}
+.mt-l .r{color:var(--blocked);font-weight:600}.mt-l .g{color:var(--done);font-weight:600}
+.cv-head .mt-l .g{color:#6FD7A5}
+.chip-g{justify-self:start;background:var(--done);color:#fff;font:700 13px/1 var(--display);padding:7px 10px;border-radius:8px;margin-top:4px}
+.cv-reg .chip-g{position:absolute;right:14px;bottom:14px}
+.cv-amo{background:linear-gradient(160deg,#EAE4FE,#F4F1FF)}.cv-attr{background:linear-gradient(160deg,#FBE3E0,#FDF1EF)}
+.mb{width:84%;display:grid;gap:8px}
+.mb div{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600}
+.mb em{display:block;height:16px;border-radius:5px;background:#C9CED6}
+.mb em.g{background:var(--done)}.mb em.b{background:var(--prog)}.mb em.r{background:#E08A80}
+.mb span{white-space:nowrap}
+.mb-c{position:absolute;left:16px;top:12px;font-size:11.5px;color:var(--muted)}
+.cv-ev{background:linear-gradient(160deg,#DDF2E7,#EEF8F3)}
+.mk{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;width:86%;height:74%}
+.mk div{background:rgba(255,255,255,.7);border-radius:7px;padding:5px;display:flex;flex-direction:column;gap:5px}
+.mk i{height:18px;border-radius:5px;background:#fff;border-left:4px solid var(--todo);box-shadow:0 2px 6px -3px rgba(24,32,44,.35)}
+.mk i.p{border-color:var(--prog);background:#E6EEFD}.mk i.v{border-color:var(--review);background:#EFEAFE}.mk i.d{border-color:var(--done);background:#E3F4EC}
+.mk div{background:rgba(255,255,255,.55)!important;border:1px solid rgba(24,32,44,.06)}
+.cv-reg{background:linear-gradient(160deg,#EEF0F3,#F8F9FA)}
+.mf{background:#fff;border-radius:10px;padding:10px;width:62%;display:grid;gap:6px;box-shadow:0 10px 22px -14px rgba(24,32,44,.4);font-size:11px}
+.mf-i{border:1px solid #D8DCE3;border-radius:6px;padding:4px 7px;color:var(--muted)}
+.mf-b{background:var(--ink);color:#fff;border-radius:6px;padding:5px 7px;font-weight:600;text-align:center}
+.cv-ai{background:linear-gradient(160deg,#E7EAEF,#F3F5F8)}
+.ms{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center;font-size:12.5px;font-weight:600}
+.ms span{background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 9px}
+.ms span.g{border-color:var(--done);color:var(--done)}.ms i{font-style:normal;color:var(--faint)}
+.ws{display:block;min-height:0;scroll-margin-top:76px}
+@media (max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.cards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -16px 18px;padding:2px 16px 8px}.card{flex:0 0 78%;scroll-snap-align:start}}
+@media (prefers-reduced-motion:reduce){.card,.cv>*{transition:none}}
+
+/* v7: hero visual + cosmetics */
+.hero{position:relative}
+.hero::before{content:"";position:absolute;inset:-20px -40px 10px 38%;background-image:radial-gradient(rgba(24,32,44,.11) 1px,transparent 1.2px);background-size:18px 18px;-webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent);mask-image:radial-gradient(closest-side,#000 55%,transparent);pointer-events:none;z-index:0}
+.hero>*{position:relative;z-index:1}
+.win{border:1px solid transparent;background:linear-gradient(var(--surface),var(--surface)) padding-box,linear-gradient(160deg,#C9D6F5,#E1E4EA 40%,#CDEBDD) border-box}
+.hero-funnel{padding:20px 18px 6px}
+.hero-win .win-bar .seg{margin-left:auto}
+.hero-win .dots{max-width:none}
+.hero-kpi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:16px 18px 4px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.hero-kpi div{padding:12px 14px;background:var(--sunk)}
+.hero-kpi div+div{border-left:1px solid var(--line)}
+.hero-kpi strong{display:block;font:700 18px/1.1 var(--display);color:var(--done);letter-spacing:-.01em;white-space:nowrap}
+.hero-kpi span{font-size:13px;color:var(--muted)}
+.proto-in{margin:0 0 22px;box-shadow:none}
+.pane{position:relative}
+.pane::before{content:"";position:absolute;left:36px;right:36px;top:0;height:3px;border-radius:0 0 3px 3px;background:linear-gradient(90deg,var(--prog),var(--review) 45%,var(--done))}
+.art{background:linear-gradient(180deg,#F7F8FA,#F2F4F7);border-color:#E3E6EB;box-shadow:inset 0 1px 0 #fff}
+.card .cv{border-bottom:1px solid #ECEEF2}
+.card .cv::after{content:"";position:absolute;inset:10px;border:1px solid rgba(255,255,255,.55);border-radius:10px;pointer-events:none}
+.cv-tm::after,.cv-head::after{border-color:rgba(255,255,255,.12)!important}
+.strip{background:var(--surface);border:1px solid #E1E4EA;border-radius:16px;padding:0 22px;margin-top:-28px}
+.strip div{padding:20px 18px 20px 0}
+@media (max-width:980px){.hero::before{inset:auto 0 0 0;height:60%}.strip{margin-top:0}.hero-kpi strong{font-size:16px}}
+@media (max-width:560px){.hero-kpi{grid-template-columns:1fr}.hero-kpi div+div{border-left:0;border-top:1px solid var(--line)}.pane::before{left:18px;right:18px}}
+
+/* v8: clean 100-segment bar */
+.hero-win .dots{display:grid;grid-template-columns:repeat(100,minmax(0,1fr));gap:3px;height:76px;max-width:none;position:relative;margin-top:26px}
+.hero-win .dots i{aspect-ratio:auto;height:100%;border-radius:3px;background:#DCE0E6;transform:none!important;transition:background-color .3s}
+.hero-win .dots i.ok{background:var(--done)}
+.hero-win .dots i.gain{background:#5FC795}
+.hero-win .dots i.lost{background:#EDC9C4}
+.hero-win .dots b{position:absolute;top:-24px;font:600 12px/1 var(--ui);color:var(--muted);transform:translateX(-50%);white-space:nowrap;transition:opacity .3s}
+.hero-win .dots b::after{content:"";position:absolute;left:50%;top:16px;width:2px;height:84px;background:var(--ink);opacity:.5}
+.hero-win .dots b.off{opacity:0}
+.hero-funnel{align-items:end}
+@media (max-width:560px){.hero-win .dots{gap:1px;height:60px}.hero-win .dots i{border-radius:1px}.hero-win .dots b::after{height:68px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="top">
-    <div class="me">Максим Титов</div>
-    <nav aria-label="Разделы">
-      <a href="#cases">Проекты</a>
-      <a href="#path">Путь</a>
-      <a href="#habits">Как работаю</a>
-      <a href="#contact">Связаться</a>
-    </nav>
-  </header>
 
-  <main>
-    <div class="hero">
-      <div>
-        <h1>Менеджер проектов. Пять лет в IT и семь лет собственного бизнеса.</h1>
-        <p>Вёл стрим корпоративных карт в Райффайзенбанке, клиентские сайты в digital-агентстве и сайты автомолла со стороны заказчика. Начинал тестировщиком в amoCRM.</p>
-        <p>Параллельно вёл своё дело в организации мероприятий до 3 000 гостей. Там на мне были смета, команда, подрядчики и дата, которую нельзя сдвинуть. В IT я делаю ту же работу, только с разработчиками.</p>
-        <div class="cta">
-          <a class="btn solid" href="https://t.me/titov1235">Написать в Telegram</a>
-          <a class="btn line" href="#cases">Открыть проекты</a>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#">Максим Титов</a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#work">Проекты</a>
+      <a href="#how">Как работаю</a>
+      <a href="#path">Путь</a>
+    </nav>
+    <a class="btn" href="https://t.me/titov1235">Telegram</a>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+  <section class="hero" aria-labelledby="h1">
+    <div>
+      <h1 id="h1">Менеджер проектов. Пять лет в IT и семь лет собственного дела.</h1>
+      <p class="lead">Вёл стрим корпоративных карт в Райффайзенбанке, клиентские сайты в digital-агентстве и сайты автомолла со стороны заказчика. Начинал тестировщиком в amoCRM.</p>
+      <p class="sub">Рядом главный результат в банке. Переключите «Было» и «Стало», ниже папки с проектами, спецификациями и записью живого сайта.</p>
+      <div class="cta">
+        <a class="btn" href="https://t.me/titov1235">Написать в Telegram</a>
+        <a class="btn ghost" href="#work">Смотреть проекты</a>
+      </div>
+      <dl class="facts">
+        <dt>Ищу</dt><dd>PM внедрения, project в агентстве, junior+ или middle PM</dd>
+        <dt>Формат</dt><dd>удалённо или Барнаул, проект или полная занятость</dd>
+        <dt>Старт</dt><dd>могу начать сразу</dd>
+      </dl>
+    </div>
+
+    <div class="win hero-win" data-reveal aria-label="Воронка заявок на корпоративную карту">
+      <div class="win-bar">
+        <div class="win-title">Корпоративные карты, Райффайзенбанк<small>100 поданных заявок, сколько доходит до выпуска</small></div>
+        <div class="seg" role="group" aria-label="Период"><button type="button" aria-pressed="false" data-f="58">Было</button><button type="button" aria-pressed="true" data-f="72">Стало</button></div>
+      </div>
+      <div class="funnel hero-funnel">
+        <div class="dots" id="dots" role="img" aria-label="Из 100 заявок до выпуска доходят 72, было 58"></div>
+        <div class="fbig"><span id="fnum">72</span><small>из 100 доходят<br>до выпуска карты</small></div>
+      </div>
+      <div class="legend" style="padding:0 18px"><span><i style="background:var(--done)"></i>карта выпущена</span><span><i style="background:transparent;box-shadow:inset 0 0 0 2px #E7B0AA"></i>отвалились на проверках и вводе</span></div>
+      <div class="hero-kpi">
+        <div><strong>30% → 9%</strong><span>возвратов из теста</span></div>
+        <div><strong>55 → 90%</strong><span>Say/Do команды</span></div>
+        <div><strong>42 → 35</strong><span>дней на фичу</span></div>
+      </div>
+      <div class="win-foot"><span>Анкету разложили на два шага, первый только ИНН</span><a href="#case-bank" data-open="bank">Как это сделали</a></div>
+    </div>
+  </section>
+  <div class="strip" aria-label="Главное в цифрах">
+    <div><strong data-count="2" data-suffix=" млн">2 млн</strong><span>клиентов в базе, на которую выходили релизы банка</span></div>
+    <div><strong data-count="8" data-suffix=" команд">8 команд</strong><span>смежных, в одном плане релизов без подчинения</span></div>
+    <div><strong data-count="650" data-suffix=" тыс. ₽">650 тыс. ₽</strong><span>второй этап проекта в агентстве вместо срыва срока</span></div>
+    <div><strong data-count="154" data-suffix=" ₽">154 ₽</strong><span>цена билета в лучшем канале против 890 ₽</span></div>
+  </div>
+</div>
+
+<section class="block" id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 id="work-h">Проекты и артефакты</h2>
+      <p>Откройте любую папку. Внутри задача, что я сделал, как считали цифру и сам артефакт. Спецификации и формы живые, их можно трогать.</p>
+    </div>
+
+    <div class="cards" role="tablist" aria-label="Проекты" id="side">
+      <button class="card" role="tab" id="t-bank" aria-controls="case-bank" aria-selected="true">
+        <div class="cv cv-bank" aria-hidden="true"><div class="mw"><div class="mw-h">Заявка на корпоративную карту</div><div class="mw-f"><span>ИНН</span><em>2221 000 000</em><i class="ok">✓</i></div><div class="mw-b">Найти в ЕГРЮЛ</div><div class="mw-d"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="x"></i><i class="x"></i><i class="x"></i></div></div></div>
+        <div class="cd"><small>Райффайзенбанк</small><b>Корпоративные карты</b><span>72 из 100 вместо 58</span></div>
+      </button>
+      <button class="card" role="tab" id="t-tm" aria-controls="case-tm" aria-selected="false" tabindex="-1">
+        <div class="cv cv-tm" aria-hidden="true"><img src="media/tm_map_poster.jpg" alt="" loading="lazy"><span class="play">▶ видео</span></div>
+        <div class="cd"><small>Техно-Маркет</small><b>Сайт и реклама автомолла</b><span>сайт запущен, бюджет 1,5–2 млн ₽</span></div>
+      </button>
+      <button class="card" role="tab" id="t-buro" aria-controls="case-buro" aria-selected="false" tabindex="-1">
+        <div class="cv cv-buro" aria-hidden="true"><div class="mt"><i></i><i></i><i></i><i class="r"></i><i class="g"></i></div><div class="mt-l"><span>бриф</span><span>макет</span><span>код</span><span class="r">1С</span><span class="g">2 этапа</span></div><div class="chip-g">+650 тыс. ₽</div></div>
+        <div class="cd"><small>BURO'28, digital-агентство</small><b>1С вторым этапом</b><span>650 тыс. ₽ без срыва срока</span></div>
+      </button>
+      <button class="card" role="tab" id="t-amo" aria-controls="case-amo" aria-selected="false" tabindex="-1">
+        <div class="cv cv-amo" aria-hidden="true"><div class="mb"><div><em style="width:90%"></em><span>18 ч</span></div><div><em class="g" style="width:55%"></em><span>11 ч</span></div></div><div class="mb-c">регресс на прогон</div></div>
+        <div class="cd"><small>amoCRM</small><b>Регресс CRM</b><span>11 часов вместо 18</span></div>
+      </button>
+      <button class="card" role="tab" id="t-reg" aria-controls="case-reg" aria-selected="false" tabindex="-1">
+        <div class="cv cv-reg" aria-hidden="true"><div class="mf"><div class="mf-i">name@mail.ru</div><div class="mf-i">••••••••</div><div class="mf-b">Зарегистрироваться</div></div><div class="chip-g">201 pending</div></div>
+        <div class="cd"><small>Спецификация</small><b>Регистрация пользователя</b><span>10 FR, 3 NFR, критерии приёмки</span></div>
+      </button>
+      <button class="card" role="tab" id="t-attr" aria-controls="case-attr" aria-selected="false" tabindex="-1">
+        <div class="cv cv-attr" aria-hidden="true"><div class="mb"><div><em class="g" style="width:17%"></em><span>154 ₽</span></div><div><em class="b" style="width:24%"></em><span>214 ₽</span></div><div><em class="r" style="width:96%"></em><span>890 ₽</span></div></div><div class="mb-c">цена билета по каналу</div></div>
+        <div class="cd"><small>Собственное дело</small><b>Атрибуция каналов</b><span>154 ₽ за билет против 890 ₽</span></div>
+      </button>
+      <button class="card" role="tab" id="t-events" aria-controls="case-events" aria-selected="false" tabindex="-1">
+        <div class="cv cv-ev" aria-hidden="true"><div class="mk"><div><i class="t"></i><i class="t"></i><i class="t"></i></div><div><i class="p"></i><i class="p"></i></div><div><i class="v"></i></div><div><i class="d"></i><i class="d"></i></div></div></div>
+        <div class="cd"><small>Спецификация</small><b>Сервис подготовки мероприятий</b><span>37 историй, 5 ролей, статусы</span></div>
+      </button>
+      <button class="card" role="tab" id="t-head" aria-controls="case-head" aria-selected="false" tabindex="-1">
+        <div class="cv cv-head" aria-hidden="true"><div class="mt"><i class="r"></i><i></i><i></i><i class="g"></i></div><div class="mt-l"><span class="r">отказ</span><span>замена</span><span>новая дата</span><span class="g">в плюс</span></div><div class="chip-g">возвратов &lt;12%</div></div>
+        <div class="cd"><small>Собственное дело</small><b>Отмена хедлайнера</b><span>возвратов меньше 12%</span></div>
+      </button>
+      <button class="card" role="tab" id="t-ai" aria-controls="case-ai" aria-selected="false" tabindex="-1">
+        <div class="cv cv-ai" aria-hidden="true"><div class="ms"><span>созвон</span><i>→</i><span>user story</span><i>→</i><span class="g">проверка</span></div></div>
+        <div class="cd"><small>Рутина PM</small><b>ИИ в работе</b><span>костяк ТЗ за час вместо трёх дней</span></div>
+      </button>
+    </div>
+
+    <div class="ws" id="wsPanel">
+      <div class="panes">
+
+<!-- BANK -->
+<article class="pane" role="tabpanel" id="case-bank" aria-labelledby="t-bank">
+  <div class="crumbs">Райффайзенбанк, IT Project Manager, 2024–2026</div>
+  <h3>Из 100 заявок на корпоративную карту до выпуска доходят 72 вместо 58</h3>
+  <div class="kpis">
+    <div class="kpi"><strong class="up">↑ 72 из 100</strong>было 58</div>
+    <div class="kpi"><strong class="dn">↓ 9%</strong>возвратов задач, было 30%</div>
+    <div class="kpi"><strong class="up">↑ 85–90%</strong>Say/Do, было 55–60%</div>
+    <div class="kpi"><strong class="dn">↓ 35 дней</strong>срок фичи, было 42</div>
+  </div>
+
+  <div class="art">
+    <div class="art-h"><b>Анкета в два шага</b><span>схема упрощена, данные демо</span></div>
+    <div class="mform">
+      <div class="screen">
+        <div class="stp">Шаг 1 из 2. Только ИНН</div>
+        <div class="fld"><label for="inn">ИНН компании</label><input id="inn" inputmode="numeric" value="2221000000" maxlength="12"></div>
+        <button class="mbtn" id="innBtn">Найти в ЕГРЮЛ</button>
+        <div class="resp" id="innResp"></div>
+      </div>
+      <div class="screen" aria-live="polite">
+        <div class="stp">Шаг 2 из 2. Проверить и отправить</div>
+        <div class="fld"><label>Название</label><input readonly id="f1" placeholder="подтянется из ЕГРЮЛ"></div>
+        <div class="fld"><label>ОГРН</label><input readonly id="f2" placeholder="подтянется из ЕГРЮЛ"></div>
+        <div class="fld"><label>Руководитель</label><input readonly id="f3" placeholder="подтянется из ЕГРЮЛ"></div>
+        <button class="mbtn alt" id="sendBtn" disabled>Отправить заявку</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="art" data-reveal>
+    <div class="art-h"><b>До и после</b><span>заявки, возвраты, предсказуемость</span></div>
+    <div class="bars" data-bars>
+      <div class="bar-row"><div class="lbl">Доходят до выпуска<small>из 100 поданных</small></div><div class="bar-pair"><div class="bar was" style="width:58%">58</div><div class="bar now" style="width:72%">72</div></div></div>
+      <div class="bar-row"><div class="lbl">Возвраты из теста<small>доля задач, за 4 месяца</small></div><div class="bar-pair"><div class="bar was" style="width:30%">30%</div><div class="bar now" style="width:9%">9%</div></div></div>
+      <div class="bar-row"><div class="lbl">Say/Do<small>сделано из обещанного</small></div><div class="bar-pair"><div class="bar was" style="width:57%">55–60%</div><div class="bar now" style="width:87%">85–90%</div></div></div>
+      <div class="bar-row"><div class="lbl">Срок фичи<small>дней от старта до выхода</small></div><div class="bar-pair"><div class="bar was" style="width:42%">42</div><div class="bar now" style="width:35%">35</div></div></div>
+    </div>
+  </div>
+
+  <div class="art">
+    <div class="art-h"><b>Как выкатывали</b><span>откат флагом на любом шаге</span></div>
+    <div class="flow"><span>DEV</span><i>→</i><span>TEST</span><i>→</i><span>PREPROD</span><i>→</i><span>PROD</span><i>→</i><span>пилот на сотрудниках</span><i>→</i><span class="ok">доли базы</span></div>
+  </div>
+
+  <div class="cols3 txt">
+    <div><h5>Задача</h5><p>Программа перехода банка на новые системы, база около 2 млн клиентов. Мой стрим вёл путь компании от заявки до выпуска карты, 3 500–4 000 заявок в месяц. Нормальные компании терялись на ошибках ввода, таймаутах проверок и статусе «на проверке».</p></div>
+    <div><h5>Что сделал</h5><ul><li>С аналитиком и продактом разобрали воронку по статусам и нашли, где теряем.</li><li>Бизнес хотел убрать половину полей, безопасность была против. Посадил обе стороны за одну схему пути и разложили анкету на два шага.</li><li>Приоритеты по RICE, валидация полей пошла первой, регуляторные задачи поверх формулы.</li><li>Синхронизировал релизы с 8 смежными командами без прямого подчинения.</li></ul></div>
+    <div><h5>Как считали</h5><p>Выпущенные карты к поданным заявкам. До старта два полных месяца, после месяц на всей базе. Больше половины прироста дал первый шаг с ИНН.</p><p>Возвраты считал по переходу Testing в In Progress через JQL. Помогли Definition of Ready из четырёх пунктов и десять минут голосом втроём перед взятием задачи.</p></div>
+  </div>
+</article>
+
+<!-- TEHNOMARKET -->
+<article class="pane" role="tabpanel" id="case-tm" aria-labelledby="t-tm" hidden>
+  <div class="crumbs">Техно-Маркет и парк Лапа, Барнаул, июль–ноябрь 2026, со стороны заказчика</div>
+  <h3>Довёл сайт автомолла до запуска и собрал рекламу с бюджетом 1,5–2 млн ₽</h3>
+  <div class="kpis">
+    <div class="kpi"><strong>150+</strong>арендаторов на карте сайта</div>
+    <div class="kpi"><strong class="up">↑ 450 выходов</strong>на радио за 79 тыс., было 330 за 89</div>
+    <div class="kpi"><strong>80 / 20</strong>измеримые и имиджевые каналы</div>
+  </div>
+
+  <div class="art">
+    <div class="art-h"><b>Сайт в работе</b><a href="https://tehnomarket22.ru/" target="_blank" rel="noopener" style="font-size:13px">открыть tehnomarket22.ru</a></div>
+    <div class="vids">
+      <div><div class="bframe"><div class="bbar"><i></i><i></i><i></i><a href="https://tehnomarket22.ru/" target="_blank" rel="noopener">tehnomarket22.ru</a></div><video src="media/tm_map.mp4" poster="media/tm_map_poster.jpg" muted loop playsinline preload="metadata" aria-label="Запись экрана, поиск и фильтры по карте арендаторов" data-auto></video></div>
+      <p class="vcap">Карта территории: поиск по товару, фильтр по категории, подсказка по павильону. Записано с живого сайта.</p></div>
+      <div class="phone"><video src="media/tm_mob.mp4" poster="media/tm_mob_poster.jpg" muted loop playsinline preload="metadata" aria-label="Запись экрана мобильной версии" data-auto></video></div>
+    </div>
+  </div>
+
+  <div class="cols2">
+    <div class="art" style="margin-bottom:0" data-reveal>
+      <div class="art-h"><b>Радио</b><span>цена одного выхода</span></div>
+      <div class="bars">
+        <div class="bar-row"><div class="lbl">Первое предложение<small>330 выходов за 89 тыс.</small></div><div class="bar-pair"><div class="bar was" style="width:100%">270 ₽</div></div></div>
+        <div class="bar-row"><div class="lbl">После переговоров<small>450 выходов за 79 тыс.</small></div><div class="bar-pair"><div class="bar now" style="width:65%">176 ₽</div></div></div>
+      </div>
+    </div>
+    <div class="art" style="margin-bottom:0" data-reveal>
+      <div class="art-h"><b>Бюджет юбилейной кампании</b><span>договорился с собственником</span></div>
+      <div class="split" role="img" aria-label="80 процентов в измеримые каналы, 20 в имиджевые"><div style="width:80%;background:var(--done)">80% измеримые</div><div style="width:20%;background:var(--review)">20%</div></div>
+      <p style="font-size:14px;color:var(--muted);margin-top:12px">Измеримые это каналы, где обращение можно связать с источником. Имиджевые оставили под узнаваемость.</p>
+    </div>
+  </div>
+
+  <div class="art" style="margin-top:26px">
+    <div class="art-h"><b>Схема учёта обращений</b><span>у каждого источника своя метка</span></div>
+    <div class="scheme" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+      <div class="c"><b>Каналы</b><div>Радио на трёх станциях</div><div>2ГИС и Яндекс Карты</div><div>Сайт</div><div>Блогеры и видеоэкран</div></div>
+      <div class="c"><b>Чем помечаем</b><div>свой номер на кнопках звонка и маршрута в картах</div><div>UTM-метка</div><div>промокод</div><div>вопрос «откуда узнали»</div></div>
+      <div class="c"><b>Что получаем</b><div>обращение с источником</div><div>стоимость обращения по каждому каналу</div></div>
+    </div>
+  </div>
+
+  <div class="cols3 txt" style="margin-top:26px">
+    <div><h5>Контекст</h5><p>Автомолл на 150+ арендаторов и парк отдыха Лапа. Работал напрямую с собственником, вёл подрядчиков по сайту, SMM, видео и дизайну.</p></div>
+    <div><h5>Что сделал</h5><ul><li>Пришёл, когда подрядчик делал сайт без требований. Написал ТЗ и путь пользователя, расставил приоритеты, принимал по этапам.</li><li>Карта арендаторов и навигация по типам запчастей.</li><li>Требования к сайту парка с онлайн-бронью, довёл до черновика.</li><li>Медиаплан с разбором каналов приняли.</li></ul></div>
+    <div><h5>Как закончил</h5><p>В ноябре собственник передал направление новому управляющему. Сдал дела документом с картой задач, решениями на согласовании и контактами.</p></div>
+  </div>
+</article>
+
+<!-- BURO -->
+<article class="pane" role="tabpanel" id="case-buro" aria-labelledby="t-buro" hidden>
+  <div class="crumbs">BURO'28, digital-агентство, project manager</div>
+  <h3>Синхронизацию с 1С вынес во второй этап за 650 тыс. ₽, базу сдали в срок</h3>
+  <div class="kpis">
+    <div class="kpi"><strong>4 проекта</strong>B2B, 1,5–4,5 млн ₽, фикс</div>
+    <div class="kpi"><strong>+650 тыс. ₽</strong>второй этап</div>
+    <div class="kpi"><strong class="dn">↓ 10–11 правок</strong>после показа, было 15–18</div>
+  </div>
+  <div class="art" data-reveal>
+    <div class="art-h"><b>Как шёл проект портала</b><span>автокомпания и её дилеры, фиксированная цена</span></div>
+    <div class="tl"><div class="prog"></div>
+      <div class="st2"><b>Бриф</b><span>объём и интеграции</span></div>
+      <div class="st2"><b>Смета и фикс</b><span>договор по этапам</span></div>
+      <div class="st2"><b>Макет подписан</b><span>без него не кодим</span></div>
+      <div class="st2"><b>Разработка</b><span>еженедельное демо</span></div>
+      <div class="st2 hot"><b>Всплыла 1С</b><span>синхронизация в реальном времени меняет архитектуру</span></div>
+      <div class="st2 ok"><b>Два варианта</b><span>с ценой каждого, решение за заказчиком</span></div>
+    </div>
+    <div class="branch"><div class="g"><b>База в срок</b>основной портал сдали по договору</div><div class="g"><b>+650 тыс. ₽</b>синхронизация с 1С вторым этапом</div></div>
+  </div>
+  <div class="art" data-reveal>
+    <div class="art-h"><b>Правки после показа</b><span>после правила «без подписанного макета не кодим»</span></div>
+    <div class="bars"><div class="bar-row"><div class="lbl">На проект</div><div class="bar-pair"><div class="bar was" style="width:90%">15–18</div><div class="bar now" style="width:55%">10–11</div></div></div></div>
+  </div>
+  <div class="cols3 txt">
+    <div><h5>Контекст</h5><p>Корпоративные сайты и B2B-порталы по фиксированной цене. Полный цикл на мне, от брифа и сметы до сдачи, команда шесть человек и подрядчики.</p></div>
+    <div><h5>Что случилось</h5><p>На брифе не выяснили, что нужна синхронизация с 1С в реальном времени. Она всплыла в середине разработки и меняла архитектуру.</p></div>
+    <div><h5>Что сделал</h5><p>Пришёл к заказчику с вариантами и ценой каждого. Синхронизацию оценили с командой и вынесли вторым этапом. С тех пор интеграции закрываю вопросом на брифе.</p></div>
+  </div>
+</article>
+
+<!-- AMO -->
+<article class="pane" role="tabpanel" id="case-amo" aria-labelledby="t-amo" hidden>
+  <div class="crumbs">amoCRM, тестировщик, первая работа в IT</div>
+  <h3>Пересобрал регресс по рискам, прогон стал занимать 11 часов вместо 18</h3>
+  <div class="art" data-reveal>
+    <div class="art-h"><b>До и после</b><span>CRM для отделов продаж, больше 200 тысяч клиентов</span></div>
+    <div class="bars">
+      <div class="bar-row"><div class="lbl">Регресс<small>часов на прогон</small></div><div class="bar-pair"><div class="bar was" style="width:90%">18 ч</div><div class="bar now" style="width:55%">11 ч</div></div></div>
+      <div class="bar-row"><div class="lbl">Критичные ошибки<small>за квартал</small></div><div class="bar-pair"><div class="bar was" style="width:70%">7</div><div class="bar now" style="width:20%">2</div></div></div>
+      <div class="bar-row"><div class="lbl">Ввод тестировщика<small>недель</small></div><div class="bar-pair"><div class="bar was" style="width:50%">5</div><div class="bar now" style="width:20%">2</div></div></div>
+    </div>
+  </div>
+  <div class="cols2 txt">
+    <div><h5>Что проверял</h5><p>Сделки, воронки, интеграции с телефонией и почтой, дубли и потерянные обращения. Поэтому знаю, где при внедрении CRM теряются заявки.</p></div>
+    <div><h5>Что сделал</h5><p>Приоритет прогона по частоте использования функций. Подключался на этапе требований и писал негативные сценарии до разработки. Собрал базу знаний для новичков.</p></div>
+  </div>
+</article>
+
+<!-- EVENTS SPEC -->
+<article class="pane" role="tabpanel" id="case-events" aria-labelledby="t-events" hidden>
+  <div class="crumbs">Спецификация, версия 2.0</div>
+  <h3>Сервис подготовки мероприятий. 37 историй, пять ролей, статусы и уведомления</h3>
+  <div class="kpis">
+    <div class="kpi"><strong>4 модуля</strong>релизятся независимо</div>
+    <div class="kpi"><strong>37</strong>пользовательских историй</div>
+    <div class="kpi"><strong>5 ролей</strong>с явными правами</div>
+    <div class="kpi"><strong>2</strong>открытых вопроса до разработки</div>
+  </div>
+  <div class="win proto-in" id="proto" aria-label="Прототип канбан-доски">
+      <div class="win-bar">
+        <div class="win-title">Подготовка мероприятия<small>Доска задач, роль меняет права</small></div>
+        <div class="roles" role="group" aria-label="Роль">
+          <button data-role="pm" aria-pressed="true">Менеджер проекта</button>
+          <button data-role="staff" aria-pressed="false">Стафф-менеджер</button>
+          <button data-role="senior" aria-pressed="false">Старший</button>
+          <button data-role="exec" aria-pressed="false">Исполнитель</button>
+          <button data-role="stake" aria-pressed="false">Стейкхолдер</button>
         </div>
       </div>
-      <div class="stack" aria-label="Папки с проектами">
-        <a href="#c-events"><span>Собственный бизнес</span><b>154 ₽ за билет вместо 890 ₽</b><small>атрибуция каналов промокодами</small></a>
-        <a href="#c-funnel"><span>Райффайзенбанк</span><b>72 заявки из 100 вместо 58</b><small>воронка корпоративных карт</small></a>
-        <a href="#c-buro"><span>BURO'28</span><b>650 тыс. ₽ вторым этапом</b><small>запрос сверх ТЗ без срыва срока</small></a>
-        <a href="#c-amo"><span>amoCRM</span><b>Регресс 11 часов вместо 18</b><small>тестирование CRM изнутри</small></a>
-        <a href="#c-mall"><span>Техно-Маркет</span><b>Два сайта и медиаплан</b><small>Сайт автомолла запущен, сайт парка с онлайн-бронью в черновике, медиаплан принят. Всё со стороны заказчика, июль–ноябрь 2026.</small></a>
+      <div class="board deal" id="board"></div>
+      <div class="win-foot">
+        <span id="roleNote">Менеджер проекта может всё, включая перевод в Done.</span>
+        <span>Прототип по спецификации, попробуйте перевести задачу в Done</span>
       </div>
     </div>
 
-    <section id="cases" aria-labelledby="cases-h">
-      <h2 id="cases-h">Папки с проектами</h2>
-      <p class="lead">В каждой папке задача, что я сделал, цифра и как она считалась. Открывайте любую, порядок не важен.</p>
-      <div class="cases">
+  <div class="ptabs" role="tablist" aria-label="Разделы спецификации" data-ptabs>
+    <button role="tab" aria-selected="true" data-p="ev-stories">Истории</button>
+    <button role="tab" aria-selected="false" data-p="ev-roles">Роли</button>
+    <button role="tab" aria-selected="false" data-p="ev-status">Статусы</button>
+    <button role="tab" aria-selected="false" data-p="ev-notif">Уведомления</button>
+    <button role="tab" aria-selected="false" data-p="ev-dec">Решения</button>
+  </div>
+  <div class="art" data-psec="ev-stories">
+    <div class="chips" id="modChips"></div>
+    <ul class="stories" id="storyList"></ul>
+  </div>
+  <div class="art scroll-x" data-psec="ev-roles" hidden>
+    <table class="mx">
+      <thead><tr><th>Право</th><th>Менеджер проекта</th><th>Стафф-менеджер</th><th>Старший исполнитель</th><th>Исполнитель</th><th>Стейкхолдер</th></tr></thead>
+      <tbody>
+        <tr><td>Мероприятие, создание и архив</td><td class="y">✓</td><td class="p">кроме удаления</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr>
+        <tr><td>Состав команды и роли</td><td class="y">✓</td><td class="p">своя команда</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr>
+        <tr><td>Задачи, исполнители, дедлайны</td><td class="y">✓</td><td class="p">подчинённые</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr>
+        <tr><td>Статус своих задач</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">—</td></tr>
+        <tr><td>Перевод в Done</td><td class="y">✓</td><td class="y">✓</td><td class="p">задачи младших</td><td class="n">—</td><td class="n">—</td></tr>
+        <tr><td>Сигнал о риске срыва</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td><td class="n">—</td></tr>
+        <tr><td>Ресурсная загрузка</td><td class="y">✓</td><td class="p">подчинённые</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr>
+        <tr><td>История изменений задач</td><td class="y">✓</td><td class="y">✓</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr>
+        <tr><td>Канбан-доска</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="art" data-psec="ev-status" hidden>
+    <div class="statusflow"><span class="st todo">To Do</span>→<span class="st prog">In Progress</span>→<span class="st rev">Review</span>→<span class="st done">Done</span><span style="margin-left:12px;color:var(--muted);font-size:13.5px">из любого статуса</span>→<span class="st blk">Blocked</span></div>
+    <ul class="txt" style="margin:0;padding-left:18px">
+      <li>Задачу создаёт менеджер проекта в статусе To Do.</li>
+      <li>В Review задачу переводит исполнитель по завершении работы.</li>
+      <li>В Done только по результатам проверки, менеджером, стафф-менеджером или старшим.</li>
+      <li>Каждая смена статуса пишется в историю и запускает уведомления.</li>
+      <li>Blocked отдельным статусом, иначе заблокированная задача висит в In Progress и проблему видят поздно.</li>
+    </ul>
+  </div>
+  <div class="art scroll-x" data-psec="ev-notif" hidden>
+    <table class="mx">
+      <thead><tr><th>Событие</th><th>Кто получает</th></tr></thead>
+      <tbody>
+        <tr><td>Изменился состав участников</td><td>менеджер проекта, стафф-менеджер</td></tr>
+        <tr><td>Изменился статус задачи</td><td>менеджер и стафф по всем задачам, стейкхолдер по всем, старший по своим и младших, исполнитель по своим</td></tr>
+        <tr><td>Изменился объём задач</td><td>менеджер проекта, стафф-менеджер</td></tr>
+        <tr><td>Сдвинулся дедлайн задачи</td><td>менеджер проекта, стафф-менеджер</td></tr>
+        <tr><td>Сменился исполнитель</td><td>исполнитель, стафф-менеджер</td></tr>
+        <tr><td>Сдвинулся дедлайн проекта</td><td>менеджер проекта, стафф-менеджер, стейкхолдер</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:14px;color:var(--muted);margin:12px 0 0">Адресата определяет зона ответственности, а не должность. Стейкхолдеру не нужны изменения внутри спринта, ему важен сдвиг сроков проекта.</p>
+  </div>
+  <div class="art dec" data-psec="ev-dec" hidden>
+    <div><b>Done недоступен рядовому исполнителю</b>Подтверждение остаётся за тем, кто проверяет. При подготовке мероприятия ложное «готово» стоит сорванного события.</div>
+    <div><b>Отдельный сигнал о риске срыва</b>Без него проблема видна в день дедлайна, когда повлиять уже нельзя.</div>
+    <div><b>Четыре модуля вместо одного релиза</b>События и задачи дают рабочий минимум, люди и уведомления наращиваются следом.</div>
+    <div class="q"><b>Открытый вопрос. Чем мерить загрузку</b>Задачами, часами или долей нормы. Пока не решено, требование в разработку не отдаём.</div>
+    <div class="q"><b>Открытый вопрос. Дедлайн задачи позже дедлайна события</b>Запрет, предупреждение или без ограничений.</div>
+  </div>
+</article>
 
-        <details class="case bank" id="c-funnel">
-          <summary data-tab="Райффайзенбанк">
-            <h3>Воронка корпоративных карт</h3>
-            <div class="num">72 из 100 <small>было 58</small></div>
-            <p class="unit">заявок доходят до выпуска карты</p>
-            <span class="open"></span>
-          </summary>
-          <div class="body">
-            <h4>Задача</h4>
-            <p>Программа перехода банка на новые системы, база около 2 млн клиентов. Мой стрим вёл путь компании от заявки до выпуска корпоративной карты, около 4 000 заявок в месяц. Теряли нормальные компании на ошибках ввода, таймаутах проверок и непонятном статусе «на проверке».</p>
-            <h4>Что сделал</h4>
-            <ul>
-              <li>С аналитиком и продактом разобрали воронку по статусам заявок и нашли, где теряем.</li>
-              <li>Бизнес хотел убрать половину полей, безопасность была против. Посадил обе стороны за одну схему пути клиента и разложили анкету на два шага. На первом только ИНН, данные подтягиваются из ЕГРЮЛ.</li>
-              <li>Приоритеты по RICE. Валидация полей получила наибольший счёт и пошла первой, распознавание сканов паспорта отложили. Регуляторные задачи шли поверх формулы.</li>
-              <li>Выкатывали по долям базы, сначала на сотрудников, с откатом флагом.</li>
-            </ul>
-            <h4>Как считали</h4>
-            <p>Активированные карты к поданным заявкам. До старта два полных месяца, после месяц работы на всей базе. Больше половины прироста дал первый шаг с ИНН и валидацией.</p>
-          </div>
-        </details>
-
-        <details class="case bank" id="c-dor">
-          <summary data-tab="Райффайзенбанк">
-            <h3>Возвраты задач из тестирования</h3>
-            <div class="num">9% <small>было 30%</small></div>
-            <p class="unit">задач возвращались на доработку, за четыре месяца</p>
-            <span class="open"></span>
-          </summary>
-          <div class="body">
-            <h4>Задача</h4>
-            <p>Каждая третья задача возвращалась из теста. Аналитик, разработчик и тестировщик понимали её по-разному, в комментариях Jira шли споры «в ТЗ ни слова».</p>
-            <h4>Что не сработало</h4>
-            <p>Сначала написал регламент на 15 пунктов и оценку в часах. Через две недели техлид сказал, что команда заполняет анкеты вместо кода. Регламент выкинул.</p>
-            <h4>Что сработало</h4>
-            <p>Четыре пункта в карточке Jira (зачем, макет, поля по API, как проверяем) и десять минут голосом втроём перед взятием задачи. Прижилось примерно через три спринта. Считал по переходу статуса Testing в In Progress через JQL.</p>
-          </div>
-        </details>
-
-        <details class="case agency" id="c-buro">
-          <summary data-tab="BURO'28">
-            <h3>Синхронизация с 1С вторым этапом</h3>
-            <div class="num">650 тыс. ₽</div>
-            <p class="unit">дополнительный этап, базовый портал сдан в срок</p>
-            <span class="open"></span>
-          </summary>
-          <div class="body">
-            <h4>Контекст</h4>
-            <p>Digital-агентство, четыре B2B-проекта от 1,5 до 4,5 млн рублей по фиксированной цене. Полный цикл на мне, от брифа и сметы до сдачи.</p>
-            <h4>Что случилось</h4>
-            <p>Портал для автокомпании и её дилеров. На брифе не выяснили, что нужна синхронизация с 1С в реальном времени, она всплыла в середине разработки и меняла архитектуру.</p>
-            <h4>Что сделал</h4>
-            <p>Пришёл к заказчику с вариантами и ценой каждого. Базу сдали по договору в срок, синхронизацию оценили с командой и вынесли вторым этапом. С тех пор интеграции закрываю вопросом на брифе, а код не пишем без подписанного макета. Правок после показа стало 10–11 вместо 15–18.</p>
-          </div>
-        </details>
-
-        <details class="case events" id="c-events">
-          <summary data-tab="Собственный бизнес">
-            <h3>Атрибуция каналов промокодами</h3>
-            <div class="num">154 ₽ <small>против 890 ₽</small></div>
-            <p class="unit">стоимость билета в таргете и у блогеров по фиксу</p>
-            <span class="open"></span>
-          </summary>
-          <div class="body">
-            <h4>Задача</h4>
-            <p>Мероприятие на 1 500 человек, рекламный бюджет 180 тысяч. Понять, какой канал продаёт, а какой нет.</p>
-            <h4>Что сделал</h4>
-            <ul>
-              <li>Каждому каналу, промоутеру и блогеру свой промокод и UTM-метка, продажи сводил по Яндекс Метрике и билетной системе.</li>
-              <li>Таргет ВКонтакте дал 520 билетов за 80 тысяч, посевы в пабликах 280 за 60 тысяч, блогеры по фиксу 45 за 40 тысяч.</li>
-              <li>Блогеров перевёл на процент с продаж по промокоду, бюджет перелил в ретаргет.</li>
-            </ul>
-            <h4>Масштаб</h4>
-            <p>Больше 100 событий за семь лет, крупные до 3 000 гостей и кассы до 5 млн рублей. Предоплаты артистам вносил из своих средств, поэтому смету и окупаемость считал до анонса.</p>
-          </div>
-        </details>
-
-        <details class="case events" id="c-cancel">
-          <summary data-tab="Собственный бизнес">
-            <h3>Хедлайнер не прилетел в день выступления</h3>
-            <div class="num">меньше 12%</div>
-            <p class="unit">гостей сдали билеты</p>
-            <span class="open"></span>
-          </summary>
-          <div class="body">
-            <h4>Что случилось</h4>
-            <p>Площадка, райдер, техника, реклама и персонал уже оплачены, потрачено 600–700 тысяч. Артист отказался прилетать.</p>
-            <h4>Что сделал</h4>
-            <p>В тот же день нашёл замену, чтобы зал не остался пустым. Отмену превратил в инфоповод и сразу анонсировал новую дату с этим артистом и вторым хедлайнером, билеты действовали на неё. Перенесённое событие вышло в плюс.</p>
-            <h4>Что из этого в IT</h4>
-            <p>Сначала остановить потери, потом честно сообщить людям, потом компенсация, которая удерживает лучше возврата.</p>
-          </div>
-        </details>
-
-        <details class="case mall" id="c-mall">
-          <summary data-tab="Техно-Маркет">
-            <h3>Сайты и реклама со стороны заказчика</h3>
-            <div class="num">1,5–2 млн ₽</div>
-            <p class="unit">рекламного бюджета, два сайта с подрядчиком</p>
-            <span class="open"></span>
-          </summary>
-          <div class="body">
-            <h4>Контекст</h4>
-            <p>Автомолл на 150+ арендаторов и парк отдыха Лапа, июль–ноябрь 2026. Работал напрямую с собственником.</p>
-            <h4>Что сделал</h4>
-            <ul>
-              <li>Пришёл, когда подрядчик делал сайт без требований. Написал ТЗ и путь пользователя, расставил приоритеты и довёл до запуска с интерактивной картой арендаторов.</li>
-              <li>Собрал требования к сайту парка с онлайн-бронью и довёл до черновика, запустил уход от старого подрядчика с сохранением домена.</li>
-              <li>Медиаплан с разбором каналов приняли. Радио на трёх станциях, на радио 450 выходов за 79 тысяч вместо 330 за 89.</li>
-              <li>Собрал схему учёта стоимости обращения по каналам и регламенты приёмки работ подрядчиков.</li>
-            </ul>
-            <h4>Как закончил</h4>
-            <p>В ноябре направление передали новому управляющему. Сдал дела документом с картой задач, решениями на согласовании и контактами.</p>
-          </div>
-        </details>
-
-        <details class="case crm" id="c-amo">
-          <summary data-tab="amoCRM">
-            <h3>Регрессионное тестирование CRM</h3>
-            <div class="num">11 ч <small>было 18</small></div>
-            <p class="unit">на регресс, критичных ошибок за квартал 2 вместо 7</p>
-            <span class="open"></span>
-          </summary>
-          <div class="body">
-            <h4>Контекст</h4>
-            <p>CRM для отделов продаж, больше 200 тысяч клиентов. Проверял сделки, воронки, интеграции с телефонией и почтой, искал дубли и потерянные обращения.</p>
-            <h4>Что сделал</h4>
-            <p>Пересобрал регрессионный прогон по рискам, с приоритетом по частоте использования функций. Подключался на этапе требований и писал негативные сценарии до разработки. Собрал базу знаний, ввод нового тестировщика занял две недели вместо пяти.</p>
-          </div>
-        </details>
-
-        <details class="case ai" id="c-ai">
-          <summary data-tab="Нейросети в работе">
-            <h3>Рутина проектной работы на ИИ</h3>
-            <div class="num">час <small>вместо трёх дней</small></div>
-            <p class="unit">на костяк ТЗ из разрозненных файлов</p>
-            <span class="open"></span>
-          </summary>
-          <div class="body">
-            <h4>Где применяю</h4>
-            <ul>
-              <li>Расшифровки созвонов превращаю в протокол, решения и user story.</li>
-              <li>Черновики ТЗ и требований, проверка на противоречия.</li>
-              <li>Небольшие боты и приложения под конкретную задачу, сбор данных с сайтов агентом.</li>
-            </ul>
-            <h4>Как проверяю</h4>
-            <p>ИИ пишет черновик, цифры и факты вычитываю руками. Однажды он выдумал поля в API, поймал по Swagger.</p>
-          </div>
-        </details>
-
+<!-- REGISTRATION -->
+<article class="pane" role="tabpanel" id="case-reg" aria-labelledby="t-reg" hidden>
+  <div class="crumbs">Спецификация требований, версия 2.0</div>
+  <h3>Регистрация без лишнего шага. После подтверждения почты сразу вход</h3>
+  <div class="kpis">
+    <div class="kpi"><strong>10</strong>функциональных требований</div>
+    <div class="kpi"><strong>3</strong>нефункциональных</div>
+    <div class="kpi"><strong>6</strong>критериев приёмки</div>
+  </div>
+  <div class="art">
+    <div class="art-h"><b>Попробуйте сценарий</b><span>занятый адрес для проверки test@mail.ru</span></div>
+    <div class="mform">
+      <div class="screen">
+        <div class="stp">Регистрация</div>
+        <div class="fld"><label for="rEmail">Email</label><input id="rEmail" type="text" autocomplete="off" placeholder="name@mail.ru"></div>
+        <div class="fld"><label for="rPass">Пароль</label><input id="rPass" type="password" autocomplete="new-password" placeholder="минимум 8 символов"></div>
+        <button class="mbtn" id="rBtn">Зарегистрироваться</button>
+        <div class="resp" id="rResp" aria-live="polite"></div>
+        <div id="mailBox" hidden style="margin-top:14px;border-top:1px dashed var(--line);padding-top:12px">
+          <div class="stp">Письмо во входящих</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="mbtn" id="rConfirm">Подтвердить почту</button><button class="mbtn alt" id="rResend">Отправить ещё раз</button></div>
+        </div>
       </div>
-    </section>
-
-    <section id="path" aria-labelledby="path-h">
-      <h2 id="path-h">Путь</h2>
-      <p class="lead">Своё дело шло параллельно учёбе и работе в IT, по вечерам и выходным.</p>
-      <ol class="path">
-        <li><div class="yr">2019</div><div class="what">Собственное дело, организация мероприятий</div><p>Начинал промоутером, вырос до организатора и партнёра. Ядро соорганизаторов и сеть промоутеров, в день крупного события 200–300 человек в координации.</p></li>
-        <li><div class="yr">2021</div><div class="what">amoCRM, тестировщик</div><p>Первая работа в IT, во время учёбы в АлтГУ на фундаментальной информатике.</p></li>
-        <li><div class="yr">2023</div><div class="what">BURO'28, project manager</div><p>Корпоративные сайты и B2B-порталы по фиксированной цене, команда шесть человек и подрядчики.</p></li>
-        <li><div class="yr">2024</div><div class="what">Райффайзенбанк, IT project manager</div><p>Корпоративные карты и перенос кредитов на новые системы, восемь смежных команд без подчинения. До октября 2026.</p></li>
-        <li><div class="yr">2026</div><div class="what">Техно-Маркет, digital-проекты</div><p>Сайты, онлайн-бронь и реклама автомолла и парка, июль–ноябрь.</p></li>
+      <ol class="steps" id="rSteps">
+        <li>Пользователь вводит email и пароль</li><li>Проверка формата email</li><li>Проверка уникальности email</li><li>Пароль не короче 8 символов</li><li>Пользователь создан со статусом pending</li><li>Письмо подтверждения отправлено</li><li>Переход по ссылке из письма</li><li>Статус active</li><li>Автоматический вход</li><li>Создан базовый профиль</li>
       </ol>
-    </section>
+    </div>
+  </div>
+  <div class="art dec">
+    <div><b>Ссылка живёт 24 часа, а не 1 минуту</b>Письмо доставляется десятки секунд, может попасть в спам, человек может быть не у устройства. Ограничение частоты отправки вынес в отдельное требование, не чаще раза в минуту.</div>
+    <div><b>Мягкий лимит вместо «одна регистрация с IP»</b>Жёсткий лимит отсекает офисы, вузы и мобильных операторов за NAT. Не больше 10 регистраций в час с IP, дальше капча, плюс обязательное подтверждение почты.</div>
+    <div><b>Автовход после подтверждения</b>Без него человек попадает на форму логина и вводит те же данные ещё раз, типичная точка отвала.</div>
+    <div class="q"><b>Вне релиза</b>Вход через Google и Apple ID, двухфакторка, редактирование профиля. Интеграции с провайдерами ставят под угрозу весь объём, а двухфакторка работает против цели.</div>
+  </div>
+  <div class="art scroll-x">
+    <div class="art-h"><b>Критерии приёмки</b></div>
+    <table class="mx"><thead><tr><th>Условие</th><th>Результат</th></tr></thead><tbody>
+      <tr><td>Email уже существует</td><td>HTTP 400, пользователь не создан</td></tr>
+      <tr><td>Пароль короче 8 символов</td><td>HTTP 400, пользователь не создан</td></tr>
+      <tr><td>Успешная регистрация</td><td>HTTP 201, статус pending</td></tr>
+      <tr><td>Переход по действующей ссылке</td><td>статус active, пользователь авторизован</td></tr>
+      <tr><td>Ссылка старше 24 часов</td><td>сообщение об истечении и кнопка повторной отправки</td></tr>
+      <tr><td>Профиль после подтверждения</td><td>базовый профиль создан в базе</td></tr>
+    </tbody></table>
+  </div>
+</article>
 
-    <section id="habits" aria-labelledby="habits-h">
-      <h2 id="habits-h">Как работаю</h2>
-      <p class="lead">Четыре привычки, каждая появилась после конкретного провала.</p>
-      <div class="habits">
-        <div><h3>Доступы в первую неделю</h3><p>Однажды перед запуском выяснилось, что домен клиента записан на почту уволенного маркетолога. Сайт ночью переносили на новый сервер. Теперь доступы забираю и проверяю руками в начале проекта.</p></div>
-        <div><h3>Договорённость голосом и ссылкой</h3><p>Смежная команда обещала в чате к 15-му, а у них была авария. Теперь договариваюсь голосом, прошу ссылку на их задачу и смотрю рабочий кусок на стенде до того, как обещать дату.</p></div>
-        <div><h3>К заказчику с вариантами</h3><p>Не успеваем к сдаче, значит за 15 минут с командой режем объём и в тот же день идём к заказчику с двумя вариантами и ценой каждого. Злятся не на проблему, а на то, что её скрывали.</p></div>
-        <div><h3>Статус на один экран</h3><p>Что выкатили, где застряли и какая помощь нужна. Руководитель за полминуты понимает, всё ли под контролем.</p></div>
-      </div>
-    </section>
+<!-- AI -->
+<article class="pane" role="tabpanel" id="case-ai" aria-labelledby="t-ai" hidden>
+  <div class="crumbs">Рутина проектной работы</div>
+  <h3>Костяк ТЗ из разрозненных файлов за час вместо трёх дней</h3>
+  <div class="kpis">
+    <div class="kpi"><strong class="dn">↓ 1 час</strong>было три дня</div><div class="kpi"><strong>0</strong>непроверенных цифр, факты вычитываю руками</div>
+  </div>
+  <div class="art">
+    <div class="art-h"><b>Из созвона в требование</b><span>пример на истории из спецификации сервиса мероприятий</span></div>
+    <div class="xf">
+      <div class="c"><b>Фраза с созвона</b>«Хочу видеть, кто в команде завален, а кто сидит без задач.»</div>
+      <div class="ar" aria-hidden="true">→</div>
+      <div class="c"><b>User story</b>Как менеджер проекта, я хочу видеть перегруженных или мало загруженных участников, чтобы перераспределять задачи.</div>
+      <div class="ar" aria-hidden="true">→</div>
+      <div class="c"><b>Моя проверка</b>Метрика загрузки не определена, задачи, часы или доля нормы. Ушло в открытые вопросы, в разработку без решения не отдаём.</div>
+    </div>
+  </div>
+  <div class="cols2 txt">
+    <div><h5>Где применяю</h5><ul><li>Расшифровки созвонов в протокол, решения и user story.</li><li>Черновики ТЗ и требований, проверка на противоречия.</li><li>Небольшие боты и приложения под конкретную задачу, сбор данных с сайтов агентом.</li></ul></div>
+    <div><h5>Как проверяю</h5><p>Цифры и факты вычитываю руками. Однажды нейросеть выдумала поля в API, поймал по Swagger.</p></div>
+  </div>
+</article>
 
-    <div class="contact" id="contact">
-      <div>
-        <h2>Ищу проект, где видно клиента и результат</h2>
-        <p>Менеджер внедрения, project в агентстве, junior+ или middle PM в продукте. Удалённо или в Барнауле.</p>
-      </div>
-      <div class="links">
-        <a href="https://t.me/titov1235">Telegram @titov1235</a>
-        <a href="mailto:titov1235@icloud.com">titov1235@icloud.com</a>
+<!-- ATTRIBUTION -->
+<article class="pane" role="tabpanel" id="case-attr" aria-labelledby="t-attr" hidden>
+  <div class="crumbs">Собственное дело, организация мероприятий</div>
+  <h3>Посчитал цену билета по каналам и перелил бюджет туда, где он дешевле</h3>
+  <div class="kpis">
+    <div class="kpi"><strong>1 500</strong>гостей на событии</div>
+    <div class="kpi"><strong>180 тыс. ₽</strong>рекламный бюджет</div>
+    <div class="kpi"><strong>154 ₽</strong>билет в таргете против 890 ₽ у блогеров</div>
+  </div>
+  <div class="art" data-reveal>
+    <div class="art-h"><b>Цена одного билета по каналу</b><span>промокод и UTM у каждого канала</span></div>
+    <div class="bars">
+      <div class="bar-row"><div class="lbl">Таргет ВКонтакте<small>520 билетов за 80 тыс.</small></div><div class="bar-pair"><div class="bar now" style="width:17%">154 ₽</div></div></div>
+      <div class="bar-row"><div class="lbl">Посевы в пабликах<small>280 билетов за 60 тыс.</small></div><div class="bar-pair"><div class="bar neutral" style="width:24%">214 ₽</div></div></div>
+      <div class="bar-row"><div class="lbl">Блогеры по фиксу<small>45 билетов за 40 тыс.</small></div><div class="bar-pair"><div class="bar bad" style="width:100%">около 890 ₽</div></div></div>
+    </div>
+  </div>
+  <div class="cols3 txt">
+    <div><h5>Что сделал</h5><p>Каждому каналу, промоутеру и блогеру свой промокод и UTM. Продажи сводил по Яндекс Метрике и билетной системе.</p></div>
+    <div><h5>Решение</h5><p>Блогеров перевёл на процент с продаж по промокоду, бюджет перелил в ретаргет.</p></div>
+    <div><h5>Масштаб дела</h5><p>Больше 100 событий за семь лет, крупные до 3 000 гостей и кассы до 5 млн ₽. Предоплаты вносил из своих средств, поэтому смету и окупаемость считал до анонса.</p></div>
+  </div>
+</article>
+
+<!-- HEADLINER -->
+<article class="pane" role="tabpanel" id="case-head" aria-labelledby="t-head" hidden>
+  <div class="crumbs">Собственное дело, организация мероприятий</div>
+  <h3>Хедлайнер отказался прилететь в день выступления, билеты сдали меньше 12% гостей</h3>
+  <div class="kpis">
+    <div class="kpi"><strong>600–700 тыс. ₽</strong>уже потрачено на площадку, технику и рекламу</div>
+    <div class="kpi"><strong class="dn">↓ меньше 12%</strong>возвратов</div>
+  </div>
+  <div class="art">
+    <div class="art-h"><b>Как прошёл день</b></div>
+    <div class="flow"><span class="hot">Артист отказался</span><i>→</i><span>Замена в тот же день</span><i>→</i><span>Отмена как инфоповод</span><i>→</i><span>Анонс новой даты с двумя хедлайнерами</span><i>→</i><span>Билеты действуют на новую дату</span><i>→</i><span class="ok">Перенесённое событие в плюс</span></div>
+  </div>
+  <div class="cols2 txt">
+    <div><h5>Что сделал</h5><p>В тот же день нашёл замену, чтобы зал не остался пустым. Отмену превратил в инфоповод и сразу анонсировал новую дату с этим артистом и вторым хедлайнером, билеты действовали на неё.</p></div>
+    <div><h5>Что из этого в IT</h5><p>Сначала остановить потери, потом честно сообщить людям, потом компенсация, которая удерживает лучше возврата. Так же разбираю срыв релиза.</p></div>
+  </div>
+</article>
+
       </div>
     </div>
-  </main>
+  </div>
+</section>
+
+<section class="block" id="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="sec-h"><h2 id="how-h">Как работаю</h2><p>Четыре привычки, каждая появилась после конкретного провала.</p></div>
+    <div class="habits">
+      <div><h3>Доступы в первую неделю</h3><p>Перед запуском выяснилось, что домен клиента записан на почту уволенного маркетолога. Сайт ночью переносили на новый сервер. Теперь доступы забираю и проверяю руками в начале проекта.</p></div>
+      <div><h3>Договорённость голосом и ссылкой</h3><p>Смежная команда обещала в чате к 15-му, а у них была авария. Теперь договариваюсь голосом, прошу ссылку на их задачу и смотрю рабочий кусок на стенде до того, как обещать дату.</p></div>
+      <div><h3>К заказчику с вариантами</h3><p>Не успеваем к сдаче, значит за 15 минут с командой режем объём и в тот же день идём к заказчику с двумя вариантами и ценой каждого. Злятся не на проблему, а на то, что её скрывали.</p></div>
+      <div><h3>Статус на один экран</h3><p>Что выкатили, где застряли и какая помощь нужна. Руководитель за полминуты понимает, всё ли под контролем.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="path" aria-labelledby="path-h">
+  <div class="wrap">
+    <div class="sec-h"><h2 id="path-h">Путь</h2><p>Своё дело шло параллельно учёбе и работе в IT, по вечерам и выходным.</p></div>
+    <ol class="path">
+      <li><b>2019</b><strong>Собственное дело</strong><span>Организация мероприятий. Начинал промоутером, вырос до организатора и партнёра.</span></li>
+      <li><b>2021</b><strong>amoCRM, тестировщик</strong><span>Первая работа в IT, во время учёбы в АлтГУ на фундаментальной информатике.</span></li>
+      <li><b>2023</b><strong>BURO'28, project manager</strong><span>Сайты и B2B-порталы по фиксированной цене, команда шесть человек.</span></li>
+      <li><b>2024</b><strong>Райффайзенбанк, IT PM</strong><span>Корпоративные карты и кредиты на новых системах, восемь смежных команд.</span></li>
+      <li><b>2026</b><strong>Техно-Маркет</strong><span>Сайты, онлайн-бронь и реклама автомолла и парка, июль–ноябрь.</span></li>
+    </ol>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="contact" aria-labelledby="c-h">
+    <div>
+      <h2 id="c-h">Ищу проект, где видно клиента и результат</h2>
+      <p>Менеджер внедрения, project в агентстве, junior+ или middle PM в продукте. Удалённо или в Барнауле, полная занятость или проект. Могу начать сразу.</p>
+    </div>
+    <div class="links">
+      <a class="big" href="https://t.me/titov1235">Telegram <small>@titov1235</small></a>
+      <a class="big" href="mailto:titov1235@icloud.com">Почта <small>titov1235@icloud.com</small></a>
+    </div>
+  </section>
   <footer>Максим Титов, 2026</footer>
 </div>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // top bar border
+  const top = $('#top');
+  addEventListener('scroll', () => top.classList.toggle('scrolled', scrollY > 8), {passive:true});
+
+  // toast
+  const toast = $('#toast'); let tt;
+  function say(html, ok=false){ toast.innerHTML = html; toast.classList.toggle('ok', ok); toast.classList.add('on'); clearTimeout(tt); tt = setTimeout(()=>toast.classList.remove('on'), 3600); }
+
+  /* ---------- KANBAN PROTOTYPE ---------- */
+  const COLS = [['todo','To Do','var(--todo)'],['prog','In Progress','var(--prog)'],['review','Review','var(--review)'],['done','Done','var(--done)'],['blocked','Blocked','var(--blocked)']];
+  const PEOPLE = {me:['Вы','#2F6FEB'], junior:['Аня','#7A5AF8'], other:['Олег','#5B6473']};
+  const tasks = [
+    {id:'EV-12', t:'Договор с площадкой', s:'done', o:'other'},
+    {id:'EV-14', t:'Райдер артиста', s:'review', o:'junior'},
+    {id:'EV-15', t:'Звук и свет, смета подрядчика', s:'prog', o:'me'},
+    {id:'EV-17', t:'Анонс и афиша', s:'prog', o:'junior'},
+    {id:'EV-18', t:'Билетная система и промокоды', s:'todo', o:'me'},
+    {id:'EV-19', t:'Охрана и вход', s:'todo', o:'other'},
+    {id:'EV-21', t:'Трансфер артиста', s:'blocked', o:'other'}
+  ];
+  let role = 'pm', sel = null, sessionHint = false;
+  const ROLE_NOTE = {
+    pm:'Менеджер проекта может всё, включая перевод в Done.',
+    staff:'Стафф-менеджер ведёт свою команду и тоже подтверждает Done.',
+    senior:'Старший двигает свои задачи без Done и подтверждает задачи младших.',
+    exec:'Исполнитель двигает только свои задачи, Done не может, зато может сообщить о риске.',
+    stake:'Стейкхолдер только смотрит доску и получает важные изменения.'
+  };
+  function ownerFor(task){
+    // for senior and exec roles, 'me' tasks are theirs; for senior, 'junior' are juniors
+    return task.o;
+  }
+  function can(task, to){
+    const o = ownerFor(task);
+    if (role === 'stake') return [false, 'Стейкхолдер только смотрит доску.'];
+    if (role === 'pm' || role === 'staff') return [true];
+    if (role === 'senior'){
+      if (o === 'junior') return [true];
+      if (o === 'me') return to === 'done' ? [false, 'Свою задачу в Done переводит тот, кто проверяет. Ложное «готово» при подготовке события стоит сорванного события.'] : [true];
+      return [false, 'Это задача другой команды, её двигает её исполнитель.'];
+    }
+    if (role === 'exec'){
+      if (o !== 'me') return [false, 'Исполнитель двигает только свои задачи.'];
+      return to === 'done' ? [false, 'Done доступен менеджеру, стафф-менеджеру и старшему. Ложное «готово» стоит сорванного события.'] : [true];
+    }
+    return [false, ''];
+  }
+  function canRisk(task){ return (role === 'exec' || role === 'senior') && task.o === 'me'; }
+  const board = $('#board');
+  function render(first=false){
+    board.innerHTML = '';
+    let i = 0;
+    COLS.forEach(([key, name, color]) => {
+      const col = document.createElement('div');
+      col.className = 'col' + (key === 'blocked' ? ' blk' : '');
+      col.dataset.col = key;
+      const list = tasks.filter(t => t.s === key);
+      col.innerHTML = `<h4><i style="background:${color}"></i>${name}<span>${list.length}</span></h4>`;
+      list.forEach(t => {
+        const el = document.createElement('div');
+        const mine = (role === 'exec' || role === 'senior') && t.o === 'me';
+        el.className = 'tk' + (t.risk ? ' risky' : '') + (mine ? ' mine' : '') + (sel === t.id ? ' sel' : '');
+        el.style.setProperty('--i', i++);
+        el.tabIndex = 0; el.setAttribute('role','button'); el.dataset.id = t.id;
+        el.setAttribute('aria-label', `${t.id} ${t.t}, статус ${name}`);
+        el.draggable = role !== 'stake';
+        const [nm, c] = PEOPLE[t.o];
+        const who = (role === 'exec' || role === 'senior') ? nm : (t.o === 'me' ? 'Максим' : nm);
+        el.innerHTML = `<span class="id">${t.id}</span>${t.t}<span class="who"><b style="background:${c}">${who[0]}</b>${who}${t.o==='junior' && role==='senior' ? ', младший' : ''}</span><span class="risk">Риск срыва срока</span>`;
+        if (sel === t.id) el.appendChild(actions(t));
+        col.appendChild(el);
+      });
+      board.appendChild(col);
+    });
+    if (!sessionHint){ const c = board.querySelector('[data-id="EV-15"]'); if (c) c.classList.add('hint'); }
+    if (first){
+      if (reduce) board.classList.add('go');
+      else requestAnimationFrame(() => requestAnimationFrame(() => board.classList.add('go')));
+    }
+  }
+  function actions(t){
+    const box = document.createElement('div'); box.className = 'acts';
+    COLS.forEach(([key, name]) => {
+      if (key === t.s) return;
+      const b = document.createElement('button');
+      b.type = 'button'; b.textContent = '→ ' + name; b.dataset.to = key;
+      if (!can(t, key)[0]) b.setAttribute('aria-disabled','true');
+      box.appendChild(b);
+    });
+    if (canRisk(t)){
+      const r = document.createElement('button'); r.type='button'; r.dataset.risk='1';
+      r.textContent = t.risk ? 'Снять риск' : 'Сообщить о риске'; box.appendChild(r);
+    }
+    return box;
+  }
+  function move(t, to){
+    const [ok, why] = can(t, to);
+    if (!ok){ say('<b>Нельзя.</b> ' + why); return false; }
+    t.s = to; if (to === 'done') t.risk = false;
+    say(`<b>${t.id}</b> теперь в ${COLS.find(c=>c[0]===to)[1]}. Уведомление ушло по матрице.`, true);
+    return true;
+  }
+  board.addEventListener('click', e => {
+    const actBtn = e.target.closest('.acts button');
+    const tk = e.target.closest('.tk');
+    if (!tk) return;
+    const t = tasks.find(x => x.id === tk.dataset.id);
+    if (actBtn){
+      e.stopPropagation();
+      if (actBtn.dataset.risk){ t.risk = !t.risk; say(t.risk ? '<b>Риск отмечен.</b> Менеджер и стафф увидят его до дедлайна, а не в день срыва.' : 'Риск снят.', true); }
+      else if (move(t, actBtn.dataset.to)) sel = null;
+      render(); return;
+    }
+    sel = sel === t.id ? null : t.id; render();
+  });
+  board.addEventListener('keydown', e => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('tk')){ e.preventDefault(); const id = e.target.dataset.id; sel = sel === id ? null : id; render(); const n = board.querySelector(`[data-id="${id}"] .acts button`); if (n) n.focus(); }
+  });
+  let dragId = null;
+  board.addEventListener('dragstart', e => { const tk = e.target.closest('.tk'); if (!tk) return; dragId = tk.dataset.id; e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', dragId); });
+  board.addEventListener('dragover', e => { const col = e.target.closest('.col'); if (!col || !dragId) return; e.preventDefault(); const t = tasks.find(x=>x.id===dragId); $$('.col', board).forEach(c=>c.classList.remove('over','deny')); col.classList.add('over'); if (!can(t, col.dataset.col)[0]) col.classList.add('deny'); });
+  board.addEventListener('dragleave', e => { const col = e.target.closest('.col'); if (col && !col.contains(e.relatedTarget)) col.classList.remove('over','deny'); });
+  board.addEventListener('drop', e => { const col = e.target.closest('.col'); if (!col || !dragId) return; e.preventDefault(); const t = tasks.find(x=>x.id===dragId); if (t.s !== col.dataset.col) move(t, col.dataset.col); dragId = null; sel = null; render(); });
+  board.addEventListener('dragend', () => { dragId = null; $$('.col', board).forEach(c=>c.classList.remove('over','deny')); });
+  $$('.roles button').forEach(b => b.addEventListener('click', () => {
+    role = b.dataset.role; sel = null;
+    $$('.roles button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    $('#roleNote').textContent = ROLE_NOTE[role]; render();
+  }));
+  render(true);
+
+  /* ---------- WORKSPACE TABS ---------- */
+  const tabs = $$('#side [role="tab"]');
+  function openCase(id, focus=false, scroll=false){
+    const tab = tabs.find(t => t.getAttribute('aria-controls') === 'case-' + id); if (!tab) return;
+    tabs.forEach(t => { const on = t === tab; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; $('#' + t.getAttribute('aria-controls')).hidden = !on; });
+    if (focus) tab.focus();
+    if (matchMedia('(max-width:620px)').matches) tab.scrollIntoView({block:'nearest', inline:'nearest'});
+    if (scroll) $('#work').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
+    history.replaceState(null, '', '#case-' + id);
+  }
+  tabs.forEach(t => t.addEventListener('click', () => { openCase(t.getAttribute('aria-controls').slice(5)); $('#wsPanel').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'}); }));
+  $('#side').addEventListener('keydown', e => {
+    const i = tabs.indexOf(document.activeElement); if (i < 0) return;
+    let n = null;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') n = tabs[(i+1) % tabs.length];
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') n = tabs[(i-1+tabs.length) % tabs.length];
+    if (n){ e.preventDefault(); openCase(n.getAttribute('aria-controls').slice(5), true); }
+  });
+  $$('[data-open]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openCase(a.dataset.open, false, true); }));
+  if (location.hash.startsWith('#case-')) openCase(location.hash.slice(6), false, false);
+
+  /* ---------- PANE SUB-TABS ---------- */
+  $$('[data-ptabs]').forEach(group => {
+    const pane = group.closest('.pane');
+    group.addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      $$('button', group).forEach(x => x.setAttribute('aria-selected', String(x === b)));
+      $$('[data-psec]', pane).forEach(s => s.hidden = s.dataset.psec !== b.dataset.p);
+    });
+  });
+  // site screenshots
+  $$('[data-shots]').forEach(group => group.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    $$('button', group).forEach(x => x.setAttribute('aria-selected', String(x === b)));
+    const img = $('#tmImg'); img.src = b.dataset.img; img.alt = b.dataset.alt;
+  }));
+
+  /* ---------- STORIES ---------- */
+  const S = {
+    'Мероприятия':[
+      'Как менеджер проекта, я хочу создавать мероприятие с названием, аватаркой, датой, временем начала, местом проведения и пригласительной ссылкой, чтобы организовать рабочее пространство для подготовки.',
+      'Как менеджер проекта, я хочу редактировать параметры мероприятия, чтобы поддерживать актуальность информации.',
+      'Как менеджер проекта, я хочу видеть список созданных мной мероприятий, чтобы быстро переключаться между ними.',
+      'Как менеджер проекта, я хочу завершать или архивировать мероприятие после окончания, чтобы отделять его от тех, что в процессе.',
+      'Как менеджер проекта, я хочу иметь доступ к созданию, архивированию и модерации мероприятий для удобной организации работы.'],
+    'Люди':[
+      'Как менеджер проекта, я хочу добавлять участников из телефонной книги или принимать заявки по пригласительной ссылке, чтобы быстро собрать команду.',
+      'Как менеджер проекта, я хочу добавлять и удалять участников конкретного мероприятия, чтобы поддерживать актуальный состав.',
+      'Как менеджер проекта, я хочу назначать участнику роль при добавлении, чтобы разграничивать доступ.',
+      'Как менеджер проекта, я хочу изменять роли участников, чтобы наделять их полномочиями.',
+      'Как менеджер проекта, при создании мероприятия я хочу управлять составом и ролевой моделью, чтобы гибко настраивать команду под событие.',
+      'Как стафф-менеджер или менеджер проекта, я хочу видеть нагрузку команды по участникам, чтобы перераспределять её.',
+      'Как менеджер проекта, я хочу видеть перегруженных или мало загруженных участников, чтобы перераспределять задачи.',
+      'Как пользователь, я хочу видеть свою роль, чтобы понимать свои полномочия.'],
+    'Задачи':[
+      'Как менеджер проекта, я хочу создавать, редактировать и удалять задачи в рамках мероприятия, чтобы управлять подготовкой.',
+      'Как менеджер проекта, я хочу назначать участников на задачи, чтобы распределять зоны ответственности. У задачи может быть несколько исполнителей.',
+      'Как менеджер проекта, я хочу устанавливать и менять дедлайн задачи, чтобы контролировать сроки.',
+      'Как исполнитель, я хочу менять статус задачи по мере работы, чтобы команда видела прогресс.',
+      'Как менеджер проекта, стафф-менеджер или стейкхолдер, я хочу видеть прогресс по статусам To Do, In Progress, Blocked, Review и Done, чтобы контролировать процесс.',
+      'Как менеджер проекта, я хочу устанавливать приоритет задачи, чтобы понимать её важность.',
+      'Как менеджер проекта, я хочу добавлять описание к задаче, чтобы исполнитель лучше понимал требования.',
+      'Как менеджер проекта, я хочу оставлять комментарии к задаче, чтобы не упускать уточнения.',
+      'Как менеджер проекта или стафф-менеджер, я хочу редактировать поля задачи, чтобы качественно ставить задачи.',
+      'Как исполнитель, я хочу видеть все назначенные мне задачи, чтобы планировать работу.',
+      'Как исполнитель, я хочу помечать задачу как требующую помощи, чтобы вышестоящие видели риск срыва сроков.',
+      'Как менеджер проекта, я хочу фильтровать задачи по исполнителю, статусу и дедлайну.',
+      'Как менеджер проекта, я хочу видеть историю изменений задач.',
+      'Как участник проекта, я хочу работать с задачами на канбан-доске, чтобы визуально управлять подготовкой.'],
+    'Уведомления':[
+      'Как участник проекта, я хочу получать уведомления об изменениях задач, дедлайнов и состава команды, чтобы своевременно реагировать.',
+      'Как исполнитель, я хочу получать уведомление о назначении на задачу, чтобы видеть новую ответственность.',
+      'Как исполнитель, я хочу получать уведомление об изменении дедлайна моей задачи, чтобы скорректировать план.',
+      'Как стафф-менеджер, я хочу получать уведомления об изменении задач моей команды, чтобы корректировать нагрузку и сроки.',
+      'Как менеджер проекта, я хочу получать уведомления об изменении состава участников, чтобы оперативно реагировать.',
+      'Как стейкхолдер, я хочу получать уведомления о важных изменениях верхнего уровня, чтобы следить за общим процессом.',
+      'Как пользователь, я хочу управлять типами уведомлений, чтобы получать только нужные.'],
+    'Общие':[
+      'Как пользователь системы, я хочу иметь права доступа по своей роли, чтобы видеть и менять только разрешённое.',
+      'Как менеджер проекта, я хочу видеть ресурсную загрузку команды в дашборде, чтобы распределять нагрузку.',
+      'Как пользователь, я хочу переключать язык между русским, английским, испанским и немецким, чтобы мне было комфортно работать.']
+  };
+  const all = Object.entries(S).flatMap(([m, arr]) => arr.map(x => [m, x]));
+  const chips = $('#modChips'), list = $('#storyList');
+  let mod = 'Все';
+  function drawStories(){
+    const items = mod === 'Все' ? all : all.filter(([m]) => m === mod);
+    list.innerHTML = items.map(([m, x], i) => `<li><small>${m}</small>${x}</li>`).join('');
+  }
+  chips.innerHTML = [['Все', all.length], ...Object.entries(S).map(([m,a]) => [m, a.length])].map(([m,n]) => `<button type="button" aria-pressed="${m==='Все'}" data-m="${m}">${m}<span>${n}</span></button>`).join('');
+  chips.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; mod = b.dataset.m; $$('button', chips).forEach(x => x.setAttribute('aria-pressed', String(x === b))); drawStories(); });
+  drawStories();
+
+  /* ---------- BANK FORM ---------- */
+  $('#innBtn').addEventListener('click', () => {
+    const v = $('#inn').value.replace(/\D/g,''); const r = $('#innResp');
+    r.className = 'resp on';
+    if (!(v.length === 10 || v.length === 12)){ r.classList.add('e'); r.textContent = 'ИНН юрлица 10 цифр, ИП 12. Проверка на входе, а не после отправки.'; return; }
+    r.classList.add('s'); r.textContent = 'Нашли в ЕГРЮЛ, проверьте данные на втором шаге.';
+    const vals = ['ООО «Пример Логистик» (демо)', '1' + v.slice(0,10).padEnd(12,'7'), 'Иванова Мария Сергеевна (демо)'];
+    ['f1','f2','f3'].forEach((id, i) => { const f = $('#' + id); f.value = vals[i]; f.classList.remove('filled'); void f.offsetWidth; f.classList.add('filled'); });
+    $('#sendBtn').disabled = false;
+  });
+  $('#sendBtn').addEventListener('click', () => say('<b>Заявка отправлена.</b> Компании не нужно вбивать реквизиты руками, отсюда меньше ошибок и отвалов.', true));
+
+  /* ---------- REGISTRATION ---------- */
+  const steps = $$('#rSteps li'); const rr = $('#rResp');
+  let cool = 0, ct;
+  function mark(n, errAt=-1){ steps.forEach((li, i) => { li.classList.toggle('done', i < n); li.classList.toggle('err', i === errAt); }); }
+  function resp(cls, text){ rr.className = 'resp on ' + cls; rr.textContent = text; }
+  $('#rBtn').addEventListener('click', () => {
+    const em = $('#rEmail').value.trim(), pw = $('#rPass').value;
+    $('#mailBox').hidden = true;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){ mark(1, 1); return resp('e', '400. Некорректный формат email, пользователь не создан (FR-2).'); }
+    if (em.toLowerCase() === 'test@mail.ru'){ mark(2, 2); return resp('e', '400. Email уже зарегистрирован, пользователь не создан (FR-4).'); }
+    if (pw.length < 8){ mark(3, 3); return resp('e', '400. Пароль короче 8 символов, пользователь не создан (FR-3).'); }
+    mark(6); resp('i', '201. Пользователь создан со статусом pending, письмо отправлено (FR-5, FR-6).');
+    $('#mailBox').hidden = false; startCool();
+  });
+  function startCool(){ cool = 60; tick(); clearInterval(ct); ct = setInterval(tick, 1000); }
+  function tick(){ const b = $('#rResend'); if (cool <= 0){ b.disabled = false; b.textContent = 'Отправить ещё раз'; clearInterval(ct); return; } b.disabled = true; b.textContent = `Ещё раз через ${cool} с`; cool--; }
+  $('#rResend').addEventListener('click', () => { resp('i', 'Письмо отправлено повторно. Следующее не раньше чем через минуту (FR-7).'); startCool(); });
+  $('#rConfirm').addEventListener('click', () => {
+    let k = 6; clearInterval(ct);
+    const go = () => { k++; mark(k); if (k < 10) setTimeout(go, reduce ? 0 : 380); else { resp('s', 'Статус active, вход выполнен автоматически, профиль создан (FR-9, FR-10).'); $('#mailBox').hidden = true; } };
+    go();
+  });
+
+  /* ---------- v5: reveal, count-up, dots, video ---------- */
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); if (e.target.querySelector('#dots')) playDots(); io.unobserve(e.target); } }), {threshold:.35});
+  const watch = () => $$('[data-reveal]').forEach(el => { if (!el.classList.contains('in')) io.observe(el); });
+  watch();
+  // panes appear on tab switch: re-check
+  $$('#side [role="tab"]').forEach(t => t.addEventListener('click', () => setTimeout(() => { watch(); playVideos(); }, 30)));
+  function countUp(el){
+    const to = +el.dataset.count, suf = el.dataset.suffix || '', d = 1100, t0 = performance.now();
+    if (reduce){ el.textContent = to + suf; return; }
+    const step = now => { const k = Math.min(1, (now - t0) / d), v = Math.round(to * (1 - Math.pow(1 - k, 3))); el.textContent = v.toLocaleString('ru-RU') + suf; if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+  const io2 = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ countUp(e.target); io2.unobserve(e.target); } }), {threshold:.6});
+  $$('[data-count]').forEach(el => io2.observe(el));
+
+  const dots = $('#dots');
+  dots.innerHTML = Array.from({length:100}, () => '<i></i>').join('') + '<b class="off" style="left:58%">было 58</b>';
+  const dl = $$('i', dots);
+  let dotTimer = [];
+  function setDots(n, animate=true){
+    dotTimer.forEach(clearTimeout); dotTimer = [];
+    $('#fnum').textContent = n;
+    $$('.seg button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.f === n)));
+    const mk = dots.querySelector('b'); if (mk) mk.classList.toggle('off', n !== 72);
+    dl.forEach((d, i) => {
+      const cls = i < Math.min(n,58) ? 'ok' : (i < n ? 'gain' : 'lost');
+      if (!animate || reduce){ d.className = cls; return; }
+      dotTimer.push(setTimeout(() => d.className = cls, i * 9));
+    });
+  }
+  let played = false;
+  function playDots(){ if (played) return; played = true; setDots(58); dotTimer.push(setTimeout(() => setDots(72), 2200)); }
+  dl.forEach(d => d.className = '');
+  $$('.seg button').forEach(b => b.addEventListener('click', () => { played = true; setDots(+b.dataset.f); }));
+
+  function playVideos(){
+    $$('video[data-auto]').forEach(v => { const vis = v.offsetParent !== null; if (vis && !reduce) v.play().catch(()=>{}); else v.pause(); });
+  }
+  const io3 = new IntersectionObserver(es => es.forEach(e => { if (reduce) return; e.isIntersecting ? e.target.play().catch(()=>{}) : e.target.pause(); }), {threshold:.25});
+  $$('video[data-auto]').forEach(v => io3.observe(v));
+
+  // hint on first card
+  const hintCard = () => { const c = board.querySelector('[data-id="EV-15"]'); if (c && !sessionHint) c.classList.add('hint'); };
+  hintCard();
+  board.addEventListener('click', () => { sessionHint = true; $$('.tk.hint', board).forEach(x => x.classList.remove('hint')); }, true);
+})();
+</script>
 </body>
 </html>
