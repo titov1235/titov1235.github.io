@@ -335,6 +335,67 @@ footer{color:var(--muted);font-size:14px;padding:0 0 40px}
 @media (max-width:980px){.strip{grid-template-columns:1fr 1fr}.strip div:nth-child(3){border-left:0;padding-left:0}.strip div{border-top:1px solid var(--line)}.strip div:nth-child(-n+2){border-top:0}.vids{grid-template-columns:minmax(0,1fr) 130px}.tl{grid-template-columns:1fr;padding-top:0;padding-left:28px;gap:14px}.tl::before{left:9px;right:auto;top:0;bottom:0;width:3px;height:auto}.tl .prog{left:9px;top:0;width:3px!important;height:0;transition:height 2.6s cubic-bezier(.4,.1,.2,1)}.in .tl .prog{height:100%}.tl .st2::before{top:2px;left:-25px}.funnel{grid-template-columns:1fr}.fbig{text-align:left}}
 @media (max-width:560px){.vids{grid-template-columns:1fr}.phone{max-width:180px}.dots{gap:4px}}
 @media (prefers-reduced-motion:reduce){.bars .bar{transform:none}.tl .st2,.branch div{opacity:1;transform:none}.tk.hint::after{display:none}}
+
+/* v6: case cards */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:22px}
+.card{display:flex;flex-direction:column;text-align:left;padding:0;border:1px solid #E1E4EA;background:var(--surface);border-radius:16px;overflow:hidden;box-shadow:0 1px 0 rgba(24,32,44,.04);transition:transform .2s cubic-bezier(.3,.7,.4,1),box-shadow .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 30px -18px rgba(24,32,44,.4)}
+.card:active{transform:translateY(0) scale(.985)}
+.card[aria-selected="true"]{border-color:var(--ink);box-shadow:0 0 0 2px var(--ink),0 16px 30px -18px rgba(24,32,44,.4)}
+.card .cd{padding:14px 16px 16px;display:grid;gap:3px}
+.card .cd small{font-size:12.5px;color:var(--faint)}
+.card .cd b{font-weight:600;font-size:16px;line-height:1.3}
+.card .cd span{font-size:14px;color:var(--done);font-weight:600}
+.cv{position:relative;aspect-ratio:16/9;overflow:hidden;display:grid;place-items:center;padding:14px}
+.card:hover .cv>*{transform:scale(1.03)}
+.cv>*{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.cv-bank{background:linear-gradient(160deg,#DCE7FD,#EEF3FE)}
+.mw{background:#fff;border-radius:10px;padding:10px 12px;width:78%;box-shadow:0 10px 22px -14px rgba(27,75,174,.5);font-size:11px}
+.mw-h{font-weight:600;margin-bottom:7px;font-size:11.5px}
+.mw-f{display:flex;align-items:center;gap:6px;border:1px solid #D8DCE3;border-radius:6px;padding:4px 7px;margin-bottom:6px}
+.mw-f span{color:var(--faint)}.mw-f em{font-style:normal;flex:1}.mw-f .ok{color:var(--done);font-style:normal;font-weight:700}
+.mw-b{background:var(--ink);color:#fff;border-radius:6px;padding:4px 8px;display:inline-block;font-weight:600;margin-bottom:8px}
+.mw-d{display:grid;grid-template-columns:repeat(10,1fr);gap:3px}.mw-d i{aspect-ratio:1;border-radius:50%;background:var(--done)}.mw-d i.x{background:#E9B3AD}
+.cv-tm{padding:0;background:#0E1116}.cv-tm img{width:100%;height:100%;object-fit:cover;object-position:60% 40%}
+.play{position:absolute;left:12px;bottom:12px;background:rgba(14,17,22,.82);color:#fff;font-size:12px;font-weight:600;padding:5px 9px;border-radius:999px}
+.cv-buro,.cv-head{background:linear-gradient(160deg,#F1F2EE,#E6E9E2);align-content:center;gap:8px;padding:18px 20px}
+.cv-head{background:linear-gradient(160deg,#1E2635,#141A25);color:#fff}
+.mt{position:relative;display:flex;justify-content:space-between;width:100%}
+.mt::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:currentColor;opacity:.35}
+.mt i{position:relative;width:14px;height:14px;border-radius:50%;background:var(--surface);border:2px solid var(--ink)}
+.cv-head .mt i{border-color:#fff;background:#141A25}
+.mt i.r{background:var(--blocked);border-color:var(--blocked)}.mt i.g{background:var(--done);border-color:var(--done)}
+.mt-l{display:flex;justify-content:space-between;width:100%;font-size:11.5px;color:var(--muted)}
+.cv-head .mt-l{color:#B8C0CC}
+.mt-l .r{color:var(--blocked);font-weight:600}.mt-l .g{color:var(--done);font-weight:600}
+.cv-head .mt-l .g{color:#6FD7A5}
+.chip-g{justify-self:start;background:var(--done);color:#fff;font:700 13px/1 var(--display);padding:7px 10px;border-radius:8px;margin-top:4px}
+.cv-reg .chip-g{position:absolute;right:14px;bottom:14px}
+.cv-amo{background:linear-gradient(160deg,#EAE4FE,#F4F1FF)}.cv-attr{background:linear-gradient(160deg,#FBE3E0,#FDF1EF)}
+.mb{width:84%;display:grid;gap:8px}
+.mb div{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600}
+.mb em{display:block;height:16px;border-radius:5px;background:#C9CED6}
+.mb em.g{background:var(--done)}.mb em.b{background:var(--prog)}.mb em.r{background:#E08A80}
+.mb span{white-space:nowrap}
+.mb-c{position:absolute;left:16px;top:12px;font-size:11.5px;color:var(--muted)}
+.cv-ev{background:linear-gradient(160deg,#DDF2E7,#EEF8F3)}
+.mk{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;width:86%;height:74%}
+.mk div{background:rgba(255,255,255,.7);border-radius:7px;padding:5px;display:flex;flex-direction:column;gap:5px}
+.mk i{height:18px;border-radius:5px;background:#fff;border-left:4px solid var(--todo);box-shadow:0 2px 6px -3px rgba(24,32,44,.35)}
+.mk i.p{border-color:var(--prog);background:#E6EEFD}.mk i.v{border-color:var(--review);background:#EFEAFE}.mk i.d{border-color:var(--done);background:#E3F4EC}
+.mk div{background:rgba(255,255,255,.55)!important;border:1px solid rgba(24,32,44,.06)}
+.cv-reg{background:linear-gradient(160deg,#EEF0F3,#F8F9FA)}
+.mf{background:#fff;border-radius:10px;padding:10px;width:62%;display:grid;gap:6px;box-shadow:0 10px 22px -14px rgba(24,32,44,.4);font-size:11px}
+.mf-i{border:1px solid #D8DCE3;border-radius:6px;padding:4px 7px;color:var(--muted)}
+.mf-b{background:var(--ink);color:#fff;border-radius:6px;padding:5px 7px;font-weight:600;text-align:center}
+.cv-ai{background:linear-gradient(160deg,#E7EAEF,#F3F5F8)}
+.ms{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center;font-size:12.5px;font-weight:600}
+.ms span{background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 9px}
+.ms span.g{border-color:var(--done);color:var(--done)}.ms i{font-style:normal;color:var(--faint)}
+.ws{display:block;min-height:0;scroll-margin-top:76px}
+@media (max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.cards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -16px 18px;padding:2px 16px 8px}.card{flex:0 0 78%;scroll-snap-align:start}}
+@media (prefers-reduced-motion:reduce){.card,.cv>*{transition:none}}
 </style>
 </head>
 <body>
@@ -399,25 +460,49 @@ footer{color:var(--muted);font-size:14px;padding:0 0 40px}
   <div class="wrap">
     <div class="sec-h">
       <h2 id="work-h">Проекты и артефакты</h2>
-      <p>Выберите проект. Внутри задача, что я сделал, как считали цифру и сам артефакт. Спецификации и формы живые, их можно трогать.</p>
+      <p>Откройте любую папку. Внутри задача, что я сделал, как считали цифру и сам артефакт. Спецификации и формы живые, их можно трогать.</p>
     </div>
 
-    <div class="ws">
-      <div class="side" role="tablist" aria-label="Проекты" aria-orientation="vertical" id="side">
-        <div class="grp">Работа в IT</div>
-        <button role="tab" id="t-bank" aria-controls="case-bank" aria-selected="true"><b>Корпоративные карты</b><span>Райффайзенбанк, 72 из 100 вместо 58</span></button>
-        <button role="tab" id="t-tm" aria-controls="case-tm" aria-selected="false" tabindex="-1"><b>Сайт и реклама автомолла</b><span>Техно-Маркет, бюджет 1,5–2 млн ₽</span></button>
-        <button role="tab" id="t-buro" aria-controls="case-buro" aria-selected="false" tabindex="-1"><b>1С вторым этапом</b><span>BURO'28, 650 тыс. ₽ без срыва срока</span></button>
-        <button role="tab" id="t-amo" aria-controls="case-amo" aria-selected="false" tabindex="-1"><b>Регресс CRM</b><span>amoCRM, 11 часов вместо 18</span></button>
-        <div class="grp">Требования и проектирование</div>
-        <button role="tab" id="t-events" aria-controls="case-events" aria-selected="false" tabindex="-1"><b>Сервис подготовки мероприятий</b><span>37 историй, 5 ролей, статусы</span></button>
-        <button role="tab" id="t-reg" aria-controls="case-reg" aria-selected="false" tabindex="-1"><b>Регистрация пользователя</b><span>10 FR, 3 NFR, критерии приёмки</span></button>
-        <button role="tab" id="t-ai" aria-controls="case-ai" aria-selected="false" tabindex="-1"><b>ИИ в рутине PM</b><span>костяк ТЗ за час вместо трёх дней</span></button>
-        <div class="grp">Собственное дело</div>
-        <button role="tab" id="t-attr" aria-controls="case-attr" aria-selected="false" tabindex="-1"><b>Атрибуция каналов</b><span>154 ₽ за билет вместо 890 ₽</span></button>
-        <button role="tab" id="t-head" aria-controls="case-head" aria-selected="false" tabindex="-1"><b>Отмена хедлайнера</b><span>возвратов меньше 12%</span></button>
-      </div>
+    <div class="cards" role="tablist" aria-label="Проекты" id="side">
+      <button class="card" role="tab" id="t-bank" aria-controls="case-bank" aria-selected="true">
+        <div class="cv cv-bank" aria-hidden="true"><div class="mw"><div class="mw-h">Заявка на корпоративную карту</div><div class="mw-f"><span>ИНН</span><em>2221 000 000</em><i class="ok">✓</i></div><div class="mw-b">Найти в ЕГРЮЛ</div><div class="mw-d"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="x"></i><i class="x"></i><i class="x"></i></div></div></div>
+        <div class="cd"><small>Райффайзенбанк</small><b>Корпоративные карты</b><span>72 из 100 вместо 58</span></div>
+      </button>
+      <button class="card" role="tab" id="t-tm" aria-controls="case-tm" aria-selected="false" tabindex="-1">
+        <div class="cv cv-tm" aria-hidden="true"><img src="media/tm_map_poster.jpg" alt="" loading="lazy"><span class="play">▶ видео</span></div>
+        <div class="cd"><small>Техно-Маркет</small><b>Сайт и реклама автомолла</b><span>сайт запущен, бюджет 1,5–2 млн ₽</span></div>
+      </button>
+      <button class="card" role="tab" id="t-buro" aria-controls="case-buro" aria-selected="false" tabindex="-1">
+        <div class="cv cv-buro" aria-hidden="true"><div class="mt"><i></i><i></i><i></i><i class="r"></i><i class="g"></i></div><div class="mt-l"><span>бриф</span><span>макет</span><span>код</span><span class="r">1С</span><span class="g">2 этапа</span></div><div class="chip-g">+650 тыс. ₽</div></div>
+        <div class="cd"><small>BURO'28, digital-агентство</small><b>1С вторым этапом</b><span>650 тыс. ₽ без срыва срока</span></div>
+      </button>
+      <button class="card" role="tab" id="t-amo" aria-controls="case-amo" aria-selected="false" tabindex="-1">
+        <div class="cv cv-amo" aria-hidden="true"><div class="mb"><div><em style="width:90%"></em><span>18 ч</span></div><div><em class="g" style="width:55%"></em><span>11 ч</span></div></div><div class="mb-c">регресс на прогон</div></div>
+        <div class="cd"><small>amoCRM</small><b>Регресс CRM</b><span>11 часов вместо 18</span></div>
+      </button>
+      <button class="card" role="tab" id="t-events" aria-controls="case-events" aria-selected="false" tabindex="-1">
+        <div class="cv cv-ev" aria-hidden="true"><div class="mk"><div><i class="t"></i><i class="t"></i><i class="t"></i></div><div><i class="p"></i><i class="p"></i></div><div><i class="v"></i></div><div><i class="d"></i><i class="d"></i></div></div></div>
+        <div class="cd"><small>Спецификация</small><b>Сервис подготовки мероприятий</b><span>37 историй, 5 ролей, статусы</span></div>
+      </button>
+      <button class="card" role="tab" id="t-reg" aria-controls="case-reg" aria-selected="false" tabindex="-1">
+        <div class="cv cv-reg" aria-hidden="true"><div class="mf"><div class="mf-i">name@mail.ru</div><div class="mf-i">••••••••</div><div class="mf-b">Зарегистрироваться</div></div><div class="chip-g">201 pending</div></div>
+        <div class="cd"><small>Спецификация</small><b>Регистрация пользователя</b><span>10 FR, 3 NFR, критерии приёмки</span></div>
+      </button>
+      <button class="card" role="tab" id="t-ai" aria-controls="case-ai" aria-selected="false" tabindex="-1">
+        <div class="cv cv-ai" aria-hidden="true"><div class="ms"><span>созвон</span><i>→</i><span>user story</span><i>→</i><span class="g">проверка</span></div></div>
+        <div class="cd"><small>Рутина PM</small><b>ИИ в работе</b><span>костяк ТЗ за час вместо трёх дней</span></div>
+      </button>
+      <button class="card" role="tab" id="t-attr" aria-controls="case-attr" aria-selected="false" tabindex="-1">
+        <div class="cv cv-attr" aria-hidden="true"><div class="mb"><div><em class="g" style="width:17%"></em><span>154 ₽</span></div><div><em class="b" style="width:24%"></em><span>214 ₽</span></div><div><em class="r" style="width:96%"></em><span>890 ₽</span></div></div><div class="mb-c">цена билета по каналу</div></div>
+        <div class="cd"><small>Собственное дело</small><b>Атрибуция каналов</b><span>154 ₽ за билет против 890 ₽</span></div>
+      </button>
+      <button class="card" role="tab" id="t-head" aria-controls="case-head" aria-selected="false" tabindex="-1">
+        <div class="cv cv-head" aria-hidden="true"><div class="mt"><i class="r"></i><i></i><i></i><i class="g"></i></div><div class="mt-l"><span class="r">отказ</span><span>замена</span><span>новая дата</span><span class="g">в плюс</span></div><div class="chip-g">возвратов &lt;12%</div></div>
+        <div class="cd"><small>Собственное дело</small><b>Отмена хедлайнера</b><span>возвратов меньше 12%</span></div>
+      </button>
+    </div>
 
+    <div class="ws" id="wsPanel">
       <div class="panes">
 
 <!-- BANK -->
@@ -953,11 +1038,11 @@ footer{color:var(--muted);font-size:14px;padding:0 0 40px}
     const tab = tabs.find(t => t.getAttribute('aria-controls') === 'case-' + id); if (!tab) return;
     tabs.forEach(t => { const on = t === tab; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; $('#' + t.getAttribute('aria-controls')).hidden = !on; });
     if (focus) tab.focus();
-    tab.scrollIntoView({block:'nearest', inline:'nearest'});
+    if (matchMedia('(max-width:620px)').matches) tab.scrollIntoView({block:'nearest', inline:'nearest'});
     if (scroll) $('#work').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
     history.replaceState(null, '', '#case-' + id);
   }
-  tabs.forEach(t => t.addEventListener('click', () => openCase(t.getAttribute('aria-controls').slice(5))));
+  tabs.forEach(t => t.addEventListener('click', () => { openCase(t.getAttribute('aria-controls').slice(5)); $('#wsPanel').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'}); }));
   $('#side').addEventListener('keydown', e => {
     const i = tabs.indexOf(document.activeElement); if (i < 0) return;
     let n = null;
