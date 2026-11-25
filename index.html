@@ -434,6 +434,54 @@ footer{color:var(--muted);font-size:14px;padding:0 0 40px}
 .hero-win .dots b.off{opacity:0}
 .hero-funnel{align-items:end}
 @media (max-width:560px){.hero-win .dots{gap:1px;height:60px}.hero-win .dots i{border-radius:1px}.hero-win .dots b::after{height:68px}}
+
+/* v9: dark stage hero */
+.stage{position:relative;overflow:hidden;margin-top:-61px;padding:116px 0 52px;color:#fff;background:radial-gradient(900px 420px at 78% 78%,rgba(43,196,125,.20),transparent 62%),radial-gradient(800px 380px at 8% 0%,rgba(47,111,235,.28),transparent 60%),#0C1321}
+.stage::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:linear-gradient(180deg,#000 10%,transparent 85%);mask-image:linear-gradient(180deg,#000 10%,transparent 85%);pointer-events:none}
+.stage>*{position:relative}
+.stage-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;align-items:end;margin-bottom:30px}
+.stage h1{font:700 clamp(30px,3.4vw,50px)/1.06 var(--display);letter-spacing:-.03em;text-wrap:balance;margin-bottom:20px;max-width:19ch}
+.stage .lead{color:#B6C0CF;font-size:18px;max-width:46ch}
+.stage .cta{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0 22px}
+.btn.light{background:#fff;color:#0C1321;border-color:#fff}
+.btn.light:hover{box-shadow:0 10px 30px -10px rgba(43,196,125,.6)}
+.btn.ghost-dark{background:transparent;color:#fff;border-color:rgba(255,255,255,.28)}
+.btn.ghost-dark:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.pills{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.pills li{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);border-radius:999px;padding:6px 12px;font-size:13.5px;color:#D3DAE5}
+.stage-num .n{font:700 clamp(92px,10.5vw,156px)/.86 var(--display);letter-spacing:-.05em;background:linear-gradient(170deg,#9BF0C4 10%,#2BC47D 70%);-webkit-background-clip:text;background-clip:text;color:transparent;display:flex;align-items:baseline}
+.stage-num .n small{font-size:.26em;letter-spacing:-.02em;margin-left:8px;-webkit-text-fill-color:rgba(255,255,255,.4)}
+.stage-num p{color:#B6C0CF;max-width:34ch;margin:16px 0 18px;font-size:15.5px}
+.seg.dark{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)}
+.seg.dark button{color:#B6C0CF}
+.seg.dark button[aria-pressed="true"]{background:#fff;color:#0C1321}
+.stage .dots{display:grid;grid-template-columns:repeat(100,minmax(0,1fr));gap:4px;height:120px;max-width:none;align-items:end;position:relative;margin-top:30px}
+.stage .dots i{aspect-ratio:auto;height:100%;border-radius:3px;background:rgba(255,255,255,.10);transform-origin:bottom;transform:scaleY(.12);transition:transform .7s cubic-bezier(.2,.8,.2,1),background-color .4s}
+.stage .dots i.ok{background:#2BC47D;transform:scaleY(1)}
+.stage .dots i.gain{background:#9BF0C4;transform:scaleY(1)}
+.stage .dots i.lost{background:rgba(255,128,116,.38);transform:scaleY(.42)}
+.stage .dots b{position:absolute;top:-26px;font:600 12.5px/1 var(--ui);color:#fff;transform:translateX(-50%);white-space:nowrap;transition:opacity .3s}
+.stage .dots b::after{content:"";position:absolute;left:50%;top:18px;width:2px;height:128px;background:#fff;opacity:.55}
+.stage .dots b.off{opacity:0}
+.stage-legend{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;margin-top:14px;font-size:13.5px;color:#9AA6B8}
+.stage-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:7px;vertical-align:-1px}
+.l-ok{background:#2BC47D}.l-gain{background:#9BF0C4}.l-lost{background:rgba(255,128,116,.6)}
+.stage-legend a{margin-left:auto;color:#fff;text-underline-offset:4px}
+.stage-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:34px;border-top:1px solid rgba(255,255,255,.12)}
+.stage-stats div{padding:22px 20px 0 0}
+.stage-stats div+div{padding-left:20px;border-left:1px solid rgba(255,255,255,.12)}
+.stage-stats strong{display:block;font:700 clamp(22px,2.2vw,30px)/1.05 var(--display);letter-spacing:-.02em;white-space:nowrap}
+.stage-stats span{display:block;color:#9AA6B8;font-size:14px;margin-top:6px}
+.top.dark{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom-color:transparent}
+.top.dark .brand{color:#fff}
+.top.dark .nav a{color:#C9D2DE}
+.top.dark .nav a:hover{background:rgba(255,255,255,.08);color:#fff}
+.top.dark .btn{background:#fff;color:#0C1321;border-color:#fff}
+.top{transition:background-color .25s,border-color .25s}
+section.block#work{border-top:0}
+@media (max-width:980px){.stage{padding-top:110px}.stage-grid{grid-template-columns:1fr;gap:28px;margin-bottom:20px}.stage-stats{grid-template-columns:1fr 1fr}.stage-stats div:nth-child(3){border-left:0;padding-left:0}.stage-stats div:nth-child(n+3){padding-top:18px}.stage .dots{height:110px}.stage .dots b::after{height:118px}}
+@media (max-width:560px){.stage .dots{gap:1px;height:84px}.stage .dots i{border-radius:1px}.stage .dots b::after{height:92px}.stage-legend a{margin-left:0}.stage .lead{font-size:16.5px}}
+@media (prefers-reduced-motion:reduce){.stage .dots i{transition:none}}
 </style>
 </head>
 <body>
@@ -451,48 +499,36 @@ footer{color:var(--muted);font-size:14px;padding:0 0 40px}
 </header>
 
 <main>
-<div class="wrap">
-  <section class="hero" aria-labelledby="h1">
-    <div>
+<section class="stage" id="stage" data-reveal aria-labelledby="h1">
+  <div class="wrap stage-grid">
+    <div class="stage-copy">
       <h1 id="h1">Менеджер проектов. Пять лет в IT и семь лет собственного дела.</h1>
       <p class="lead">Вёл стрим корпоративных карт в Райффайзенбанке, клиентские сайты в digital-агентстве и сайты автомолла со стороны заказчика. Начинал тестировщиком в amoCRM.</p>
-      <p class="sub">Рядом главный результат в банке. Переключите «Было» и «Стало», ниже папки с проектами, спецификациями и записью живого сайта.</p>
       <div class="cta">
-        <a class="btn" href="https://t.me/titov1235">Написать в Telegram</a>
-        <a class="btn ghost" href="#work">Смотреть проекты</a>
+        <a class="btn light" href="https://t.me/titov1235">Написать в Telegram</a>
+        <a class="btn ghost-dark" href="#work">Смотреть проекты</a>
       </div>
-      <dl class="facts">
-        <dt>Ищу</dt><dd>PM внедрения, project в агентстве, junior+ или middle PM</dd>
-        <dt>Формат</dt><dd>удалённо или Барнаул, проект или полная занятость</dd>
-        <dt>Старт</dt><dd>могу начать сразу</dd>
-      </dl>
+      <ul class="pills" aria-label="Что ищу">
+        <li>PM внедрения</li><li>Project в агентстве</li><li>Junior+ и middle</li><li>Удалённо или Барнаул</li><li>Могу начать сразу</li>
+      </ul>
     </div>
-
-    <div class="win hero-win" data-reveal aria-label="Воронка заявок на корпоративную карту">
-      <div class="win-bar">
-        <div class="win-title">Корпоративные карты, Райффайзенбанк<small>100 поданных заявок, сколько доходит до выпуска</small></div>
-        <div class="seg" role="group" aria-label="Период"><button type="button" aria-pressed="false" data-f="58">Было</button><button type="button" aria-pressed="true" data-f="72">Стало</button></div>
-      </div>
-      <div class="funnel hero-funnel">
-        <div class="dots" id="dots" role="img" aria-label="Из 100 заявок до выпуска доходят 72, было 58"></div>
-        <div class="fbig"><span id="fnum">72</span><small>из 100 доходят<br>до выпуска карты</small></div>
-      </div>
-      <div class="legend" style="padding:0 18px"><span><i style="background:var(--done)"></i>карта выпущена</span><span><i style="background:#5FC795"></i>прирост после изменений</span><span><i style="background:#EDC9C4"></i>отвалились на проверках и вводе</span></div>
-      <div class="hero-kpi">
-        <div><strong>30% → 9%</strong><span>возвратов из теста</span></div>
-        <div><strong>55 → 90%</strong><span>Say/Do команды</span></div>
-        <div><strong>42 → 35</strong><span>дней на фичу</span></div>
-      </div>
-      <div class="win-foot"><span>Анкету разложили на два шага, первый только ИНН</span><a href="#case-bank" data-open="bank">Как это сделали</a></div>
+    <div class="stage-num">
+      <div class="n"><span id="fnum">72</span><small>/100</small></div>
+      <p>заявок на корпоративную карту доходят до выпуска после того, как мы переделали проверки и анкету. Было 58.</p>
+      <div class="seg dark" role="group" aria-label="Период"><button type="button" aria-pressed="false" data-f="58">Было</button><button type="button" aria-pressed="true" data-f="72">Стало</button></div>
     </div>
-  </section>
-  <div class="strip" aria-label="Главное в цифрах">
-    <div><strong data-count="2" data-suffix=" млн">2 млн</strong><span>клиентов в базе, на которую выходили релизы банка</span></div>
-    <div><strong data-count="8" data-suffix=" команд">8 команд</strong><span>смежных, в одном плане релизов без подчинения</span></div>
-    <div><strong data-count="650" data-suffix=" тыс. ₽">650 тыс. ₽</strong><span>второй этап проекта в агентстве вместо срыва срока</span></div>
-    <div><strong data-count="154" data-suffix=" ₽">154 ₽</strong><span>цена билета в лучшем канале против 890 ₽</span></div>
   </div>
-</div>
+  <div class="wrap">
+    <div class="dots" id="dots" role="img" aria-label="Из 100 заявок до выпуска доходят 72, было 58"></div>
+    <div class="stage-legend"><span><i class="l-ok"></i>карта выпущена</span><span><i class="l-gain"></i>прирост после изменений</span><span><i class="l-lost"></i>отвалились на проверках и вводе</span><a href="#case-bank" data-open="bank">Как это сделали</a></div>
+    <div class="stage-stats">
+      <div><strong>30% → 9%</strong><span>задач возвращалось из теста</span></div>
+      <div><strong>55 → 90%</strong><span>Say/Do, сделано из обещанного</span></div>
+      <div><strong>42 → 35</strong><span>дней от старта фичи до выхода</span></div>
+      <div><strong>2 млн</strong><span>клиентов в базе, на которую шли релизы</span></div>
+    </div>
+  </div>
+</section>
 
 <section class="block" id="work" aria-labelledby="work-h">
   <div class="wrap">
@@ -950,7 +986,9 @@ footer{color:var(--muted);font-size:14px;padding:0 0 40px}
 
   // top bar border
   const top = $('#top');
-  addEventListener('scroll', () => top.classList.toggle('scrolled', scrollY > 8), {passive:true});
+  const stageEl = document.getElementById('stage');
+  const onScroll = () => { top.classList.toggle('scrolled', scrollY > 8); top.classList.toggle('dark', !!stageEl && scrollY < stageEl.offsetHeight - 70); };
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
   // toast
   const toast = $('#toast'); let tt;
